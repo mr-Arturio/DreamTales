@@ -15,3 +15,4 @@ Options to expand the app:
 
 
 Developing the Personalized Kids' Bedtime Story App would provide an opportunity to strengthen our fundamental development skills while exploring AI-generated storytelling and user customization features. We also belive that it is a great opportunity to demonstrate our ability to create applications for a niche market. It allows us to showcase our understanding of user needs, engagement, and interaction within a specialized context. 
+
