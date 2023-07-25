@@ -15,7 +15,7 @@ export const Header = () => (
       </Link>
     </li>
     <li>
-      <Link href="/favorites" passHref>
+      <Link href="/favorites-page" passHref>
         Favorites
       </Link>
     </li>
@@ -30,7 +30,7 @@ export const Header = () => (
       </Link>
     </li>
     <li>
-      <Link href="/sign-up" passHref>
+      <Link href="/login" passHref>
         Login
       </Link>
     </li>

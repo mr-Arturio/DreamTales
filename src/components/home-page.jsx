@@ -1,4 +1,4 @@
-// import Link from "next/link";
+import Link from "next/link";
 // import Image from "next/image";
 
 export const HomePage = () => (
@@ -13,5 +13,8 @@ export const HomePage = () => (
       cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
       est laborum.
     </p>
+    <Link href="/story-page" passHref>
+    <button>Create story</button>
+    </Link>
   </div>
 );
