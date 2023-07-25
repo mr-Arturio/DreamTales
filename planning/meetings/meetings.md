@@ -1,0 +1,4 @@
+july/21/2023
+- went over the contents of the planning folder, and what out schedule will be like over the next 4 weeks. new features we may implement is color switch to change theme. decided on next js as framework. and agreed on name, general workflow and next meeting time. 
+july/23/2023 w/ mentor
+- went over the general idea of the project with the mentor and initially mentioned that the scope was too small for a final project, decided on what other features we could implement into the project that were acceptable to improve the scope of the project. agreed on general meeting times during the week tuesdays at 12pm and fridays at 6pm throughout the project duration. to be completed wire frame. also was introduced to MUI to help with designing the UI.

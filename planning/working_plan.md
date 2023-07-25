@@ -1,4 +1,5 @@
 ### Week 1:
+- wire frame
 - Schedule our regular meetings 
 - General idea discussions and planning documentation.
 - Decide on the tools and technologies to be used.
