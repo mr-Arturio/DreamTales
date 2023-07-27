@@ -22,7 +22,7 @@ const StoryForm = ({
 }) => {
   return (
     <form onSubmit={onSubmit}>
-    <label for="childName">Child's Name:</label>
+    <label htmlFor="childName">Child's Name:</label>
     <input
       id="childName"
       type="text"

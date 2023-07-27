@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useState } from "react";
 import StoryForm from "./story-form";
-import styles from "../index.module.css"
+import styles from "../index.module.css";
 
 const StoryPage = () => {
   const [childName, setChildName] = useState("");
@@ -26,14 +26,14 @@ const StoryPage = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          childName,
-          age,
-          gender,
-          parent1Name,
-          parent2Name,
-          friendName,
-          favoriteToy,
-          location,
+          name: childName,
+          age: age,
+          gender: gender,
+          parent1Name: parent1Name,
+          parent2Name: parent2Name,
+          friendName: friendName,
+          favoriteToy: favoriteToy,
+          location: location
         }),
       });
 
@@ -46,7 +46,6 @@ const StoryPage = () => {
       }
 
       setResult(data.result);
-      // Clear form fields after successful submission
       setChildName("");
       setAge("");
       setGender("");
@@ -67,14 +66,15 @@ const StoryPage = () => {
   return (
     <div>
       <Head>
-        <title>DremTales Stories</title>
+        <title>OpenAI Quickstart</title>
         <link rel="icon" href="/docs/penguin.png" />
       </Head>
 
       <main className={styles.main}>
         <img src="/docs/penguin.png" className={styles.icon} />
-        <h3>Your Story</h3>
+        <h3>Short story</h3>
         <StoryForm
+          onSubmit={onSubmit}
           childName={childName}
           setChildName={setChildName}
           age={age}
@@ -91,18 +91,12 @@ const StoryPage = () => {
           setFavoriteToy={setFavoriteToy}
           location={location}
           setLocation={setLocation}
-          onSubmit={onSubmit}
-          loading={loading}
         />
         <div className={styles.result}>
           {loading ? (
             <p>Loading...</p>
           ) : (
-            <textarea
-              rows={10} // Adjust the number of rows as needed
-              value={result}
-              readOnly
-            />
+            <textarea rows={50} value={result} readOnly />
           )}
         </div>
       </main>
