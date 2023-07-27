@@ -20,7 +20,7 @@ export default async function (req, res) {
   const name = req.body.name || "";
   const age = req.body.age;
   const gender = req.body.gender;
-  const Parent1Name = req.body.Parent1Name;
+  const parent1Name = req.body.Parent1Name;
   const parent2Name = req.body.parent2Name;
   const friendName = req.body.friendName;
   const favoriteToy = req.body.favoriteToy;
@@ -34,20 +34,17 @@ export default async function (req, res) {
     return;
   }
 
+  const capitalizedName = name[0].toUpperCase() + name.slice(1).toLowerCase();
+  let prompt = ` Generate a 5 minute Kids story for the ${age} year old ${gender} kid, named ${capitalizedName}. Include in the story ${parent1Name}, ${parent2Name} and ${capitalizedName} best friend ${friendName}. Also ad ${capitalizedName} favorite toy ${favoriteToy}. Story about frindship and everything happening in ${location}. Kids friendly language`;
+
   try {
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: generatePrompt(
-        name,
-        age,
-        gender,
-        Parent1Name,
-        parent2Name,
-        friendName,
-        favoriteToy,
-        location
-      ),
-      temperature: 0.9,
+      prompt: prompt,
+            max_tokens: 1200,
+            n: 1,
+            stop: null,
+            temperature: 1.0,
     });
     res.status(200).json({ result: completion.data.choices[0].text });
   } catch (error) {
@@ -66,18 +63,4 @@ export default async function (req, res) {
   }
 }
 
-function generatePrompt(
-  name,
-  age,
-  gender,
-  parent1Name,
-  parent2Name,
-  friendName,
-  favoriteToy,
-  location
-) {
-  const capitalizedName = name[0].toUpperCase() + name.slice(1).toLowerCase();
-  return ` "Generate a 5 minute Kids story for the ${age} year old ${gender} kid, named ${capitalizedName}. Include in the story ${parent1Name}, ${parent2Name} and ${capitalizedName} best friend ${friendName}. Also ad ${capitalizedName} favorite toy ${favoriteToy}. Story about frindship and everything happening in ${location}. Kids friendly language",
-    `;
-}
 
