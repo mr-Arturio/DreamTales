@@ -1,12 +1,16 @@
-const DisplayStory = () => {
+import React from "react";
+import { useRouter } from "next/router";
+
+const DisplayStoryPage = () => {
+  const router = useRouter();
+  const { result } = router.query; // Get the generated story from the URL query params
+
   return (
     <div>
-      <h1> Your Favorites Stories</h1>
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur cupiditate quaerat ipsum aperiam! Explicabo provident saepe temporibus rem sint itaque corporis sed harum, dignissimos facilis culpa atque voluptate numquam odio?
-      </p>
+      <h1>Generated Story</h1>
+      <textarea rows={50} value={result} readOnly />
     </div>
   );
 };
 
-
-export default DisplayStory;
+export default DisplayStoryPage;
