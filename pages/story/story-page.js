@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { useState } from "react";
-import { useRouter } from "next/router";
 import StoryForm from "./story-form";
 import styles from "../index.module.css";
 
@@ -15,8 +14,6 @@ const StoryPage = () => {
   const [location, setLocation] = useState("");
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
-
-  const router = useRouter();
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -40,9 +37,6 @@ const StoryPage = () => {
         }),
       });
 
-      // Save the generated story to the list
-      // saveStory(data.result);
-
       const data = await response.json();
       if (response.status !== 200) {
         throw (
@@ -60,9 +54,6 @@ const StoryPage = () => {
       setFriendName("");
       setFavoriteToy("");
       setLocation("");
-
-       // Redirect to the DisplayStoryPage after generating the story
-       router.push("/display-story");
     } catch (error) {
       // Display user-friendly error message
       console.error(error);
@@ -75,7 +66,7 @@ const StoryPage = () => {
   return (
     <div>
       <Head>
-        <title>OpenAI Quickstart</title>
+        <title>Creating Story</title>
         <link rel="icon" href="/docs/penguin.png" />
       </Head>
 
@@ -100,6 +91,7 @@ const StoryPage = () => {
           setFavoriteToy={setFavoriteToy}
           location={location}
           setLocation={setLocation}
+          loading={loading}
         />
         <div className={styles.result}>
           {loading ? (

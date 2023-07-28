@@ -7,8 +7,12 @@ const DisplayStoryPage = () => {
 
   return (
     <div>
-      <h1>Generated Story</h1>
-      <textarea rows={50} value={result} readOnly />
+      <h1>Your Story</h1>
+      {result ? (
+        <textarea rows={50} value={result} readOnly />
+      ) : (
+        <p>No story available.</p>
+      )}
     </div>
   );
 };
