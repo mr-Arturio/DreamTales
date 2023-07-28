@@ -11,5 +11,16 @@ CREATE TABLE favorites (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   story TEXT,
+  created_at TIMESTAMP,
+  favorites BOOLEAN NOT NULL DEFAULT TRUE 
+)
+
+CREATE TABLE story (
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  story TEXT,
+  genre VARCHAR(255),
+  photo image,
+  created_at TIMESTAMP, 
   favorites BOOLEAN NOT NULL DEFAULT TRUE 
 )
