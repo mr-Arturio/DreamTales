@@ -39,6 +39,11 @@ export const Header = () => (
         Login
       </Link>
     </li>
+    <li>
+      <Link href="/register" passHref>
+        Register
+      </Link>
+    </li>
   </ul>
 </nav>
 </div>
