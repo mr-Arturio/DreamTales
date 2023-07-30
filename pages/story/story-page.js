@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { useState } from "react";
+import { useRouter } from "next/router";
 import StoryForm from "./story-form";
 import styles from "../index.module.css";
 
