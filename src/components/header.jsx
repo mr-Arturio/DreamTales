@@ -15,6 +15,11 @@ export const Header = () => (
       </Link>
     </li>
     <li>
+      <Link href="/story/story-page" passHref>
+         Create Story
+      </Link>
+    </li>
+    <li>
       <Link href="/favorites-page" passHref>
         Favorites
       </Link>
@@ -32,6 +37,11 @@ export const Header = () => (
     <li>
       <Link href="/login" passHref>
         Login
+      </Link>
+    </li>
+    <li>
+      <Link href="/register" passHref>
+        Register
       </Link>
     </li>
   </ul>

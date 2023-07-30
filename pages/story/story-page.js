@@ -67,7 +67,7 @@ const StoryPage = () => {
   return (
     <div>
       <Head>
-        <title>OpenAI Quickstart</title>
+        <title>Creating Story</title>
         <link rel="icon" href="/docs/penguin.png" />
       </Head>
 
@@ -92,6 +92,7 @@ const StoryPage = () => {
           setFavoriteToy={setFavoriteToy}
           location={location}
           setLocation={setLocation}
+          loading={loading}
         />
         <div className={styles.result}>
           {loading ? (
