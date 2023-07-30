@@ -1,17 +1,21 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 
+//import db from '/db/databse';
+
+
 export default function login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const router = useRouter()
+  const router = useRouter();
 
-  
-  const handleSubmit = async (e) => {
+
+  const login = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch('/api/register', {
+      
+      const response = await fetch('/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -20,14 +24,14 @@ export default function login() {
       });
 
       if (response.ok) {
-        alert('User login successfully!');
+        alert('User logged in successfully!');
         // Add code to redirect or show a success message to the user
       } else {
         alert('login failed.');
         // Add code to show an error message to the user
       }
-
-    return router.push('/index')
+      
+      return router.push('/')
     } catch (err) {
       alert('Error during login:', err);
       // Add code to show an error message to the user
@@ -35,7 +39,7 @@ export default function login() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={login}>
       <div>
         <label htmlFor="email">Email:</label>
         <input
