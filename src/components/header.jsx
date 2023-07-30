@@ -1,8 +1,12 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const Header = () => (
 
 <header>
+  <div>
+  <div className="topNav">
+  <Image alt="logo" src={'/docs/images(1).jpg'} width={160} height={60} />
 <nav>
   <ul>
     <li>
@@ -11,13 +15,13 @@ export const Header = () => (
       </Link>
     </li>
     <li>
-      <Link href="/favorites" passHref>
+      <Link href="/favorites-page" passHref>
         Favorites
       </Link>
     </li>
     <li>
-      <Link href="/about-us" passHref>
-        About us
+      <Link href="/story/saved-stories" passHref>
+        Your Stories
       </Link>
     </li>
     <li>
@@ -25,7 +29,15 @@ export const Header = () => (
         Sign Up
       </Link>
     </li>
+    <li>
+      <Link href="/login" passHref>
+        Login
+      </Link>
+    </li>
   </ul>
 </nav>
+</div>
+<p className="title"> Personalized kids' bedtime story app </p>
+</div>
 </header>
 );
