@@ -56,7 +56,7 @@ const StoryPage = () => {
       setFavoriteToy("");
       setLocation("");
     } catch (error) {
-      // Display user-friendly error message
+      // Display user-friendly error message 
       console.error(error);
       alert("An error occurred during your request. Please try again later.");
     } finally {
