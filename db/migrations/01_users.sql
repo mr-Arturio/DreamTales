@@ -12,10 +12,10 @@ CREATE TABLE users (
 CREATE TABLE story (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  title VARCHAR(255)
+  title VARCHAR(255),
   story TEXT,
   genre VARCHAR(255),
   photo VARCHAR(255),
   created_at TIMESTAMP, 
   favorites BOOLEAN NOT NULL DEFAULT TRUE 
-)
+);
