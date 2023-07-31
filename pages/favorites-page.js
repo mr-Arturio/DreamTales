@@ -1,12 +1,8 @@
-const FavoritesPage = () => {
-  return (
-    <div>
-      <h1> Your Favorites Stories</h1>
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur cupiditate quaerat ipsum aperiam! Explicabo provident saepe temporibus rem sint itaque corporis sed harum, dignissimos facilis culpa atque voluptate numquam odio?
-      </p>
-    </div>
-  );
-};
+// Example usage in a component
+const Header = () => (
+  <header className="w-full h-20 bg-blue-500 text-white flex items-center justify-center">
+    <h1 className="text-3xl">Welcome to My Next.js App!</h1>
+  </header>
+);
 
-
-export default FavoritesPage;
+export default Header;
