@@ -34,7 +34,7 @@ export default async function handler(req, res) {
       // If authentication is successful, generate a JWT token and store it in a cookie
       const token = jwt.sign({ id: user.id}, process.env.JWT_SECRET); // Use the user's ID for generating the token
       res.status(200).json({token})
-
+      
     } catch (error){
       console.log('Login error:', error)
     }

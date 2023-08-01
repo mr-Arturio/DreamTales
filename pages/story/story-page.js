@@ -16,6 +16,8 @@ const StoryPage = () => {
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const router = useRouter();
+
   async function onSubmit(event) {
     event.preventDefault();
     setLoading(true);
@@ -55,6 +57,11 @@ const StoryPage = () => {
       setFriendName("");
       setFavoriteToy("");
       setLocation("");
+
+      router.push({
+        pathname: "/story/display-story",
+        query: { story: JSON.stringify(data.result) },
+      });
     } catch (error) {
       // Display user-friendly error message 
       console.error(error);
@@ -74,6 +81,9 @@ const StoryPage = () => {
       <main className={styles.main}>
         <img src="/docs/penguin.png" className={styles.icon} />
         <h3>Short story</h3>
+        {loading ? (
+        <p>Loading...</p>
+      ) : (
         <StoryForm
           onSubmit={onSubmit}
           childName={childName}
@@ -94,13 +104,7 @@ const StoryPage = () => {
           setLocation={setLocation}
           loading={loading}
         />
-        <div className={styles.result}>
-          {loading ? (
-            <p>Loading...</p>
-          ) : (
-            <textarea rows={50} value={result} readOnly />
-          )}
-        </div>
+      )}
       </main>
     </div>
   );

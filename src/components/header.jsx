@@ -19,7 +19,7 @@ export const Header = () => (
               </Link>
             </li>
             <li className="font-semibold text-lg">
-              <Link href="/favorites-page" passHref>
+              <Link href="/story/favorites-page" passHref>
                 Favorites
               </Link>
             </li>
