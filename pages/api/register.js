@@ -1,5 +1,5 @@
 import { hash } from 'bcryptjs';
-import  db  from 'db/databse.js'; 
+import  db  from 'db/database.js'; 
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {

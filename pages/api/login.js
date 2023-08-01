@@ -1,5 +1,5 @@
 
-import  db  from 'db/databse.js'; 
+import  db  from 'db/database.js'; 
 import { comparePasswords } from './auth.js';
 import jwt from 'jsonwebtoken';
 
@@ -17,7 +17,7 @@ export default async function handler(req, res) {
         alert('User not found.');
 
         client.release();
-        return;
+        res.status(404).send('User not found');
       }
 
       const user = result.rows[0];
@@ -28,7 +28,7 @@ export default async function handler(req, res) {
       if (!isPasswordValid) {
         alert('Invalid password.');
        
-        return;
+        res.status(400).send('Invalid Password');
       }
 
       // If authentication is successful, generate a JWT token and store it in a cookie
@@ -42,5 +42,5 @@ export default async function handler(req, res) {
   }
 
   // Handle other HTTP methods (GET, PUT, DELETE, etc.)
-  return res.status(405).end(); // Method Not Allowed
+    res.status(405).end(); // Method Not Allowed
 }

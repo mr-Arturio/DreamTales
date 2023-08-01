@@ -2,8 +2,7 @@ const { Configuration, OpenAIApi } = require("openai");
 
 const db = require("../../db/databse");
 
-//'userId' is hardcoded as '1'
-const userId = '1';
+
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,

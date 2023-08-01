@@ -9,7 +9,7 @@ CREATE TABLE users (
   password VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE story (
+CREATE TABLE stories (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   title VARCHAR(255),
