@@ -32,7 +32,7 @@ const DisplayStoryPage = ({ initialStory }) => {
     <div>
       <h1>Your Story</h1>
       {story ? (
-        <textarea rows={50} value={story.story} readOnly />
+        <textarea className="w-4/5 h-96 p-4 border rounded-md shadow-lg resize-none" rows={50} value={story.story} readOnly />
       ) : (
         <p>No story available.</p>
       )}
