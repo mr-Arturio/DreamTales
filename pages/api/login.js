@@ -1,5 +1,5 @@
 
-import  db  from 'db/databse.js'; 
+import  db  from 'db/database.js'; 
 import { comparePasswords } from './auth.js';
 import jwt from 'jsonwebtoken';
 

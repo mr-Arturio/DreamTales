@@ -1,6 +1,6 @@
 import { Configuration, OpenAIApi } from "openai";
 
-const db = require('/home/labber/Final/dream_tales/db/databse.js')
+const db = require('../../db/database')
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
