@@ -1,6 +1,9 @@
 import { Configuration, OpenAIApi } from "openai";
 
-const db = require('/home/labber/Final/dream_tales/db/databse.js')
+const db = require("/home/labber/Final/dream_tales/db/databse.js");
+
+//'userId' is hardcoded as '1'
+const userId = '1';
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -43,14 +46,44 @@ export default async function (req, res) {
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
       prompt: prompt,
-            max_tokens: 1200,
-            n: 1,
-            stop: null,
-            temperature: 1.0,
+      max_tokens: 1200,
+      n: 1,
+      stop: null,
+      temperature: 1.0,
     });
-    res.status(200).json({ result: completion.data.choices[0].text });
+
+    const generatedStory = completion.data.choices[0].text;
+
+    // Save the generated story to the database
+    try {
+      const insertQuery = `
+      INSERT INTO story (user_id, title, story, genre, photo, created_at, favorites)
+      VALUES ($1, '', $2, '', '', $3, $4)
+      RETURNING id;
+    `;
+
+      const values = [userId, generatedStory, new Date(), false];
+      // Replace `userId`, `title`, `genre`, `photo` with their corresponding values
+      // You may need to get these values from the request body or somewhere else.
+
+      //send request for your server to wait for the completion
+      const result = await db.query(insertQuery, values);
+      //newly saved story
+      const storyId = result.rows[0].id;
+
+      res.status(200).json({ result: completion.data.choices[0].text });
+
+      // res.status(200).json({ result: generatedStory, storyId: storyId });
+
+    } catch (error) {
+      console.error("Error saving story to the database:", error.message);
+      res.status(500).json({
+        error: {
+          message: "An error occurred while saving the story to the database.",
+        },
+      });
+    }
   } catch (error) {
-    // Consider adjusting the error handling logic for your use case
     if (error.response) {
       console.error(error.response.status, error.response.data);
       res.status(error.response.status).json(error.response.data);
@@ -64,5 +97,3 @@ export default async function (req, res) {
     }
   }
 }
-
-
