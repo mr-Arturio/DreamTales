@@ -58,10 +58,6 @@ const StoryPage = () => {
       setFavoriteToy("");
       setLocation("");
 
-      router.push({
-        pathname: "/story/display-story",
-        query: { story: JSON.stringify(data.result) },
-      });
     } catch (error) {
       // Display user-friendly error message 
       console.error(error);
@@ -81,30 +77,32 @@ const StoryPage = () => {
       <main className={styles.main}>
         <img src="/docs/penguin.png" className={styles.icon} />
         <h3>Short story</h3>
-        {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <StoryForm
-          onSubmit={onSubmit}
-          childName={childName}
-          setChildName={setChildName}
-          age={age}
-          setAge={setAge}
-          gender={gender}
-          setGender={setGender}
-          parent1Name={parent1Name}
-          setParent1Name={setParent1Name}
-          parent2Name={parent2Name}
-          setParent2Name={setParent2Name}
-          friendName={friendName}
-          setFriendName={setFriendName}
-          favoriteToy={favoriteToy}
-          setFavoriteToy={setFavoriteToy}
-          location={location}
-          setLocation={setLocation}
-          loading={loading}
-        />
-      )}
+        {result ? (
+          <textarea rows={50} value={result} readOnly />
+        ) : loading ? (
+          <p>Loading...</p>
+        ) : (
+          <StoryForm
+            onSubmit={onSubmit}
+            childName={childName}
+            setChildName={setChildName}
+            age={age}
+            setAge={setAge}
+            gender={gender}
+            setGender={setGender}
+            parent1Name={parent1Name}
+            setParent1Name={setParent1Name}
+            parent2Name={parent2Name}
+            setParent2Name={setParent2Name}
+            friendName={friendName}
+            setFriendName={setFriendName}
+            favoriteToy={favoriteToy}
+            setFavoriteToy={setFavoriteToy}
+            location={location}
+            setLocation={setLocation}
+            loading={loading}
+          />
+        )}
       </main>
     </div>
   );
