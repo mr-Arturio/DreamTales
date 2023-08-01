@@ -1,6 +1,6 @@
-import { Configuration, OpenAIApi } from "openai";
+const { Configuration, OpenAIApi } = require("openai");
 
-const db = require("/home/labber/Final/dream_tales/db/databse.js");
+const db = require("../../db/databse");
 
 //'userId' is hardcoded as '1'
 const userId = '1';
@@ -10,7 +10,7 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-export default async function (req, res) {
+export default async function handler(req, res) {
   if (!configuration.apiKey) {
     res.status(500).json({
       error: {
@@ -40,7 +40,7 @@ export default async function (req, res) {
   }
 
   const capitalizedName = name[0].toUpperCase() + name.slice(1).toLowerCase();
-  let prompt = ` Generate a 5 minute Kids story for the ${age} year old ${gender} kid, named ${capitalizedName}. Include in the story ${parent1Name}, ${parent2Name} and ${capitalizedName} best friend ${friendName}. Also ad ${capitalizedName} favorite toy ${favoriteToy}. Story about frindship and everything happening in ${location}. Kids friendly language`;
+  let prompt = ` Generate a 3 minute Kids story for the ${age} year old ${gender} kid, named ${capitalizedName}. Include in the story ${parent1Name}, ${parent2Name} and ${capitalizedName} best friend ${friendName}. Also ad ${capitalizedName} favorite toy ${favoriteToy}. Story about frindship and everything happening in ${location}. Kids friendly language`;
 
   try {
     const completion = await openai.createCompletion({
@@ -57,14 +57,13 @@ export default async function (req, res) {
     // Save the generated story to the database
     try {
       const insertQuery = `
-      INSERT INTO story (user_id, title, story, genre, photo, created_at, favorites)
-      VALUES ($1, '', $2, '', '', $3, $4)
+      INSERT INTO story (user_id, story, created_at, favorites)
+      VALUES ($1, $2, $3, $4)
       RETURNING id;
     `;
 
       const values = [userId, generatedStory, new Date(), false];
-      // Replace `userId`, `title`, `genre`, `photo` with their corresponding values
-      // You may need to get these values from the request body or somewhere else.
+
 
       //send request for your server to wait for the completion
       const result = await db.query(insertQuery, values);
