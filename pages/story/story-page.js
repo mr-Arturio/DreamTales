@@ -26,29 +26,27 @@ const StoryPage = () => {
     event.preventDefault();
     setLoading(true);
 
-    setStoryStyle(storyStyle);
-    setStoryTopic(storyTopic);
-    setLanguage(language);
+    const formData = {
+      name: childName,
+      age: age,
+      gender: gender,
+      parent1Name: parent1Name,
+      parent2Name: parent2Name,
+      friendName: friendName,
+      favoriteToy: favoriteToy,
+      location: location,
+      storyStyle: storyStyle,
+      storyTopic: storyTopic,
+      language: language,
+    };
 
-    try {
+     try {
       const response = await fetch("/api/generate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          name: childName,
-          age: age,
-          gender: gender,
-          parent1Name: parent1Name,
-          parent2Name: parent2Name,
-          friendName: friendName,
-          favoriteToy: favoriteToy,
-          location: location,
-          storyStyle: storyStyle,
-          storyTopic: storyTopic,
-          language: language,
-        }),
+        body: JSON.stringify(formData),
       });
 
       const data = await response.json();

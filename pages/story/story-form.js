@@ -26,50 +26,8 @@ const StoryForm = ({
   setStoryTopic,
   language,
   setLanguage,
-  onSubmit
+  onSubmit,
 }) => {
-  let pickStyle = [
-    {
-      linkName: "Fairy Tales",
-    },
-    {
-      linkName: "Adventure Stories",
-    },
-    {
-      linkName: "Humorus Stories",
-    },
-    {
-      linkName: "Super Hero Stories",
-    },
-  ];
-
-  let pickTopic = [
-    {
-      linkName: "Friendship and Kindness",
-    },
-    {
-      linkName: "Family Values",
-    },
-    {
-      linkName: "Safety and Stranger Awarness",
-    },
-    {
-      linkName: "Sharing and Cooperation",
-    },
-  ];
-
-  let pickLanguage = [
-    {
-      linkName: "English",
-    },
-    {
-      linkName: "French",
-    },
-    {
-      linkName: "Spanish",
-    },
-  ];
-
   return (
     <div onSubmit={onSubmit}>
       <h2>Main Character</h2>
@@ -92,23 +50,6 @@ const StoryForm = ({
         </label>
       </div>
       <br />
-      {/* 
-      <label htmlFor="age">Child's Age:</label>
-      <select
-        id="age"
-        value={age}
-        onChange={(e) => setAge(e.target.value)}
-        required
-      >
-        <option value="" disabled>
-          Select Age
-        </option>
-        <option value="1-2">1-2</option>
-        <option value="3-5">3-5</option>
-        <option value="6-8">6-8</option>
-        <option value="9-12">9-12</option>
-      </select>
-      <br /> */}
 
       <label htmlFor="gender">Child's Gender:</label>
       <select
@@ -125,77 +66,45 @@ const StoryForm = ({
         <option value="other">Other</option>
       </select>
       <br />
+      <br />
+      <br />
+      <br />
+
+      <label htmlFor="storyStyle">Pick the Story Style:</label>
+      <select
+        id="storyStyle"
+        value={storyStyle}
+        onChange={(e) => setStoryStyle(e.target.value)}
+        required
+      >
+        <option value="" disabled>
+          Select Style
+        </option>
+        <option >Fairy Tales</option>
+        <option >Adventure Stories</option>
+        <option >Humorous Stories</option>
+        <option >Super Hero Stories</option>
+      </select>
+      <br />
+      <br />
+      <br />
 
       <RangeSlider />
       <br />
       {/* need to setDropdown */}
-      <DropdownMenu
-        id="storyStyle"
-        buttonLabel={"Pick the Story Style"}
-        navigationItems={pickStyle}
-        onSelect={(value) => setStoryStyle(value)} // Pass the selected value to setStoryStyle
-      />
-      <br />
-      <DropdownMenu
-        id="storyTopic"
-        buttonLabel={"Pick Educational Topic"}
-        navigationItems={pickTopic}
-        onSelect={(value) => setStoryTopic(value)} // Pass the selected value to setStoryTopic
-      />
+
       <br />
       <DropdownMenu
         id="language"
-        buttonLabel={"Language"}
-        navigationItems={pickLanguage}
-        onSelect={(value) => setLanguage(value)} // Pass the selected value to setLanguage
+        setLanguage={setLanguage} // Pass the selected value to setLanguage
       />
       <br />
-      {/* 
-      <label htmlFor="parent1Name">First Parent's Name:</label>
-      <input
-        type="text"
-        id="parent1Name"
-        value={parent1Name}
-        onChange={(e) => setParent1Name(e.target.value)}
-        required
-      />
-      <br /> */}
 
-      {/* <!-- Component: Base secondary elevated button --> */}
+  
       <button className="inline-flex items-center justify-center h-10 gap-2 px-5 text-sm font-medium tracking-wide transition duration-300 rounded shadow-md focus-visible:outline-none justify-self-center whitespace-nowrap bg-emerald-50 text-emerald-500 shadow-emerald-100 hover:bg-emerald-100 hover:text-emerald-600 hover:shadow-md hover:shadow-emerald-100 focus:bg-emerald-200 focus:text-emerald-700 focus:shadow-md focus:shadow-emerald-100 disabled:cursor-not-allowed disabled:border-emerald-100 disabled:bg-emerald-100 disabled:shadow-none">
         <span>Add Secondary Hero</span>
       </button>
-      {/* End Base secondary elevated button  */}
-      <br />
 
-      {/* <label htmlFor="parent2Name">Second Parent's Name:</label>
-      <input
-        type="text"
-        id="parent2Name"
-        value={parent2Name}
-        onChange={(e) => setParent2Name(e.target.value)}
-        required
-      />
-      <br />
-
-      <label htmlFor="friendName">Friend's Name:</label>
-      <input
-        type="text"
-        id="friendName"
-        value={friendName}
-        onChange={(e) => setFriendName(e.target.value)}
-        required
-      />
-      <br />
-
-      <label htmlFor="favoriteToy">Child's Favorite Toy:</label>
-      <input
-        type="text"
-        id="favoriteToy"
-        value={favoriteToy}
-        onChange={(e) => setFavoriteToy(e.target.value)}
-        required
-      />
       <br />
 
       <label htmlFor="location">Location:</label>
@@ -206,7 +115,7 @@ const StoryForm = ({
         onChange={(e) => setLocation(e.target.value)}
         required
       />
-      <br /> */}
+      <br />
       <br />
       <br />
       <br />
@@ -216,6 +125,7 @@ const StoryForm = ({
       {/* <input type="submit" value="Generate Story" /> */}
       {/* <!-- Component: Large primary basic button --> */}
       <button
+        type="button"
         onClick={onSubmit}
         className="inline-flex items-center justify-center h-12 gap-2 px-6 text-sm font-medium tracking-wide text-white transition duration-300 rounded focus-visible:outline-none whitespace-nowrap bg-emerald-500 hover:bg-emerald-600 focus:bg-emerald-700 disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none"
       >

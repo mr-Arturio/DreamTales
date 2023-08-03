@@ -1,11 +1,29 @@
 import React, { useState, useEffect, useRef } from "react";
 
-export default function DropdownMenu({ id, buttonLabel, navigationItems, onSelect }) {
+export default function DropdownMenu(props) {
+  console.log(props);
+  const { setLanguage } = props;
   const [isOpen, setIsOpen] = useState(false);
   const [currentItem, setCurrentItem] = useState(null);
   const wrapperRef = useRef(null);
-  const handleItemClick = (value) => {
-    onSelect(value);
+
+  const navigationItems = [
+    {
+      linkName: "English",
+    },
+    {
+      linkName: "French",
+    },
+    {
+      linkName: "Spanish",
+    },
+  ];
+
+  const handleSelectItem = (value) => {
+    console.log("handle", value);
+    setCurrentItem(value);
+    setIsOpen(false);
+    setLanguage(value); // Call the onSelect function to pass the selected value
   };
 
   useEffect(() => {
@@ -15,17 +33,17 @@ export default function DropdownMenu({ id, buttonLabel, navigationItems, onSelec
     };
   });
 
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [wrapperRef]);
+  // useEffect(() => {
+  //   function handleClickOutside(event) {
+  //     if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+  //       setIsOpen(false);
+  //     }
+  //   }
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, [wrapperRef]);
 
   const handleKeyDown = (e) => {
     if (isOpen) {
@@ -70,7 +88,7 @@ export default function DropdownMenu({ id, buttonLabel, navigationItems, onSelec
           aria-expanded={isOpen ? " true" : "false"}
           ref={wrapperRef}
         >
-          <span>{buttonLabel}</span>
+          <span>{currentItem ? currentItem : "Language"}</span>
           <span className="relative only:-mx-5">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -103,22 +121,21 @@ export default function DropdownMenu({ id, buttonLabel, navigationItems, onSelec
             return (
               <li key={index}>
                 <a
+                style={{cursor: "pointer"}}
                   className={` ${
                     index === currentItem
                       ? "bg-emerald-50 text-emerald-500"
                       : "bg-none text-slate-500"
                   } flex items-start justify-start gap-2 p-2 px-5 transition-colors duration-300 hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 focus:text-emerald-600 focus:outline-none focus-visible:outline-none`}
-                  href="#"
                   aria-current={index + 1 === currentItem ? "page" : "false"}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setCurrentItem(index);
-                    onSelect(item.linkName); // Pass the selected linkName to the parent component
-                    setIsOpen(false); // Close the dropdown after selecting an item
-                  }}
                 >
                   <span className="flex flex-col gap-1 overflow-hidden whitespace-nowrap">
-                    <span className="truncate leading-5">{item.linkName}</span>
+                    <span
+                      className="truncate leading-5"
+                      onClick={() => handleSelectItem(item.linkName)}
+                    >
+                      {item.linkName}
+                    </span>
                   </span>
                 </a>
               </li>
