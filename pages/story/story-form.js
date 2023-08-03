@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import DropdownMenu from "@/src/components/dropdown/dropdown-menu";
 import RangeSlider from "@/src/components/range-slider/range-slider";
 
@@ -9,16 +9,6 @@ const StoryForm = ({
   setAge,
   gender,
   setGender,
-  parent1Name,
-  setParent1Name,
-  parent2Name,
-  setParent2Name,
-  friendName,
-  setFriendName,
-  favoriteToy,
-  setFavoriteToy,
-  location,
-  setLocation,
   loading,
   storyStyle,
   setStoryStyle,
@@ -29,7 +19,32 @@ const StoryForm = ({
   onSubmit,
   time,
   setTime,
+  setSecondaryHero,
+  secondaryHero,
 }) => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const handleButtonClick = () => {
+    setIsDropdownOpen(!isDropdownOpen); // Toggle the dropdown state
+  };
+
+  let pickSecondaryHero = [
+    {
+      linkName: "Parent",
+    },
+    {
+      linkName: "Friend",
+    },
+    {
+      linkName: "Sibling",
+    },
+    {
+      linkName: "Pet",
+    },
+    {
+      linkName: "Toy",
+    },
+  ];
   let pickStyle = [
     {
       linkName: "Fairy Tales",
@@ -123,14 +138,13 @@ const StoryForm = ({
         setSliderValue={setAge}
       />
       <br />
-      {/* need to setDropdown */}
 
       <br />
       <DropdownMenu
         id="storyStyle"
         buttonLabel={"Pick the Story Style"}
         navigationItems={pickStyle}
-        setFunction={setStoryStyle} // Pass the selected value to setLanguage
+        setFunction={setStoryStyle}
       />
       <br />
       <br />
@@ -138,7 +152,7 @@ const StoryForm = ({
         id="storyTopic"
         buttonLabel={"Pick Educational Topic"}
         navigationItems={pickTopic}
-        setFunction={setStoryTopic} // Pass the selected value to setLanguage
+        setFunction={setStoryTopic}
       />
       <br />
       <br />
@@ -146,15 +160,30 @@ const StoryForm = ({
         id="language"
         buttonLabel={"Language"}
         navigationItems={pickLanguage}
-        setFunction={setLanguage} // Pass the selected value to setLanguage
+        setFunction={setLanguage}
       />
       <br />
       <br />
       <br />
 
-      <button className="inline-flex items-center justify-center h-10 gap-2 px-5 text-sm font-medium tracking-wide transition duration-300 rounded shadow-md focus-visible:outline-none justify-self-center whitespace-nowrap bg-emerald-50 text-emerald-500 shadow-emerald-100 hover:bg-emerald-100 hover:text-emerald-600 hover:shadow-md hover:shadow-emerald-100 focus:bg-emerald-200 focus:text-emerald-700 focus:shadow-md focus:shadow-emerald-100 disabled:cursor-not-allowed disabled:border-emerald-100 disabled:bg-emerald-100 disabled:shadow-none">
+      <button
+        className="inline-flex items-center justify-center h-10 gap-2 px-5 text-sm font-medium tracking-wide transition duration-300 rounded shadow-md focus-visible:outline-none justify-self-center whitespace-nowrap bg-emerald-50 text-emerald-500 shadow-emerald-100 hover:bg-emerald-100 hover:text-emerald-600 hover:shadow-md hover:shadow-emerald-100 focus:bg-emerald-200 focus:text-emerald-700 focus:shadow-md focus:shadow-emerald-100 disabled:cursor-not-allowed disabled:border-emerald-100 disabled:bg-emerald-100 disabled:shadow-none"
+        onClick={handleButtonClick}
+      >
         <span>Add Secondary Hero</span>
       </button>
+      <br />
+      <br />
+      {isDropdownOpen && (
+        <div>
+          <DropdownMenu
+            id="secondaryHero"
+            buttonLabel={"Pick One"}
+            navigationItems={pickSecondaryHero}
+            setFunction={setSecondaryHero}
+          />
+        </div>
+      )}
 
       <br />
       <br />
@@ -173,15 +202,6 @@ const StoryForm = ({
       />
       <br />
 
-      <label htmlFor="location">Location:</label>
-      <input
-        type="text"
-        id="location"
-        value={location}
-        onChange={(e) => setLocation(e.target.value)}
-        required
-      />
-      <br />
       <br />
       <br />
       <br />

@@ -3,7 +3,7 @@ const { Configuration, OpenAIApi } = require("openai");
 const db = require("../../db/database");
 
 //'userId' is hardcoded as '1'
-const userId = '1';
+const userId = "1";
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -25,15 +25,11 @@ export default async function handler(req, res) {
   const name = req.body.name || "";
   const age = req.body.age;
   const gender = req.body.gender;
-  const parent1Name = req.body.Parent1Name;
-  const parent2Name = req.body.parent2Name;
-  const friendName = req.body.friendName;
-  const favoriteToy = req.body.favoriteToy;
-  const location = req.body.location;
   const storyStyle = req.body.storyStyle;
   const storyTopic = req.body.storyTopic;
   const language = req.body.language;
   const time = req.body.time;
+  const secondaryHero = req.body.secondaryHero;
 
   if (name.trim().length === 0) {
     res.status(400).json({
@@ -45,7 +41,7 @@ export default async function handler(req, res) {
   }
 
   const capitalizedName = name[0].toUpperCase() + name.slice(1).toLowerCase();
-  let prompt = `Generate a ${time} minute Kids story in ${storyStyle} style for the ${age} year old ${gender} kid, named ${capitalizedName}. Include in the story ${parent1Name}, ${parent2Name} and ${capitalizedName} best friend ${friendName}. Also ad ${capitalizedName} favorite toy ${favoriteToy}. Story about ${storyTopic} and everything happening in ${location}. Kids friendly language. Language of the story is ${language}`;
+  let prompt = `Generate a ${time} minute Kids story for the ${age} year old ${gender} kid, named ${capitalizedName}. Include in the story ${secondaryHero} and ${capitalizedName}. Story about ${storyTopic} and everything happening in ${storyStyle} style. Kids friendly language. Language of the story is ${language}`;
 
   try {
     const completion = await openai.createCompletion({
@@ -69,7 +65,6 @@ export default async function handler(req, res) {
 
       const values = [userId, generatedStory, new Date(), false];
 
-
       //send request for your server to wait for the completion
       const result = await db.query(insertQuery, values);
       //newly saved story
@@ -78,7 +73,6 @@ export default async function handler(req, res) {
       res.status(200).json({ result: completion.data.choices[0].text });
 
       // res.status(200).json({ result: generatedStory, storyId: storyId });
-
     } catch (error) {
       console.error("Error saving story to the database:", error.message);
       res.status(500).json({
