@@ -6,7 +6,7 @@ import styles from "../index.module.css";
 
 const StoryPage = () => {
   const [childName, setChildName] = useState("");
-  const [age, setAge] = useState("");
+  const [age, setAge] = useState(3);
   const [gender, setGender] = useState("");
   const [parent1Name, setParent1Name] = useState("");
   const [parent2Name, setParent2Name] = useState("");
@@ -18,6 +18,7 @@ const StoryPage = () => {
   const [storyStyle, setStoryStyle] = useState("");
   const [storyTopic, setStoryTopic] = useState("");
   const [language, setLanguage] = useState("");
+  const [time, setTime] = useState(3);
   
 
   const router = useRouter();
@@ -38,7 +39,9 @@ const StoryPage = () => {
       storyStyle: storyStyle,
       storyTopic: storyTopic,
       language: language,
+      time: time,
     };
+    console.log("formData", formData);
 
      try {
       const response = await fetch("/api/generate", {
@@ -121,6 +124,8 @@ const StoryPage = () => {
           setStoryTopic={setStoryTopic}
           language={language}
           setLanguage={setLanguage}
+          time={time}
+          setTime={setTime}
         />
       )}
       </main>

@@ -27,7 +27,51 @@ const StoryForm = ({
   language,
   setLanguage,
   onSubmit,
+  time,
+  setTime,
 }) => {
+  let pickStyle = [
+    {
+      linkName: "Fairy Tales",
+    },
+    {
+      linkName: "Adventure Stories",
+    },
+    {
+      linkName: "Humorus Stories",
+    },
+    {
+      linkName: "Super Hero Stories",
+    },
+  ];
+
+  let pickTopic = [
+    {
+      linkName: "Friendship and Kindness",
+    },
+    {
+      linkName: "Family Values",
+    },
+    {
+      linkName: "Safety and Stranger Awarness",
+    },
+    {
+      linkName: "Sharing and Cooperation",
+    },
+  ];
+
+  let pickLanguage = [
+    {
+      linkName: "English",
+    },
+    {
+      linkName: "French",
+    },
+    {
+      linkName: "Spanish",
+    },
+  ];
+
   return (
     <div onSubmit={onSubmit}>
       <h2>Main Character</h2>
@@ -70,41 +114,63 @@ const StoryForm = ({
       <br />
       <br />
 
-      <label htmlFor="storyStyle">Pick the Story Style:</label>
-      <select
-        id="storyStyle"
-        value={storyStyle}
-        onChange={(e) => setStoryStyle(e.target.value)}
-        required
-      >
-        <option value="" disabled>
-          Select Style
-        </option>
-        <option >Fairy Tales</option>
-        <option >Adventure Stories</option>
-        <option >Humorous Stories</option>
-        <option >Super Hero Stories</option>
-      </select>
-      <br />
-      <br />
-      <br />
-
-      <RangeSlider />
+      <RangeSlider
+        label="Age"
+        sliderValue={age}
+        min={1}
+        max={10}
+        step={1}
+        setSliderValue={setAge}
+      />
       <br />
       {/* need to setDropdown */}
 
       <br />
       <DropdownMenu
-        id="language"
-        setLanguage={setLanguage} // Pass the selected value to setLanguage
+        id="storyStyle"
+        buttonLabel={"Pick the Story Style"}
+        navigationItems={pickStyle}
+        setFunction={setStoryStyle} // Pass the selected value to setLanguage
       />
       <br />
+      <br />
+      <DropdownMenu
+        id="storyTopic"
+        buttonLabel={"Pick Educational Topic"}
+        navigationItems={pickTopic}
+        setFunction={setStoryTopic} // Pass the selected value to setLanguage
+      />
+      <br />
+      <br />
+      <DropdownMenu
+        id="language"
+        buttonLabel={"Language"}
+        navigationItems={pickLanguage}
+        setFunction={setLanguage} // Pass the selected value to setLanguage
+      />
+      <br />
+      <br />
+      <br />
 
-  
       <button className="inline-flex items-center justify-center h-10 gap-2 px-5 text-sm font-medium tracking-wide transition duration-300 rounded shadow-md focus-visible:outline-none justify-self-center whitespace-nowrap bg-emerald-50 text-emerald-500 shadow-emerald-100 hover:bg-emerald-100 hover:text-emerald-600 hover:shadow-md hover:shadow-emerald-100 focus:bg-emerald-200 focus:text-emerald-700 focus:shadow-md focus:shadow-emerald-100 disabled:cursor-not-allowed disabled:border-emerald-100 disabled:bg-emerald-100 disabled:shadow-none">
         <span>Add Secondary Hero</span>
       </button>
 
+      <br />
+      <br />
+      <br />
+
+      <br />
+      <br />
+
+      <RangeSlider
+        label="Time"
+        sliderValue={time}
+        min={1}
+        max={10}
+        step={1}
+        setSliderValue={setTime}
+      />
       <br />
 
       <label htmlFor="location">Location:</label>

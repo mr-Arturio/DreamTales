@@ -2,28 +2,17 @@ import React, { useState, useEffect, useRef } from "react";
 
 export default function DropdownMenu(props) {
   console.log(props);
-  const { setLanguage } = props;
+  const { buttonLabel, navigationItems, } = props;
   const [isOpen, setIsOpen] = useState(false);
   const [currentItem, setCurrentItem] = useState(null);
   const wrapperRef = useRef(null);
 
-  const navigationItems = [
-    {
-      linkName: "English",
-    },
-    {
-      linkName: "French",
-    },
-    {
-      linkName: "Spanish",
-    },
-  ];
 
-  const handleSelectItem = (value) => {
-    console.log("handle", value);
+  const handleSelectItem = (value, setFunction) => {
+    console.log("++++++++", value);
     setCurrentItem(value);
     setIsOpen(false);
-    setLanguage(value); // Call the onSelect function to pass the selected value
+    setFunction(value); // Call the onSelect function to pass the selected value
   };
 
   useEffect(() => {
@@ -88,7 +77,7 @@ export default function DropdownMenu(props) {
           aria-expanded={isOpen ? " true" : "false"}
           ref={wrapperRef}
         >
-          <span>{currentItem ? currentItem : "Language"}</span>
+          <span>{currentItem ? currentItem : buttonLabel}</span>
           <span className="relative only:-mx-5">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -132,7 +121,7 @@ export default function DropdownMenu(props) {
                   <span className="flex flex-col gap-1 overflow-hidden whitespace-nowrap">
                     <span
                       className="truncate leading-5"
-                      onClick={() => handleSelectItem(item.linkName)}
+                      onClick={() => handleSelectItem(item.linkName, props.setFunction)}
                     >
                       {item.linkName}
                     </span>
