@@ -62,7 +62,7 @@ const StoryPage = () => {
       setLanguage("");
 
       router.push({
-        pathname: "/story/display-story",
+        pathname: "/story/display-last-story",
         query: { story: JSON.stringify(data.result) },
       });
     } catch (error) {
