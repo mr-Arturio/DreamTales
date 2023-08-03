@@ -42,7 +42,7 @@ export default async function handler(req, res) {
   }
 
   const capitalizedName = name[0].toUpperCase() + name.slice(1).toLowerCase();
-  let prompt = `Generate a ${time} minute Kids story for the ${age} year old ${gender} kid, named ${capitalizedName}. Include in the story ${secondaryHero} named ${secondaryHeroName} and ${capitalizedName}. Story about ${storyTopic} and everything happening in ${storyStyle} style. Kids friendly language. Language of the story is ${language}. Give title to the story.`;
+  let prompt = `Generate a ${time} minute Kids story for the ${age} year old ${gender} kid, named ${capitalizedName}. Include in the story ${secondaryHero} named ${secondaryHeroName} and ${capitalizedName}. Story about ${storyTopic} and everything happening in ${storyStyle} style. Kids friendly language. Language of the story is ${language}. Give title to the story with period at the end.`;
 
   try {
     const completion = await openai.createCompletion({

@@ -30,6 +30,18 @@ const StoryForm = ({
     setIsDropdownOpen(!isDropdownOpen); // Toggle the dropdown state
   };
 
+  let pickGender = [
+    {
+      linkName: "Girl",
+    },
+    {
+      linkName: "Boy",
+    },
+    {
+      linkName: "Other",
+    },
+  ];
+
   let pickSecondaryHero = [
     {
       linkName: "Parent",
@@ -111,21 +123,15 @@ const StoryForm = ({
         </label>
       </div>
       <br />
-
-      <label htmlFor="gender">Child's Gender:</label>
-      <select
+      <br />
+      <DropdownMenu
         id="gender"
-        value={gender}
-        onChange={(e) => setGender(e.target.value)}
-        required
-      >
-        <option value="" disabled>
-          Select Gender
-        </option>
-        <option value="boy">Boy</option>
-        <option value="girl">Girl</option>
-        <option value="other">Other</option>
-      </select>
+        buttonLabel={"Child's Gender"}
+        navigationItems={pickGender}
+        setFunction={setGender}
+      />
+      <br />
+    
       <br />
       <br />
       <br />
