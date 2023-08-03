@@ -19,10 +19,16 @@ const StoryForm = ({
   setFavoriteToy,
   location,
   setLocation,
-  onSubmit,
   loading,
+  storyStyle,
+  setStoryStyle,
+  storyTopic,
+  setStoryTopic,
+  language,
+  setLanguage,
+  onSubmit
 }) => {
-  const storyStyle = [
+  let pickStyle = [
     {
       linkName: "Fairy Tales",
     },
@@ -37,7 +43,7 @@ const StoryForm = ({
     },
   ];
 
-  const storyTopic = [
+  let pickTopic = [
     {
       linkName: "Friendship and Kindness",
     },
@@ -52,7 +58,7 @@ const StoryForm = ({
     },
   ];
 
-  const language = [
+  let pickLanguage = [
     {
       linkName: "English",
     },
@@ -62,11 +68,10 @@ const StoryForm = ({
     {
       linkName: "Spanish",
     },
-    
   ];
 
   return (
-    <form onSubmit={onSubmit}>
+    <div onSubmit={onSubmit}>
       <h2>Main Character</h2>
 
       <div className="relative my-6">
@@ -87,7 +92,7 @@ const StoryForm = ({
         </label>
       </div>
       <br />
-{/* 
+      {/* 
       <label htmlFor="age">Child's Age:</label>
       <select
         id="age"
@@ -121,15 +126,29 @@ const StoryForm = ({
       </select>
       <br />
 
-
-<RangeSlider />
-<br/>
+      <RangeSlider />
+      <br />
       {/* need to setDropdown */}
-      <DropdownMenu buttonLabel={'Pick the Story Style'} navigationItems={storyStyle} />
+      <DropdownMenu
+        id="storyStyle"
+        buttonLabel={"Pick the Story Style"}
+        navigationItems={pickStyle}
+        onSelect={(value) => setStoryStyle(value)} // Pass the selected value to setStoryStyle
+      />
       <br />
-      <DropdownMenu buttonLabel={'Pick Educational Topic'} navigationItems={storyTopic} />
+      <DropdownMenu
+        id="storyTopic"
+        buttonLabel={"Pick Educational Topic"}
+        navigationItems={pickTopic}
+        onSelect={(value) => setStoryTopic(value)} // Pass the selected value to setStoryTopic
+      />
       <br />
-      <DropdownMenu buttonLabel={'Language'} navigationItems={language} />
+      <DropdownMenu
+        id="language"
+        buttonLabel={"Language"}
+        navigationItems={pickLanguage}
+        onSelect={(value) => setLanguage(value)} // Pass the selected value to setLanguage
+      />
       <br />
       {/* 
       <label htmlFor="parent1Name">First Parent's Name:</label>
@@ -188,14 +207,22 @@ const StoryForm = ({
         required
       />
       <br /> */}
-
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       {/* <input type="submit" value="Generate Story" /> */}
       {/* <!-- Component: Large primary basic button --> */}
-      <button className="inline-flex items-center justify-center h-12 gap-2 px-6 text-sm font-medium tracking-wide text-white transition duration-300 rounded focus-visible:outline-none whitespace-nowrap bg-emerald-500 hover:bg-emerald-600 focus:bg-emerald-700 disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none">
+      <button
+        onClick={onSubmit}
+        className="inline-flex items-center justify-center h-12 gap-2 px-6 text-sm font-medium tracking-wide text-white transition duration-300 rounded focus-visible:outline-none whitespace-nowrap bg-emerald-500 hover:bg-emerald-600 focus:bg-emerald-700 disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none"
+      >
         <span>Generate the Story</span>
       </button>
       {/* <!-- End Large primary basic button --> */}
-    </form>
+    </div>
   );
 };
 

@@ -15,12 +15,20 @@ const StoryPage = () => {
   const [location, setLocation] = useState("");
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
+  const [storyStyle, setStoryStyle] = useState("");
+  const [storyTopic, setStoryTopic] = useState("");
+  const [language, setLanguage] = useState("");
+  
 
   const router = useRouter();
 
   async function onSubmit(event) {
     event.preventDefault();
     setLoading(true);
+
+    setStoryStyle(storyStyle);
+    setStoryTopic(storyTopic);
+    setLanguage(language);
 
     try {
       const response = await fetch("/api/generate", {
@@ -36,7 +44,10 @@ const StoryPage = () => {
           parent2Name: parent2Name,
           friendName: friendName,
           favoriteToy: favoriteToy,
-          location: location
+          location: location,
+          storyStyle: storyStyle,
+          storyTopic: storyTopic,
+          language: language,
         }),
       });
 
@@ -57,6 +68,9 @@ const StoryPage = () => {
       setFriendName("");
       setFavoriteToy("");
       setLocation("");
+      setStoryStyle("");
+      setStoryTopic("");
+      setLanguage("");
 
       router.push({
         pathname: "/story/display-story",
@@ -103,6 +117,12 @@ const StoryPage = () => {
           location={location}
           setLocation={setLocation}
           loading={loading}
+          storyStyle={storyStyle}
+          setStoryStyle={setStoryStyle}
+          storyTopic={storyTopic}
+          setStoryTopic={setStoryTopic}
+          language={language}
+          setLanguage={setLanguage}
         />
       )}
       </main>
