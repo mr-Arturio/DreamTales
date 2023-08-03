@@ -30,6 +30,7 @@ export default async function handler(req, res) {
   const language = req.body.language;
   const time = req.body.time;
   const secondaryHero = req.body.secondaryHero;
+  const secondaryHeroName = req.body.secondaryHeroName;
 
   if (name.trim().length === 0) {
     res.status(400).json({
@@ -41,7 +42,7 @@ export default async function handler(req, res) {
   }
 
   const capitalizedName = name[0].toUpperCase() + name.slice(1).toLowerCase();
-  let prompt = `Generate a ${time} minute Kids story for the ${age} year old ${gender} kid, named ${capitalizedName}. Include in the story ${secondaryHero} and ${capitalizedName}. Story about ${storyTopic} and everything happening in ${storyStyle} style. Kids friendly language. Language of the story is ${language}`;
+  let prompt = `Generate a ${time} minute Kids story for the ${age} year old ${gender} kid, named ${capitalizedName}. Include in the story ${secondaryHero} named ${secondaryHeroName} and ${capitalizedName}. Story about ${storyTopic} and everything happening in ${storyStyle} style. Kids friendly language. Language of the story is ${language}. Give title to the story.`;
 
   try {
     const completion = await openai.createCompletion({

@@ -15,6 +15,7 @@ const StoryPage = () => {
   const [language, setLanguage] = useState("");
   const [time, setTime] = useState(3);
   const [secondaryHero, setSecondaryHero] = useState("");
+  const [secondaryHeroName, setSecondaryHeroName] = useState("");
 
   const router = useRouter();
 
@@ -31,6 +32,7 @@ const StoryPage = () => {
       language: language,
       time: time,
       secondaryHero: secondaryHero,
+      secondaryHeroName: secondaryHeroName,
     };
     console.log("formData", formData);
 
@@ -104,6 +106,8 @@ const StoryPage = () => {
             setTime={setTime}
             secondaryHero={secondaryHero}
             setSecondaryHero={setSecondaryHero}
+            secondaryHeroName={secondaryHeroName}
+            setSecondaryHeroName={setSecondaryHeroName}
           />
         )}
       </main>
