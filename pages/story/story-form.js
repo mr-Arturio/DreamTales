@@ -1,5 +1,6 @@
 import React from "react";
-import DropdownStory from "@/src/components/dropdown/dropdown-story-style";
+import DropdownMenu from "@/src/components/dropdown/dropdown-menu";
+import RangeSlider from "@/src/components/range-slider/range-slider";
 
 const StoryForm = ({
   childName,
@@ -21,6 +22,49 @@ const StoryForm = ({
   onSubmit,
   loading,
 }) => {
+  const storyStyle = [
+    {
+      linkName: "Fairy Tales",
+    },
+    {
+      linkName: "Adventure Stories",
+    },
+    {
+      linkName: "Humorus Stories",
+    },
+    {
+      linkName: "Super Hero Stories",
+    },
+  ];
+
+  const storyTopic = [
+    {
+      linkName: "Friendship and Kindness",
+    },
+    {
+      linkName: "Family Values",
+    },
+    {
+      linkName: "Safety and Stranger Awarness",
+    },
+    {
+      linkName: "Sharing and Cooperation",
+    },
+  ];
+
+  const language = [
+    {
+      linkName: "English",
+    },
+    {
+      linkName: "French",
+    },
+    {
+      linkName: "Spanish",
+    },
+    
+  ];
+
   return (
     <form onSubmit={onSubmit}>
       <h2>Main Character</h2>
@@ -36,14 +80,14 @@ const StoryForm = ({
           className="relative w-full h-10 px-4 text-sm placeholder-transparent transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
         />
         <label
-           htmlFor="childName"
+          htmlFor="childName"
           className="cursor-text peer-focus:cursor-default absolute left-2 -top-2 z-[1] px-2 text-xs text-slate-400 transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-emerald-500 peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 peer-disabled:before:bg-transparent"
         >
           Child's Name
         </label>
       </div>
       <br />
-
+{/* 
       <label htmlFor="age">Child's Age:</label>
       <select
         id="age"
@@ -59,7 +103,7 @@ const StoryForm = ({
         <option value="6-8">6-8</option>
         <option value="9-12">9-12</option>
       </select>
-      <br />
+      <br /> */}
 
       <label htmlFor="gender">Child's Gender:</label>
       <select
@@ -77,10 +121,17 @@ const StoryForm = ({
       </select>
       <br />
 
+
+<RangeSlider />
+<br/>
       {/* need to setDropdown */}
-      <DropdownStory />
+      <DropdownMenu buttonLabel={'Pick the Story Style'} navigationItems={storyStyle} />
       <br />
-{/* 
+      <DropdownMenu buttonLabel={'Pick Educational Topic'} navigationItems={storyTopic} />
+      <br />
+      <DropdownMenu buttonLabel={'Language'} navigationItems={language} />
+      <br />
+      {/* 
       <label htmlFor="parent1Name">First Parent's Name:</label>
       <input
         type="text"
@@ -92,11 +143,11 @@ const StoryForm = ({
       <br /> */}
 
       {/* <!-- Component: Base secondary elevated button --> */}
-<button className="inline-flex items-center justify-center h-10 gap-2 px-5 text-sm font-medium tracking-wide transition duration-300 rounded shadow-md focus-visible:outline-none justify-self-center whitespace-nowrap bg-emerald-50 text-emerald-500 shadow-emerald-100 hover:bg-emerald-100 hover:text-emerald-600 hover:shadow-md hover:shadow-emerald-100 focus:bg-emerald-200 focus:text-emerald-700 focus:shadow-md focus:shadow-emerald-100 disabled:cursor-not-allowed disabled:border-emerald-100 disabled:bg-emerald-100 disabled:shadow-none">
-  <span>Add Secondary Hero</span>
-</button>
-{/* End Base secondary elevated button  */}
-<br/>
+      <button className="inline-flex items-center justify-center h-10 gap-2 px-5 text-sm font-medium tracking-wide transition duration-300 rounded shadow-md focus-visible:outline-none justify-self-center whitespace-nowrap bg-emerald-50 text-emerald-500 shadow-emerald-100 hover:bg-emerald-100 hover:text-emerald-600 hover:shadow-md hover:shadow-emerald-100 focus:bg-emerald-200 focus:text-emerald-700 focus:shadow-md focus:shadow-emerald-100 disabled:cursor-not-allowed disabled:border-emerald-100 disabled:bg-emerald-100 disabled:shadow-none">
+        <span>Add Secondary Hero</span>
+      </button>
+      {/* End Base secondary elevated button  */}
+      <br />
 
       {/* <label htmlFor="parent2Name">Second Parent's Name:</label>
       <input
@@ -140,10 +191,10 @@ const StoryForm = ({
 
       {/* <input type="submit" value="Generate Story" /> */}
       {/* <!-- Component: Large primary basic button --> */}
-<button className="inline-flex items-center justify-center h-12 gap-2 px-6 text-sm font-medium tracking-wide text-white transition duration-300 rounded focus-visible:outline-none whitespace-nowrap bg-emerald-500 hover:bg-emerald-600 focus:bg-emerald-700 disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none">
-  <span>Generate the Story</span>
-</button>
-{/* <!-- End Large primary basic button --> */}
+      <button className="inline-flex items-center justify-center h-12 gap-2 px-6 text-sm font-medium tracking-wide text-white transition duration-300 rounded focus-visible:outline-none whitespace-nowrap bg-emerald-500 hover:bg-emerald-600 focus:bg-emerald-700 disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none">
+        <span>Generate the Story</span>
+      </button>
+      {/* <!-- End Large primary basic button --> */}
     </form>
   );
 };

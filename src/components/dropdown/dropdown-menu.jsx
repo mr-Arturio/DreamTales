@@ -1,25 +1,10 @@
 import React, { useState, useEffect, useRef } from "react"
 
-export default function DropdownStory(props) {
+export default function DropdownMenu({ buttonLabel, navigationItems }) {
   const [isOpen, setIsOpen] = useState(false)
   const [currentItem, setCurrentItem] = useState(null)
   const wrapperRef = useRef(null)
 
-  const navigationItems = [
-    {
-      linkName: "Fairy Tales",
-    },
-    {
-      linkName: "Adventure Stories",
-    },
-    {
-      linkName: "Humorus Stories",
-    },
-    {
-      linkName: "Super Hero Stories",
-    },
-    
-  ]
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown)
@@ -83,7 +68,7 @@ export default function DropdownStory(props) {
           aria-expanded={isOpen ? " true" : "false"}
           ref={wrapperRef}
         >
-          <span>Pick the Story Style</span>
+          <span>{buttonLabel}</span>
           <span className="relative only:-mx-5">
             <svg
               xmlns="http://www.w3.org/2000/svg"
