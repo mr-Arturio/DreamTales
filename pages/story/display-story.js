@@ -49,7 +49,7 @@ const DisplayStoryPage = () => {
         </figure>
           <p>
             {truncateText(item.story,150)}</p>
-        <button className="inline-flex h-10 items-center justify-center gap-2 justify-self-end whitespace-nowrap rounded px-5 text-sm font-medium tracking-wide text-emerald-500 transition duration-300 hover:bg-emerald-100 hover:text-emerald-600 focus:bg-emerald-200 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:text-emerald-300 disabled:shadow-none disabled:hover:bg-transparent">
+        <button className="whitespace-nowrap rounded px-5 text-sm font-medium tracking-wide text-emerald-500 transition duration-300 hover:bg-emerald-100 hover:text-emerald-600 focus:bg-emerald-200 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:text-emerald-300 disabled:shadow-none disabled:hover:bg-transparent">
             <span className="relative only:-mx-6">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
