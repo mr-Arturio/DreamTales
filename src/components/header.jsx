@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export const Header = () => (
+
   <header className="w-full h-96 bg-gradient-to-r from-green-100 to-transparent p-6">
     <div className="w-full max-w-4xl mx-auto flex flex-col justify-between">
       <div className="flex justify-between items-center">
@@ -50,3 +51,4 @@ export const Header = () => (
     </div>
   </header>
 );
+
