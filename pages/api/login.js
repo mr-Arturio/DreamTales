@@ -1,46 +1,54 @@
 
-import  db  from 'db/databse.js'; 
+import db from 'db/databse.js';
 import { comparePasswords } from './auth.js';
-import jwt from 'jsonwebtoken';
+import { sign } from 'jsonwebtoken';
+import { serialize } from 'cookie'
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
 
-    const {email, password} = req.body;
+    const { email, password } = req.body;
 
     try {
-      const client = await db.connect();
+     // const client = await db.connect();
 
       const query = 'SELECT id, email, password FROM users WHERE email = $1';
-      const result = await client.query(query, [email]);
+      const result = await db.query(query, [email]);
       if (result.rowCount === 0) {
         alert('User not found.');
-
-        client.release();
+       // client.release();
         res.status(404).send('User not found');
+        return;
       }
-
       const user = result.rows[0];
-
       const isPasswordValid = await comparePasswords(password, user.password);
-      client.release()
-
+      //client.release()
       if (!isPasswordValid) {
         alert('Invalid password.');
-       
         res.status(400).send('Invalid Password');
+        return;
       }
 
       // If authentication is successful, generate a JWT token and store it in a cookie
-      const token = jwt.sign({ id: user.id}, process.env.JWT_SECRET); // Use the user's ID for generating the token
-      res.status(200).json({token})
+      const secret = process.env.JWT_SECRET;
+      const token = sign({ email }, secret, { expiresIn: 60 * 60 * 24 * 3 })
 
-    } catch (error){
+      const serialized = serialize('UserCookie', token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'strict',
+        maxAge: 60 * 60 * 24 * 3,
+        path: "/"
+      })
+
+     return res.setHeader('Set-Cookie', serialized).send('Welcome Signed In!')
+     
+    } catch (error) {
       console.log('Login error:', error)
     }
 
   }
 
   // Handle other HTTP methods (GET, PUT, DELETE, etc.)
-    res.status(405).end(); // Method Not Allowed
+  res.status(405).end(); // Method Not Allowed
 }
