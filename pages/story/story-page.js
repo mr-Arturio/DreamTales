@@ -38,7 +38,7 @@ const StoryPage = () => {
 
     try {
       // Retrieve the JWT token from wherever you have stored it (e.g., cookies, local storage, etc.)
-      const token =  process.env.JWT_SECRET; // Replace with the actual code to retrieve the JWT token
+      const token =f608550eb1c9709addf270d30b137857da8911f3fea2f14d2e0db77973ad39cfa0533c425b3237070c7359c670d0349878ce41b3b82ace14180e114996ceacd2; // Replace with the actual code to retrieve the JWT token
 
       const response = await fetch("/api/generate", {
         method: "POST",
