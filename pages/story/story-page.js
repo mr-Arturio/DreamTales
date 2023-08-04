@@ -37,16 +37,20 @@ const StoryPage = () => {
     console.log("formData", formData);
 
     try {
+      // Retrieve the JWT token from wherever you have stored it (e.g., cookies, local storage, etc.)
+      const token =  process.env.JWT_SECRET; // Replace with the actual code to retrieve the JWT token
+
       const response = await fetch("/api/generate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // Include the JWT token in the Authorization header as a Bearer token
         },
         body: JSON.stringify(formData),
       });
 
       const data = await response.json();
-      if (response.status !== 200) {
+      if (!response.ok) {
         throw (
           data.error ||
           new Error(`Request failed with status ${response.status}`)

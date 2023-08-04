@@ -52,15 +52,7 @@
   color: #8e8ea0;
   opacity: 1;
 }
-.main input[type="submit"] {
-  padding: 12px 0;
-  color: #fff;
-  background-color: #10a37f;
-  border: none;
-  border-radius: 4px;
-  text-align: center;
-  cursor: pointer;
-}
+
 .main .result {
   font-weight: bold;
   margin-top: 40px;
