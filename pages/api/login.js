@@ -1,5 +1,5 @@
 
-import db from 'db/databse.js';
+import  db  from 'db/database.js'; 
 import { comparePasswords } from './auth.js';
 import { sign } from 'jsonwebtoken';
 import { serialize } from 'cookie'
@@ -30,6 +30,7 @@ export default async function handler(req, res) {
       }
 
       // If authentication is successful, generate a JWT token and store it in a cookie
+
       const secret = process.env.JWT_SECRET;
       const token = sign({ email }, secret, { expiresIn: 60 * 60 * 24 * 3 })
 
@@ -44,6 +45,7 @@ export default async function handler(req, res) {
      return res.setHeader('Set-Cookie', serialized).send('Welcome Signed In!')
      
     } catch (error) {
+
       console.log('Login error:', error)
     }
 
