@@ -43,6 +43,11 @@ export const Header = () => (
       <Link href="/register" passHref>
         Register
       </Link>
+      </li>
+      <li>
+      <Link href="/story/display-story" passHref>
+        Display Story
+      </Link>
     </li>
   </ul>
 </nav>
