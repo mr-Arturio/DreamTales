@@ -11,6 +11,7 @@
   "dependencies": {
     "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
+    "cookie": "^0.5.0",
     "cookie-parser": "^1.4.6",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.12",
