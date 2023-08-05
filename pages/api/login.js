@@ -1,5 +1,5 @@
 
-import  db  from 'db/database.js'; 
+import db from 'db/database.js';
 import { comparePasswords } from './auth.js';
 import { sign } from 'jsonwebtoken';
 import { serialize } from 'cookie'
@@ -10,13 +10,11 @@ export default async function handler(req, res) {
     const { email, password } = req.body;
 
     try {
-     // const client = await db.connect();
-
       const query = 'SELECT id, email, password FROM users WHERE email = $1';
       const result = await db.query(query, [email]);
       if (result.rowCount === 0) {
         alert('User not found.');
-       // client.release();
+        // client.release();
         res.status(404).send('User not found');
         return;
       }
@@ -32,7 +30,7 @@ export default async function handler(req, res) {
       // If authentication is successful, generate a JWT token and store it in a cookie
 
       const secret = process.env.JWT_SECRET;
-      const token = sign({ email }, secret, { expiresIn: 60 * 60 * 24 * 3 })
+      const token = sign({ user }, secret, { expiresIn: 60 * 60 * 24 * 3 })
 
       const serialized = serialize('UserCookie', token, {
         httpOnly: true,
@@ -42,8 +40,11 @@ export default async function handler(req, res) {
         path: "/"
       })
 
-     return res.setHeader('Set-Cookie', serialized).send('Welcome Signed In!')
-     
+      // localStorage.setItem('userCookie', res.data.token)
+      // const usertoken = localStorage.getItem('userCookie')
+      return res.setHeader('Set-Cookie', serialized).send('Welcome Signed In!')
+      
+
     } catch (error) {
 
       console.log('Login error:', error)

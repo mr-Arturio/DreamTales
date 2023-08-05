@@ -1,9 +1,9 @@
-import db from "/db/databse";
+import db from "/db/database";
 
 export default async function connectResponse(req, res) {
   try {
     const client = await db.connect()
-    const result = await client.query('SELECT * FROM story;');
+    const result = await client.query('SELECT * FROM stories;');
     
     const story = result.rows;
     client.release();
