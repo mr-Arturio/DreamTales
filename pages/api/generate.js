@@ -1,5 +1,4 @@
 const { Configuration, OpenAIApi } = require("openai");
-
 const db = require("../../db/database");
 
 //'userId' is hardcoded as '1'
