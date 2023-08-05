@@ -1,46 +1,45 @@
-
-import  db  from 'db/database.js'; 
-import { comparePasswords } from './auth.js';
-import jwt from 'jsonwebtoken';
+// Import the generateToken function from the auth.js file
+import { comparePasswords, generateToken } from './auth.js';
+import { serialize } from 'cookie';
+import db from 'db/database.js';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
-
-    const {email, password} = req.body;
-
     try {
-      const client = await db.connect();
+      const { email, password } = req.body;
 
       const query = 'SELECT id, email, password FROM users WHERE email = $1';
-      const result = await client.query(query, [email]);
+      const result = await db.query(query, [email]);
       if (result.rowCount === 0) {
-        alert('User not found.');
-
-        client.release();
-        res.status(404).send('User not found');
+        res.status(404).json({ error: 'User not found' });
+        return;
       }
 
       const user = result.rows[0];
-
       const isPasswordValid = await comparePasswords(password, user.password);
-      client.release()
-
       if (!isPasswordValid) {
-        alert('Invalid password.');
-       
-        res.status(400).send('Invalid Password');
+        res.status(401).json({ error: 'Invalid password' });
+        return;
       }
 
       // If authentication is successful, generate a JWT token and store it in a cookie
-      const token = jwt.sign({ id: user.id}, process.env.JWT_SECRET); // Use the user's ID for generating the token
-      res.status(200).json({token})
-      
-    } catch (error){
-      console.log('Login error:', error)
+      const token = generateToken(user.id);
+
+      const serialized = serialize('UserCookie', token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'strict',
+        maxAge: 60 * 60 * 24 * 3,
+        path: '/',
+      });
+
+      res.setHeader('Set-Cookie', serialized).json({ message: 'User logged in successfully!' });
+
+    } catch (error) {
+      console.error('Login error:', error);
+      res.status(500).json({ error: 'An error occurred while processing the request.' });
     }
-
-  }
-
-  // Handle other HTTP methods (GET, PUT, DELETE, etc.)
+  } else {
     res.status(405).end(); // Method Not Allowed
+  }
 }

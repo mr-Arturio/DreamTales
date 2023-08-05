@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { parse } from 'cookie';
 import StoryForm from "./story-form";
 import styles from "../index.module.css";
 
@@ -37,9 +38,10 @@ const StoryPage = () => {
     console.log("formData", formData);
 
     try {
-      // Retrieve the JWT token from wherever you have stored it (e.g., cookies, local storage, etc.)
-      const token =f608550eb1c9709addf270d30b137857da8911f3fea2f14d2e0db77973ad39cfa0533c425b3237070c7359c670d0349878ce41b3b82ace14180e114996ceacd2; // Replace with the actual code to retrieve the JWT token
-
+      // Retrieve the JWT token from the cookie
+    const cookies = parse(document.cookie);
+    const token = cookies.UserCookie; // 'UserCookie' should match the name used in the login API to set the cookie
+    
       const response = await fetch("/api/generate", {
         method: "POST",
         headers: {
