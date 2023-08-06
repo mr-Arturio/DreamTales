@@ -6,7 +6,7 @@ export default async function handler(req, res) {
       // const client = await db.connect();
       // Fetch the last saved story for the user with 'userId' = '1'
       const lastSavedStoryQuery =
-        "SELECT * FROM story WHERE user_id = $1 ORDER BY created_at DESC LIMIT 1";
+        "SELECT * FROM stories WHERE user_id = $1 ORDER BY created_at DESC LIMIT 1";
       const values = ["1"]; // 'userId' is hardcoded as '1'
       const result = await db.query(lastSavedStoryQuery, values);
 
