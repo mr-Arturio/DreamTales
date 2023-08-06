@@ -15,7 +15,7 @@ CREATE TABLE stories (
   title VARCHAR(255),
   story TEXT,
   genre VARCHAR(255),
-  photo VARCHAR(255),
+  photo TEXT,
   created_at TIMESTAMP, 
   favorites BOOLEAN NOT NULL DEFAULT FALSE
 );
