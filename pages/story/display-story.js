@@ -23,6 +23,8 @@ const DisplayStoryPage = () => {
   };
 
 
+
+
   return (
     <div className='grid grid-cols-3 gap-4'>
       {data.map((item) => (
