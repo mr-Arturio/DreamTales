@@ -26,10 +26,10 @@ export default async function handler(req, res) {
 
   try {
     const decodedToken = verifyToken(token);
-    const userId = decodedToken.userId;
+    const userId = decodedToken.user.id;
 
     console.log(req.body);
-
+    // const { name, age, gender, storyStyle, storyTopic, language, time, secondaryHero, secondaryHeroName } = req.body;
     const name = req.body.name || "";
     const age = req.body.age;
     const gender = req.body.gender;

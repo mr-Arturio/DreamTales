@@ -1,4 +1,3 @@
-
 import db from 'db/database.js';
 import { comparePasswords } from './auth.js';
 import { sign } from 'jsonwebtoken';

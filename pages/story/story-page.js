@@ -40,7 +40,11 @@ const StoryPage = () => {
     try {
       // Retrieve the JWT token from the cookie
     const cookies = parse(document.cookie);
+    console.log("All Cookies:", document.cookie);
+    console.log("Parsed Cookies:", cookies);
+
     const token = cookies.UserCookie; // 'UserCookie' should match the name used in the login API to set the cookie
+    console.log("Token:", token); // Log the token value
     
       const response = await fetch("/api/generate", {
         method: "POST",
