@@ -71,7 +71,7 @@ export default async function handler(req, res) {
       const generatedStory = completion.data.choices[0].text;
 
       //img generate function
-      const imageUrl = await generateImage();
+      const generatedImage = await generateImage();
 
       // Save the generated story to the database
       try {
@@ -81,14 +81,14 @@ export default async function handler(req, res) {
           RETURNING id;
         `;
 
-        const values = [userId, generatedStory, imageUrl, new Date(), false];
+        const values = [userId, generatedStory, generatedImage, new Date(), false];
 
         //send request for your server to wait for the completion
         const result = await db.query(insertQuery, values);
         //newly saved story
         const storyId = result.rows[0].id;
 
-        res.status(200).json({ story: generatedStory, imageUrl: imageUrl });
+        res.status(200).json({ story: generatedStory, imageUrl: generatedImage });
 
         // res.status(200).json({ result: generatedStory, storyId: storyId });
       } catch (error) {
