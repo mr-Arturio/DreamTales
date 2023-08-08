@@ -21,7 +21,7 @@ export default async function handler(req, res) {
 
       if (result.rowCount > 0) {
         console.log("+++++++++++", result.rows);
-        return res.status(200).json({ story: result.rows[0] });
+        return res.status(200).json({ story: result.rows[0], photo: result.rows[0].photo });
       }
 
       return res.status(404).json({ error: "No story available." });

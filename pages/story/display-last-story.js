@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const DisplayStoryPage = () => {
   const [story, setStory] = useState({});
   const [loading, setLoading] = useState(true); // Define the loading state variable and set it to true initially
-  const [imageUrl, setImageUrl] = useState(""); // Define the imageUrl state variable and set it to an empty string
+  const [generatedImage, setGeneratedImage] = useState(""); // Define the imageUrl state variable and set it to an empty string
 
   // Function to fetch the last saved story for the user with 'userId' = '1'
   async function fetchLastSavedStory() {
@@ -17,7 +17,7 @@ const DisplayStoryPage = () => {
       const data = await response.json();
       console.log("========", data);
       setStory(data.story);
-      setImageUrl(data.imageUrl); // Set the imageUrl state variable with the fetched image URL
+      setGeneratedImage(data.photo); // Set the generatedImage state variable with the fetched image URL
     } catch (error) {
     } finally {
       setLoading(false); // Set loading to false after fetching the story (whether successful or not)
@@ -36,7 +36,7 @@ const DisplayStoryPage = () => {
         <p>Loading...</p>
       ) : (
         <>
-          <img src={imageUrl} alt="Generated Cat" />
+          <img src={generatedImage} alt="Generated Cat" />
           <textarea
             className="w-4/5 h-96 p-4 border rounded-md shadow-lg resize-none"
             rows={50}
