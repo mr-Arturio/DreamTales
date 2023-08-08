@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const AboutUsPage = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [loading, setLoading] = useState(false);
-
+  
+  const router = useRouter();
+  
   const handleGenerateImage = async () => {
     setLoading(true);
     try {
@@ -14,7 +17,7 @@ const AboutUsPage = () => {
         },
         body: JSON.stringify({}), // You can provide any additional data if needed
       });
-
+      
       const data = await response.json();
       if (response.status === 200) {
         setImageUrl(data.imageUrl);
@@ -29,6 +32,32 @@ const AboutUsPage = () => {
       setLoading(false);
     }
   };
+  
+  useEffect(() => {
+    async function checkLoginStatus(req, res) {
+      
+      try {
+        const response = await fetch("/api/check-login-status", {
+          method:"GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        
+        const data = await response.json();
+      
+        if (!data.isLoggedIn) {
+         
+          // User is not logged in, redirect to the login page
+          router.push("/login"); // Replace with your login page URL
+        }
+      } catch (error) {
+        console.error("Error checking login status:", error);
+      }
+    }
+
+    checkLoginStatus();
+  }, []);
 
   return (
     <div>
