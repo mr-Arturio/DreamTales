@@ -28,7 +28,7 @@ export default async function storyHandler(req, res) {
       language,
       time,
       secondaryHero,
-      secondaryHeroName
+      secondaryHeroName,
     } = req.body;
 
     if (name.trim().length === 0) {
@@ -40,8 +40,7 @@ export default async function storyHandler(req, res) {
       return;
     }
 
-    const capitalizedName =
-      name[0].toUpperCase() + name.slice(1).toLowerCase();
+    const capitalizedName = name[0].toUpperCase() + name.slice(1).toLowerCase();
 
     try {
       const generatedStory = await generateStory({
@@ -67,14 +66,19 @@ export default async function storyHandler(req, res) {
       });
 
       try {
+        const generatedStorySentences = generatedStory.split(".");
+        const title = generatedStorySentences[0]; // Extract the title from the first sentence
+        console.log("TITLE", title);
+
         const insertQuery = `
-          INSERT INTO stories (user_id, story, photo, created_at, favorites)
-          VALUES ($1, $2, $3, $4, $5)
+          INSERT INTO stories (user_id, title, story, photo, created_at, favorites)
+          VALUES ($1, $2, $3, $4, $5, $6)
           RETURNING id;
         `;
 
         const values = [
           userId,
+          title,
           generatedStory,
           generatedImage,
           new Date(),
@@ -91,7 +95,8 @@ export default async function storyHandler(req, res) {
         console.error("Error saving story to the database:", error.message);
         res.status(500).json({
           error: {
-            message: "An error occurred while saving the story to the database.",
+            message:
+              "An error occurred while saving the story to the database.",
           },
         });
       }
