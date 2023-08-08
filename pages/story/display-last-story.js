@@ -30,20 +30,26 @@ const DisplayStoryPage = () => {
   }, []);
 
   return (
-    <div>
+<div>
       <h1>Your Story</h1>
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <>
-          <img src={generatedImage} alt="Generated Cat" />
+        <div className="flex flex-col items-center">
+          <div className="w-49 h-49 mb-4 overflow-hidden rounded-full">
+            <img
+              src={generatedImage}
+              alt="Generated Cat"
+              className="object-cover w-full h-full"
+            />
+          </div>
           <textarea
             className="w-4/5 h-96 p-4 border rounded-md shadow-lg resize-none"
             rows={50}
-            value={story.story} // Access the story text from the story object
+            value={story.story}
             readOnly
           />
-        </>
+        </div>
       )}
     </div>
   );
