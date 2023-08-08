@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   if (req.method === "GET") {
     try {
       const cookies = parse(req.headers.cookie || "");
-      const token = cookies.UserCookie;
+      const token = cookies.Cookie;
       const decodedToken = verifyToken(token);
       const userId = decodedToken?.user?.id;
 
