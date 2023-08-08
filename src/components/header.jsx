@@ -29,11 +29,6 @@ export const Header = () => (
               </Link>
             </li>
             <li className="font-semibold text-lg">
-              <Link href="/img-generate-page" passHref>
-                IMG generate
-              </Link>
-            </li>
-            <li className="font-semibold text-lg">
               <Link href="/story/display-story" passHref>
                 Display Story
               </Link>
