@@ -11,7 +11,7 @@ const openai = new OpenAIApi(configuration);
 export default async function handler(req, res) {
   // Parse the 'UserCookie' from the request headers
   const cookies = parse(req.headers.cookie || "");
-  const token = cookies.UserCookie;
+  const token = cookies.Cookie;
 
   if (!configuration.apiKey) {
     res.status(500).json({
