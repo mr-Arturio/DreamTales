@@ -132,7 +132,7 @@ const StoryForm = ({
         setFunction={setGender}
       />
       <br />
-    
+
       <br />
       <br />
       <br />
@@ -227,7 +227,11 @@ const StoryForm = ({
         setSliderValue={setTime}
       />
       <br />
-<Checkbox />
+      <Checkbox
+        label="Enable Extra Feature"
+        checked={isCheckboxChecked}
+        onChange={() => setIsCheckboxChecked(!isCheckboxChecked)}
+      />
       <br />
       <br />
       <br />
