@@ -1,12 +1,13 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 // Define an empty array to store generated stories
 const initialStories = [];
 
 const SavedStories = () => {
   const [stories, setStories] = useState(initialStories);
-
+  const router = useRouter()
   useEffect(() => {
     async function checkLoginStatus(req, res) {
       
