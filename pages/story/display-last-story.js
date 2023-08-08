@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 
 
 const DisplayStoryPage = () => {
@@ -24,7 +24,7 @@ const DisplayStoryPage = () => {
   }
 
   // Call the function to fetch the story when the component mounts
-  React.useEffect(() => {
+  useEffect(() => {
     fetchLastSavedStory();
   }, []);
 
