@@ -1,8 +1,6 @@
 //import  db  from 'db/databse.js'; 
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import cookie from 'cookie';
-
 
 // Function to compare passwords
 const comparePasswords = async (password, hashedPassword) => {
