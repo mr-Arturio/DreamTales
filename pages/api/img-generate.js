@@ -7,18 +7,37 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-export async function generateImage() {
+export async function generateImage({
+
+  capitalizedName,
+  age,
+  gender,
+  secondaryHero,
+  secondaryHeroName,
+  storyStyle,
+  storyTopic,
+}) {
   if (!configuration.apiKey) {
     throw new Error("OpenAI API key not configured");
   }
 
-  let prompt = "Generate a picture of a ginger cat";
+  let prompt = `Generate an image that vividly illustrates the following scene from the story:
+
+  Main Character: a ${age} year old ${gender}
+  Setting: ${storyTopic} in a ${storyStyle} style
+  
+  The image should capture the essence of the story. Show ${capitalizedName}  engaged in a memorable moment, surrounded by the enchanting details of the ${storyTopic}. The style should be appealing to ${age} year olds, using kids-friendly visual elements.
+  
+  Feel free to use bright colors, imaginative details, and expressive characters. The image dimensions should be 512x512 pixels to ensure high quality.
+  
+  Please make sure the image resonates with the heartwarming nature of the story. The end result should be a beautiful and captivating illustration that children will adore.`;
+  
 
   try {
     const completion = await openai.createImage({
       prompt: prompt,
       n: 1,
-      size: "1024x1024",
+      size: "512x512",
     });
 
     const imageUrl = completion.data.data[0].url;
