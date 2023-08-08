@@ -1,7 +1,8 @@
 //import  db  from 'db/databse.js'; 
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import cookie from 'cookie';
+import { parse } from 'cookie';
+import Cookies from 'js-cookie'
 
 
 // Function to compare passwords
@@ -19,4 +20,9 @@ const verifyToken = (token) => {
   return jwt.verify(token, process.env.JWT_SECRET); // Replace 'your_secret_key' with the same secret key used for JWT
 };
 
-export { comparePasswords, generateToken, verifyToken, };
+function getCookie(name) {
+
+ return localStorage.getItem(name)
+}
+
+export { comparePasswords, generateToken, verifyToken, getCookie };
