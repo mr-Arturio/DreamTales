@@ -13,13 +13,13 @@ export default async function handler(req, res) {
       const result = await db.query(query, [email]);
       if (result.rowCount === 0) {
         alert('User not found.');
-        // client.release();
+        
         res.status(404).send('User not found');
         return;
       }
       const user = result.rows[0];
       const isPasswordValid = await comparePasswords(password, user.password);
-      //client.release()
+      
       if (!isPasswordValid) {
         alert('Invalid password.');
         res.status(400).send('Invalid Password');
