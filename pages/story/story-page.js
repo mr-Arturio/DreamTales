@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import StoryForm from "./story-form";
 import styles from "../index.module.css";
@@ -16,8 +16,34 @@ const StoryPage = () => {
   const [time, setTime] = useState(3);
   const [secondaryHero, setSecondaryHero] = useState("");
   const [secondaryHeroName, setSecondaryHeroName] = useState("");
-
   const router = useRouter();
+
+  useEffect(() => {
+    async function checkLoginStatus(req, res) {
+      
+      try {
+        const response = await fetch("/api/check-login-status", {
+          method:"GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        
+        const data = await response.json();
+      
+        if (!data.isLoggedIn) {
+         
+          // User is not logged in, redirect to the login page
+          router.push("/login"); // Replace with your login page URL
+        }
+      } catch (error) {
+        console.error("Error checking login status:", error);
+      }
+    }
+
+    checkLoginStatus();
+  }, []);
+
 
   async function onSubmit(event) {
     event.preventDefault();
