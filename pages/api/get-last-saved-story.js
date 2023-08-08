@@ -1,13 +1,20 @@
 const db = require("../../db/database.js");
+import { verifyToken } from "../api/auth";
+import { parse } from "cookie";
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
     try {
+      const cookies = parse(req.headers.cookie || "");
+      const token = cookies.UserCookie;
+      const decodedToken = verifyToken(token);
+      const userId = decodedToken?.user?.id;
+
       // const client = await db.connect();
       // Fetch the last saved story for the user with 'userId' = '1'
       const lastSavedStoryQuery =
         "SELECT * FROM stories WHERE user_id = $1 ORDER BY created_at DESC LIMIT 1";
-      const values = ["1"]; // 'userId' is hardcoded as '1'
+      const values = userId; // 'userId' is hardcoded as '1'
       const result = await db.query(lastSavedStoryQuery, values);
 
       if (result.rowCount > 0) {
