@@ -54,9 +54,10 @@ export default async function handler(req, res) {
       return;
     }
 
-    const capitalizedName =
-      name[0].toUpperCase() + name.slice(1).toLowerCase();
-    let prompt = `Generate a ${time} minute Kids story for the ${age} year old ${gender} kid, named ${capitalizedName}. Include in the story ${secondaryHero} named ${secondaryHeroName} and ${capitalizedName}. Story about ${storyTopic} and everything happening in ${storyStyle} style. Kids friendly language. Language of the story is ${language}. Give title to the story with period at the end.`;
+    const capitalizedName = name[0].toUpperCase() + name.slice(1).toLowerCase();
+    let prompt = `Generate a ${time} minute Kids story for the ${age} year old ${gender} kid named ${capitalizedName}. The story should take place in a ${storyStyle} style, centered around ${storyTopic}. The main character, ${capitalizedName}, along with ${secondaryHeroName}, the ${secondaryHero}, should embark on an exciting journey. The narrative should be full of vivid descriptions and kid-friendly language, written in ${language}.
+
+    Title the story with a period at the end.`;
 
     try {
       const completion = await openai.createCompletion({
@@ -65,13 +66,23 @@ export default async function handler(req, res) {
         max_tokens: 1200,
         n: 1,
         stop: null,
-        temperature: 1.0,
+        temperature: 0.8,
       });
 
       const generatedStory = completion.data.choices[0].text;
 
-      //img generate function
-      const generatedImage = await generateImage();
+      // Generate the corresponding image for the story
+      const generatedImage = await generateImage({
+    
+        age,
+        gender,
+        storyStyle,
+        storyTopic,
+        capitalizedName,
+        secondaryHero,
+        secondaryHeroName,
+        language,
+      });
 
       // Save the generated story to the database
       try {
@@ -81,21 +92,30 @@ export default async function handler(req, res) {
           RETURNING id;
         `;
 
-        const values = [userId, generatedStory, generatedImage, new Date(), false];
+        const values = [
+          userId,
+          generatedStory,
+          generatedImage,
+          new Date(),
+          false,
+        ];
 
         //send request for your server to wait for the completion
         const result = await db.query(insertQuery, values);
         //newly saved story
         const storyId = result.rows[0].id;
 
-        res.status(200).json({ story: generatedStory, imageUrl: generatedImage });
+        res
+          .status(200)
+          .json({ story: generatedStory, imageUrl: generatedImage });
 
         // res.status(200).json({ result: generatedStory, storyId: storyId });
       } catch (error) {
         console.error("Error saving story to the database:", error.message);
         res.status(500).json({
           error: {
-            message: "An error occurred while saving the story to the database.",
+            message:
+              "An error occurred while saving the story to the database.",
           },
         });
       }
