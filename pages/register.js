@@ -23,12 +23,12 @@ export default function Register() {
       if (response.ok) {
         alert('User registered successfully!');
         // Add code to redirect or show a success message to the user
+        return router.push('/login')
       } else {
         alert('Registration failed.');
         // Add code to show an error message to the user
       }
 
-      return router.push('/login')
     } catch (err) {
       alert('Error during registration:', err);
       // Add code to show an error message to the user

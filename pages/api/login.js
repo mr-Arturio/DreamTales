@@ -13,13 +13,13 @@ export default async function handler(req, res) {
       const result = await db.query(query, [email]);
       if (result.rowCount === 0) {
         alert('User not found.');
-        // client.release();
+        
         res.status(404).send('User not found');
         return;
       }
       const user = result.rows[0];
       const isPasswordValid = await comparePasswords(password, user.password);
-      //client.release()
+      
       if (!isPasswordValid) {
         alert('Invalid password.');
         res.status(400).send('Invalid Password');
@@ -29,20 +29,16 @@ export default async function handler(req, res) {
       // If authentication is successful, generate a JWT token and store it in a cookie
 
       const secret = process.env.JWT_SECRET;
-      const token = sign({ user }, secret, { expiresIn: 60 * 60 * 24 * 3 })
-
-      const serialized = serialize('UserCookie', token, {
+      const token = sign({ user }, secret, { expiresIn: 60 * 60 * 24 * 3 });
+      const serialized = serialize('Cookie', token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'strict',
         maxAge: 60 * 60 * 24 * 3,
         path: "/"
       })
-
-      // localStorage.setItem('userCookie', res.data.token)
-      // const usertoken = localStorage.getItem('userCookie')
-      return res.setHeader('Set-Cookie', serialized).send('Welcome Signed In!')
       
+     return res.setHeader('Set-Cookie', serialized).json({data:serialized})
 
     } catch (error) {
 

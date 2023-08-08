@@ -5,7 +5,7 @@ import { parse } from "cookie";
 export default async function handler(req, res) {
   // Parse the 'UserCookie' from the request headers
   const cookies = parse(req.headers.cookie || "");
-  const token = cookies.UserCookie;
+  const token = cookies.Cookie;
 
   if (req.method === "GET") {
     try {

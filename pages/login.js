@@ -22,11 +22,14 @@ export default function login() {
         },
         body: JSON.stringify({ email, password }),
       });
-
+      const result = await response.json() 
       if (response.ok) {
+        localStorage.setItem('UserCookie', result.data )
         alert('User logged in successfully!');
-        return router.push('/')
-        // Add code to redirect or show a success message to the user
+       router.push({pathname:'/'})
+       return window.location.reload()
+        
+        
       } else {
         alert('login failed.');
         // Add code to show an error message to the user

@@ -1,11 +1,38 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 // Define an empty array to store generated stories
 const initialStories = [];
 
 const SavedStories = () => {
   const [stories, setStories] = useState(initialStories);
+  const router = useRouter()
+  useEffect(() => {
+    async function checkLoginStatus(req, res) {
+      
+      try {
+        const response = await fetch("/api/check-login-status", {
+          method:"GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        
+        const data = await response.json();
+      
+        if (!data.isLoggedIn) {
+         
+          // User is not logged in, redirect to the login page
+          router.push("/login"); // Replace with your login page URL
+        }
+      } catch (error) {
+        console.error("Error checking login status:", error);
+      }
+    }
+
+    checkLoginStatus();
+  }, []);
 
   // Add a function to handle adding new stories to the list
   const addStory = (story) => {

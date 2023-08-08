@@ -7,7 +7,7 @@ import db from "../../db/database"; // Import your database module here
 export default async function storyHandler(req, res) {
   // Parse the 'UserCookie' from the request headers
   const cookies = parse(req.headers.cookie || "");
-  const token = cookies.UserCookie;
+  const token = cookies.Cookie;
 
   // Verify the JWT token sent with the request
   if (!token) {
