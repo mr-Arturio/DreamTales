@@ -1,14 +1,16 @@
+import React from 'react';
 import { Footer } from './footer';
 import { Header } from './header';
-import React from 'react';
 
-
-const MainLayout = ({ children }) => {
+const MainLayout = ({ children, loading }) => {
   return (
     <>
       <Header />
-      <main>{children}</main>
-     <Footer />
+      <main>
+        {loading && <LoadingScreen />} {/* Conditionally render LoadingScreen */}
+        {children}
+      </main>
+      <Footer />
     </>
   );
 };

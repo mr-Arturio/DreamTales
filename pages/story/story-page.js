@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import StoryForm from "./story-form";
+import LoadingScreen from "@/src/components/loading-screen";
 import styles from "../index.module.css";
 
 const StoryPage = () => {
@@ -85,7 +86,7 @@ const StoryPage = () => {
         <img src="/docs/penguin.png" className={styles.icon} />
         <h3>Short story</h3>
         {loading ? (
-          <p>Loading...</p>
+        <LoadingScreen />
         ) : (
           <StoryForm
             onSubmit={onSubmit}
