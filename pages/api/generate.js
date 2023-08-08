@@ -2,6 +2,7 @@ const { Configuration, OpenAIApi } = require("openai");
 const db = require("../../db/database");
 const { parse } = require("cookie");
 import { verifyToken } from "./auth";
+import { generateImage } from "./img-generate";
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -69,22 +70,25 @@ export default async function handler(req, res) {
 
       const generatedStory = completion.data.choices[0].text;
 
+      //img generate function
+      const generatedImage = await generateImage();
+
       // Save the generated story to the database
       try {
         const insertQuery = `
-          INSERT INTO stories (user_id, story, created_at, favorites)
-          VALUES ($1, $2, $3, $4)
+          INSERT INTO stories (user_id, story, photo, created_at, favorites)
+          VALUES ($1, $2, $3, $4, $5)
           RETURNING id;
         `;
 
-        const values = [userId, generatedStory, new Date(), false];
+        const values = [userId, generatedStory, generatedImage, new Date(), false];
 
         //send request for your server to wait for the completion
         const result = await db.query(insertQuery, values);
         //newly saved story
         const storyId = result.rows[0].id;
 
-        res.status(200).json({ result: completion.data.choices[0].text });
+        res.status(200).json({ story: generatedStory, imageUrl: generatedImage });
 
         // res.status(200).json({ result: generatedStory, storyId: storyId });
       } catch (error) {

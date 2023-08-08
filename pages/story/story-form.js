@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import DropdownMenu from "@/src/components/dropdown/dropdown-menu";
 import RangeSlider from "@/src/components/range-slider/range-slider";
+import Checkbox from "@/src/components/checkbox/checkbox";
 
 const StoryForm = ({
   childName,
@@ -226,7 +227,7 @@ const StoryForm = ({
         setSliderValue={setTime}
       />
       <br />
-
+<Checkbox />
       <br />
       <br />
       <br />

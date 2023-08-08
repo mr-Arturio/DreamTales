@@ -1,18 +1,27 @@
 const db = require("../../db/database.js");
+import { verifyToken } from "./auth";
+import { parse } from "cookie";
 
 export default async function handler(req, res) {
+  // Parse the 'UserCookie' from the request headers
+  const cookies = parse(req.headers.cookie || "");
+  const token = cookies.UserCookie;
+
   if (req.method === "GET") {
     try {
-      // const client = await db.connect();
-      // Fetch the last saved story for the user with 'userId' = '1'
+      // Fetch the last saved story for the user with 'userId' extracted from the token
       const lastSavedStoryQuery =
-        "SELECT * FROM stories WHERE user_id = $1 ORDER BY created_at DESC LIMIT 1";
-      const values = ["1"]; // 'userId' is hardcoded as '1'
-      const result = await db.query(lastSavedStoryQuery, values);
+      "SELECT story, photo FROM stories WHERE user_id = $1 ORDER BY created_at DESC LIMIT 1";
+
+      // Verify the JWT token and extract the user ID from the decoded token
+      const decodedToken = verifyToken(token);
+      const userId = decodedToken?.user?.id;
+
+      const result = await db.query(lastSavedStoryQuery, [userId]);
 
       if (result.rowCount > 0) {
         console.log("+++++++++++", result.rows);
-        return res.status(200).json({ story: result.rows[0] });
+        return res.status(200).json({ story: result.rows[0], photo: result.rows[0].photo });
       }
 
       return res.status(404).json({ error: "No story available." });
