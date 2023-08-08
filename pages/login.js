@@ -25,9 +25,9 @@ export default function login() {
       const result = await response.json() 
       if (response.ok) {
         localStorage.setItem('UserCookie', result.data )
-        router.push({pathname:'/pages/index'})
-        window.location.reload()
         alert('User logged in successfully!');
+       router.push({pathname:'/'})
+       return window.location.reload()
         
         
       } else {
