@@ -13,7 +13,7 @@ export const HomePage = () => (
       cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
       est laborum.
     </p>
-    <Link href="/story/story-page" passHref>
+    <Link href="/story/" passHref>
     <button>Create story</button>
     </Link>
   </div>

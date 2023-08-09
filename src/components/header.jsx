@@ -30,7 +30,7 @@ const [cookies, setCookie] = useState(null)
                     </Link>
                   </li>
                   <li className="font-semibold text-lg">
-                    <Link href="/story/story-page" passHref>
+                    <Link href="/story/" passHref>
                       Create Story
                     </Link>
                   </li>
