@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 //import db from '/db/databse';
 
 
-export default function login() {
+export default function login({ setCookie }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const router = useRouter();
@@ -22,14 +22,13 @@ export default function login() {
         },
         body: JSON.stringify({ email, password }),
       });
-      const result = await response.json() 
       if (response.ok) {
-        localStorage.setItem('UserCookie', result.data )
+        const result = await response.json()
+        localStorage.setItem('UserCookie', result.data)
+        setCookie(result.data)
         alert('User logged in successfully!');
-       router.push({pathname:'/'})
-       return window.location.reload()
-        
-        
+        router.push('/');
+        return
       } else {
         alert('login failed.');
         // Add code to show an error message to the user

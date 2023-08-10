@@ -192,7 +192,7 @@ const StoryForm = ({
             setFunction={setSecondaryHero}
           />
 
-          <div class="relative my-6">
+          <div className="relative my-6">
             <input
               id="secondaryHeroName"
               type="text"

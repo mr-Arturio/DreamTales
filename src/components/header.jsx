@@ -2,16 +2,13 @@
 import LogoutButton from "@/pages/logout";
 import Link from "next/link";
 import Image from "next/image";
-import{ useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-export const Header = () => {
-  
-const [cookies, setCookie] = useState(null)
+export const Header = ({ cookies }) => {
 
-  useEffect(() => {
-    
-    setCookie(localStorage.getItem('UserCookie'))
-  }, [])
+  // const [cookies, setCookie] = useState(null)
+
+ 
 
   return (
     <header className="w-full h-96 bg-gradient-to-r from-green-100 to-transparent p-6">

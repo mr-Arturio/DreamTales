@@ -2,10 +2,10 @@ import React from 'react';
 import { Footer } from './footer';
 import { Header } from './header';
 
-const MainLayout = ({ children, loading }) => {
+const MainLayout = ({ children, loading, cookies }) => {
   return (
     <>
-      <Header />
+      <Header cookies = {cookies} />
       <main>
         {loading && <LoadingScreen />} {/* Conditionally render LoadingScreen */}
         {children}

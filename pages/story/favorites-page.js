@@ -37,14 +37,22 @@ const Header = () => {
 
     async function getFavouriteStory() {
       try {
-        const response = await fetch('/api/display-favourite-save')
-        const data = await response.json();
-        setdisplayFavouriteStory(data);
-        setIsLoaded(true);
+        const response = await fetch('/api/display-favourite-save',{
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json"
+        }
+        })
+        if (response.ok){
+          const data = await response.json();
+          setdisplayFavouriteStory(data);
+          setIsLoaded(true);
+        }
       } catch (error) {
         console.error('error fetching data', error)
       }
     }
+
 
     checkLoginStatus()    
     getFavouriteStory()
@@ -81,7 +89,7 @@ const Header = () => {
   }
 
 
-  
+  console.log('display---->', displayFavouriteStory)
   return (
     <div className="grid grid-cols-3 gap-4" >
       {isLoaded ? (
@@ -139,7 +147,7 @@ const Header = () => {
       ) : (
         <>
           {/*<!-- Component: Basic blog card --> */}
-          <div className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200">
+          <div  className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200">
             {/*  <!-- Image --> */}
             <figure>
               <img

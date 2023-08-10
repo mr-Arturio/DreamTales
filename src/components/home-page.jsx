@@ -1,8 +1,9 @@
 import Link from "next/link";
 // import Image from "next/image";
-
+import { Header } from "./header";
 export const HomePage = () => (
   <div className="home_body">
+
     <h1>Home Page</h1>
     <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -16,5 +17,7 @@ export const HomePage = () => (
     <Link href="/story/" passHref>
     <button>Create story</button>
     </Link>
+
+    
   </div>
 );
