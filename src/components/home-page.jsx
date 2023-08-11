@@ -4,7 +4,7 @@ import Link from "next/link";
 export const HomePage = () => (
   <div className="home_body">
     <div className="home_content">
-      <h1>Home Page</h1>
+      <h1>Dream Tales</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate

@@ -14,11 +14,19 @@ const [cookies, setCookie] = useState(null)
   }, [])
 
   return (
-    <header className="w-full h-96 bg-gradient-to-r from-green-100 to-transparent p-6">
-      <div className="w-full max-w-4xl mx-auto flex flex-col justify-between">
+    <header className="w-full h-25 bg-gradient-to-r from-blue-800 to-teal-700">
+      <div className="w-full max-w-8xl flex-col ">
         <div className="flex justify-between items-center">
-          <Image alt="logo" src={"/docs/images(1).jpg"} width={160} height={60} />
-          {/* ... */}
+        <Image
+          alt="logo"
+          src={"/docs/design/logo/cloud.svg"}
+          width={100} /* Original width */
+          height={85} /* Original height */
+          style={{
+            transform: 'scale(2.3)', /* Increase the scale as needed */
+            transformOrigin: 'center', /* Set the transform origin to the center */
+            margin: '10px 0 0 30px '
+          }} />
           <nav>
             <ul className="flex gap-4">
               {/* Other links */}
