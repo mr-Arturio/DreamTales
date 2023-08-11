@@ -1,63 +1,70 @@
-import { data } from "autoprefixer";
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useState, useRef, useEffect } from "react"
+import ReactDOM from "react-dom"
+
+import { data } from "autoprefixer"
 import { useRouter } from "next/router";
+
+import ModalActionButtonsFav from "@/src/components/Modal-Favourites";
 
 // Example usage in a component
 const Header = () => {
-  const [displayFavouriteStory, setdisplayFavouriteStory] = useState([])
+ const [displayFavouriteStory, setdisplayFavouriteStory] = useState([])
   const [isLoaded, setIsLoaded] = useState(false)
   const [isFavourite, setFavourite] = useState(true)
-
+  
   const router = useRouter();
+  
+  async function checkLoginStatus(req, res) {
 
-  useEffect(() => {
+    try {
+      const response = await fetch("/api/check-login-status", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-    async function checkLoginStatus(req, res) {
-      
-      try {
-        const response = await fetch("/api/check-login-status", {
-          method:"GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        
-        const data = await response.json();
-      
-        if (!data.isLoggedIn) {
-         
-          // User is not logged in, redirect to the login page
-          router.push("/login"); // Replace with your login page URL
-        }
-      } catch (error) {
-        console.error("Error checking login status:", error);
+      const data = await response.json();
+
+      if (!data.isLoggedIn) {
+
+        // User is not logged in, redirect to the login page
+        router.push("/login"); // Replace with your login page URL
       }
+    } catch (error) {
+      console.error("Error checking login status:", error);
     }
+  }
+  async function getFavouriteStory() {
+    try {
 
-    async function getFavouriteStory() {
-      try {
-        const response = await fetch('/api/display-favourite-save',{
+      const response = await fetch('/api/display-favourite-save', {
         method: "GET",
         headers: {
           "Content-Type": "application/json"
         }
-        })
-        if (response.ok){
-          const data = await response.json();
-          setdisplayFavouriteStory(data);
-          setIsLoaded(true);
-        }
-      } catch (error) {
-        console.error('error fetching data', error)
+      })
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('DATA----->', data)
+        setdisplayFavouriteStory(data);
+        
+        setIsLoaded(true);
       }
+    } catch (error) {
+      console.error('error fetching data', error)
     }
+  }
 
 
-    checkLoginStatus()    
+  useEffect(() => {
+    checkLoginStatus()
     getFavouriteStory()
-  },[router]
-  )
+    console.log('STATE---->', displayFavouriteStory)
+  }, [])
+
+
   const truncateText = (text, maxLength) => {
     if (text && text.length > maxLength) {
       return text.substring(0, maxLength) + '...';
@@ -81,20 +88,21 @@ const Header = () => {
       });
       if (response.ok) {
         setFavourite(false)
-        window.location.reload()
-        }
+      
+      }
     } catch (error) {
       res.status(500).json({ error: 'Error updating favorites' });
     }
   }
 
 
-  console.log('display---->', displayFavouriteStory)
+
   return (
-    <div className="grid grid-cols-3 gap-4" >
+    <div key={1} className="grid grid-cols-3 gap-4" >
       {isLoaded ? (
         displayFavouriteStory.map((item) => (
           <>
+
             {/*<!-- Component: Horizontal card--> */}
             <div key={item.id} className="flex flex-col overflow-hidden bg-white rounded shadow-md text-slate-500 shadow-slate-200 sm:flex-row">
               {/*  <!-- Image --> */}
@@ -112,7 +120,7 @@ const Header = () => {
                   <img src={item.photo} alt="card image" className="m-auto" />
                 </figure>
                 <p>{truncateText(item.story, 150)}</p>
-                <button className={`whitespace-nowrap rounded px-5 text-sm font-medium tracking-wide ${isFavourite ? 'bg-emerald-500 text-white' : 'text-emerald-500'
+                <button className={` whitespace-nowrap rounded px-5 text-sm font-medium tracking-wide ${isFavourite ? 'bg-emerald-500 text-white' : 'text-emerald-500'
                   } transition duration-300 hover:bg-emerald-100 hover:text-emerald-600 focus:bg-emerald-200 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:text-emerald-300 disabled:shadow-none disabled:hover:bg-transparent`}
                   onClick={() => removeFavorites(item.id)}>
                   <span className="relative only:-mx-6">
@@ -138,16 +146,21 @@ const Header = () => {
                     </svg>
                   </span>
                 </button>
+                
+                  <ModalActionButtonsFav displayFavouriteStory={item.story} displayPhoto ={item.photo} displayTitle={item.title} removeFav={removeFavorites()}></ModalActionButtonsFav>
+              
               </div>
             </div>
 
             {/*<!-- End Horizontal card--> */}
+
           </>
-        ))
+        )
+        )
       ) : (
         <>
           {/*<!-- Component: Basic blog card --> */}
-          <div  className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200">
+          <div className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200">
             {/*  <!-- Image --> */}
             <figure>
               <img
@@ -167,7 +180,7 @@ const Header = () => {
               <p>
                 {truncateText(displayFavouriteStory.story, 150)}
               </p>
-              <button className={`whitespace-nowrap rounded px-5 text-sm font-medium tracking-wide ${isFavourite ? 'bg-emerald-500 text-white' : 'text-emerald-500'
+              <button className={`inline-flex h-10 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded px-5 text-sm font-medium tracking-wide ${isFavourite ? 'bg-emerald-500 text-white' : 'text-emerald-500'
                 } transition duration-300 hover:bg-emerald-100 hover:text-emerald-600 focus:bg-emerald-200 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:text-emerald-300 disabled:shadow-none disabled:hover:bg-transparent`}
                 onClick={() => removeFavorites()}>
                 <span className="relative only:-mx-6">
@@ -193,20 +206,25 @@ const Header = () => {
                   </svg>
                 </span>
               </button>
+                <ModalActionButtonsFav displayFavouriteStory={displayFavouriteStory.story} displayPhoto ={displayFavouriteStory.photo} displayTitle={displayFavouriteStory.title}></ModalActionButtonsFav>   
+            
             </div>
           </div>
+
+
+
+
           {/*<!-- End Basic blog card --> */}
-        </>
-      )
+        </>)
+
       }
 
 
 
+
     </div>
-  );
-
-
-
+  )
 }
+
 
 export default Header;
