@@ -1,6 +1,5 @@
 import Link from "next/link";
-// import Image from "next/image";
-
+import { Header } from "./header";
 export const HomePage = () => (
   <div className="home_body">
     <div className="home_content">

@@ -1,8 +1,6 @@
 
 import React from "react";
 import { useEffect, useState } from "react";
-import { verifyToken } from "../api/auth";
-import { parse } from "cookie";
 import { useRouter } from "next/router";
 
 
@@ -10,24 +8,24 @@ const DisplayStoryPage = () => {
   const [data, setData] = useState([]);
   const [isFavourite, setFavourite] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
-  
+
   const router = useRouter()
-  
+
   useEffect(() => {
     async function checkLoginStatus(req, res) {
-      
+
       try {
         const response = await fetch("/api/check-login-status", {
-          method:"GET",
+          method: "GET",
           headers: {
             "Content-Type": "application/json",
           },
         });
-        
+
         const data = await response.json();
-      
+
         if (!data.isLoggedIn) {
-         
+
           // User is not logged in, redirect to the login page
           router.push("/login"); // Replace with your login page URL
         }
@@ -35,43 +33,45 @@ const DisplayStoryPage = () => {
         console.error("Error checking login status:", error);
       }
     }
-    
-      async function getData() {
-        try {
-          const response = await fetch('/api/retrieveStory');
-          const story= await response.json();
-          const storiesWithFavourite = story.map((item) => ({
-            ...item,
-            isFavourite: false,
-          }));
-          setData(storiesWithFavourite)
+
+    async function getData() {
+      try {
+        const response = await fetch('/api/retrieveStory', {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        const story = await response.json();
+        console.log("STORY----->", story)
+        if (response.ok) {
+          
+          setData(story)
           setIsLoaded(true)
-        
-        } catch (error) {
-          console.error('Error fetching data:', error)
         }
+
+
+      } catch (error) {
+        console.error('Error fetching data:', error)
       }
-      checkLoginStatus()
-      getData();
-    }, [router])
-  
-    const truncateText = (text, maxLength) => {
-      if (text && text.length > maxLength) {
-        return text.substring(0, maxLength) + '...';
-      } else {
-        return text;
-      }
-    };
-    
-    async function toggleFavorite(id) {
-      const updatedData = data.map((item) => {
-        if (item.id === id) {
-          return { ...item, isFavourite: !item.isFavourite };
-        }
-        return item;
-      });
-      setData(updatedData);
-  
+    }
+    checkLoginStatus()
+    getData();
+  }, [router])
+
+  const truncateText = (text, maxLength) => {
+    if (text && text.length > maxLength) {
+      return text.substring(0, maxLength) + '...';
+    } else {
+      return text;
+    }
+  };
+
+  async function toggleFavorite(id) {
+
+    try {
+
       const response = await fetch("/api/favorites-save", {
         method: "PUT",
         headers: {
@@ -79,17 +79,28 @@ const DisplayStoryPage = () => {
         },
         body: JSON.stringify({ id }),
       });
-  
-      if (!response.ok) {
+
+      if (response.ok) {
+        // Update the favorite status in the local state
+
+        setFavourite()
+        setIsLoaded(true)
+      } else {
         console.error("Error updating favorites");
       }
+    } catch (error) {
+      console.error("Error in setting favorites:", error);
     }
+
+  }
+
+
 
   // async function Favorites(id) {
   //   const data = {
   //     id
   //   }
-  
+
   //   try {
   //     const response = await fetch('/api/favorites-save', {
   //       method: "PUT",
@@ -104,12 +115,13 @@ const DisplayStoryPage = () => {
   //   } catch (error) {
   //     console.log('error in setting favourites')
   //     console.error(error)
-  //     //res.status(500).json({ error: 'Error updating favorites' });
+  //     res.status(500).json({ error: 'Error updating favorites' });
   //   }
   // }
+
   return (
     <div className='grid grid-cols-3 gap-4'>
-      { isLoaded ? (
+      {isLoaded ? (
         data.map((item) => (
           <div key={item.id}>
             {/*<!-- Component: Horizontal card--> */}
@@ -136,7 +148,7 @@ const DisplayStoryPage = () => {
                   {truncateText(item.story, 150)}</p>
                 <button className={`whitespace-nowrap rounded px-5 text-sm font-medium tracking-wide ${isFavourite ? 'bg-emerald-500 text-white' : 'text-emerald-500'
                   } transition duration-300 hover:bg-emerald-100 hover:text-emerald-600 focus:bg-emerald-200 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:text-emerald-300 disabled:shadow-none disabled:hover:bg-transparent`}
-                  onClick={()=> toggleFavorite(item.id)}>
+                  onClick={() => toggleFavorite(item.id)}>
                   <span className="relative only:-mx-6">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -190,7 +202,7 @@ const DisplayStoryPage = () => {
                 {truncateText(data.story, 150)}</p>
               <button className={`whitespace-nowrap rounded px-5 text-sm font-medium tracking-wide ${isFavourite ? 'bg-emerald-500 text-white' : 'text-emerald-500'
                 } transition duration-300 hover:bg-emerald-100 hover:text-emerald-600 focus:bg-emerald-200 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:text-emerald-300 disabled:shadow-none disabled:hover:bg-transparent`}
-                onClick={()=> toggleFavorite()}>
+                onClick={() => toggleFavorite(id)}>
                 <span className="relative only:-mx-6">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -225,7 +237,7 @@ const DisplayStoryPage = () => {
 
     </div>
   );
+}
 
-};
 
 export default DisplayStoryPage;

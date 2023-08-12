@@ -27,11 +27,12 @@ export default async function handler(req, res) {
       }
 
 
-      const client = await db.connect()
-      await client.query('UPDATE stories SET favorites = true WHERE id = $1;', [storyId]);
+      
+      await db.query('UPDATE stories SET favorites = true WHERE id = $1;', [storyId]);
 
       res.status(200).json({ message: 'Favorites updated successfully' });
     } catch (error) {
+      console.log('ERROR 500 --->', error)
       console.error('Error updating favorites:', error);
       res.status(500).json({ error: 'Error updating favorites' });
     }

@@ -1,7 +1,7 @@
 import db from 'db/database.js';
 import { comparePasswords } from './auth.js';
 import { sign } from 'jsonwebtoken';
-import { serialize } from 'cookie'
+import { serialize } from 'cookie';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {

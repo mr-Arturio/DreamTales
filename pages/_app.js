@@ -3,13 +3,20 @@ import '../styles/globals.css';
 // import { SessionProvider} from 'next-auth/react'
 // import { AppProps } from "next/app";
 import {CookiesProvider} from 'react-cookie'
+import { useEffect, useState, } from "react";
 
 function MyApp({ Component, pageProps }) {
+
+  const [cookies, setCookie] = useState(null)
+  useEffect(() => {
+
+    setCookie(localStorage.getItem('UserCookie'))
+  }, [])
   return (
     <CookiesProvider>
     <>
-      <MainLayout>
-        <Component {...pageProps} />
+      <MainLayout cookies = {cookies}>
+        <Component {...pageProps} cookies= {cookies} setCookie = {setCookie} />
       </MainLayout>
     </>
     </CookiesProvider>

@@ -4,6 +4,7 @@ import { parse } from "cookie";
 import db from "@/db/database";
 
 
+
 export default async function handler(req, res) {
   if (req.method === "PUT") {
     
@@ -28,8 +29,8 @@ export default async function handler(req, res) {
         return res.status(400).json({ error: 'Invalid user ID' });
       }
       
-      const client = await db.connect()
-      await client.query('UPDATE stories SET favorites = false WHERE id = $1;', [storyId]);
+      
+      await db.query('UPDATE stories SET favorites = false WHERE id = $1;', [storyId]);
 
       res.status(200).json({ message: 'Favorites updated successfully' });
     } catch (error) {
