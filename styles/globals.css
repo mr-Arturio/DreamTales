@@ -50,8 +50,11 @@
 }
 
 .home_body button {
-  background-color: #05a552;
-  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #50D6A6;
+  color: #065F46;
   border: none;
   padding: 1rem 3.5rem;
   border-radius: 1.8rem;
@@ -60,11 +63,29 @@
   font-size: 1.4rem;
   line-height: 1;
   font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+  outline: none;
+  white-space: nowrap;
 }
 
 .home_body button:hover {
-  background-color: #14b5a7;
+  background-color: #A7F3D0;
+  color: #065F46;
 }
+
+.home_body button:focus {
+  background-color: #D1F4E3;
+  color: #065F46;
+}
+
+.home_body button:disabled {
+  cursor: not-allowed;
+  border: 1px solid #6EE7B7;
+  background-color: #E6F9F0;
+  color: #86EFAC;
+  box-shadow: none;
+}
+
 
 
 footer {
