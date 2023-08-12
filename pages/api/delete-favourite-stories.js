@@ -1,10 +1,10 @@
 import db from "@/db/database";
-import { verifyToken } from "../api/auth";
+import { verifyToken } from "./auth";
 import { parse } from "cookie";
 
-export default async function displayFavouritesStory(req, res) {
+export default async function deleteStory(req, res) {
   
-   if (req.method === "GET") {
+   if (req.method === "DELETE") {
   try {
     const cookies = parse(req.headers.cookie || "");
       const token = cookies.Cookie;
@@ -12,7 +12,7 @@ export default async function displayFavouritesStory(req, res) {
       const userId = decodedToken?.user?.id;
       
     
-    const result = await db.query('SELECT * FROM stories WHERE favorites = true AND user_id = $1;', [userId])
+    const result = await db.query('DELETE FROM stories WHERE favorites = true AND user_id = $1;', [userId])
     const trueStory = result.rows
     res.status(200).json(trueStory)
 
