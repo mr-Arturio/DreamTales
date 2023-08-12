@@ -4,7 +4,7 @@ import { parse } from "cookie";
 
 export default async function displayFavouritesStory(req, res) {
   
-  if (req.method === "GET") {
+   if (req.method === "GET") {
   try {
     const cookies = parse(req.headers.cookie || "");
       const token = cookies.Cookie;
@@ -14,7 +14,6 @@ export default async function displayFavouritesStory(req, res) {
     
     const result = await db.query('SELECT * FROM stories WHERE favorites = true AND user_id = $1;', [userId])
     const trueStory = result.rows
-    console.log("TRUE STORY ---->", trueStory)
     res.status(200).json(trueStory)
 
   } catch (error) {

@@ -3,7 +3,7 @@ import { verifyToken } from "./auth";
 import { generateImage } from "./img-generate";
 import { generateStory } from "./story-generate";
 import db from "../../db/database"; // Import your database module here
-import db from "../../db/database";
+
 
 export default async function storyHandler(req, res) {
   // Parse the 'UserCookie' from the request headers

@@ -1,7 +1,5 @@
 import MainLayout from "../src/components/main-layout";
 import '../styles/globals.css';
-// import { SessionProvider} from 'next-auth/react'
-// import { AppProps } from "next/app";
 import {CookiesProvider} from 'react-cookie'
 import { useEffect, useState, } from "react";
 

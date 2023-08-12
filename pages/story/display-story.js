@@ -2,7 +2,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-
+import ModalActionButtons from "@/src/components/Modal";
 
 const DisplayStoryPage = () => {
   const [data, setData] = useState([]);
@@ -44,20 +44,20 @@ const DisplayStoryPage = () => {
         });
 
         const story = await response.json();
-        console.log("STORY----->", story)
         if (response.ok) {
           
           setData(story)
           setIsLoaded(true)
         }
-
-
+        
+        
       } catch (error) {
         console.error('Error fetching data:', error)
       }
     }
     checkLoginStatus()
     getData();
+    console.log("SET DATA ----->", data)
   }, [router])
 
   const truncateText = (text, maxLength) => {
@@ -94,30 +94,6 @@ const DisplayStoryPage = () => {
 
   }
 
-
-
-  // async function Favorites(id) {
-  //   const data = {
-  //     id
-  //   }
-
-  //   try {
-  //     const response = await fetch('/api/favorites-save', {
-  //       method: "PUT",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(data)
-  //     });
-  //     if (response.ok) {
-  //       setFavourite()
-  //     }
-  //   } catch (error) {
-  //     console.log('error in setting favourites')
-  //     console.error(error)
-  //     res.status(500).json({ error: 'Error updating favorites' });
-  //   }
-  // }
 
   return (
     <div className='grid grid-cols-3 gap-4'>
@@ -172,6 +148,7 @@ const DisplayStoryPage = () => {
                     </svg>
                   </span>
                 </button>
+                <ModalActionButtons displayFavouriteStory={item.story} displayPhoto ={item.photo} displayTitle={item.title}></ModalActionButtons>
               </div>
             </div>
 
@@ -226,6 +203,9 @@ const DisplayStoryPage = () => {
                   </svg>
                 </span>
               </button>
+              <ModalActionButtons> displayFavouriteStory={data.story} displayPhoto ={data.photo} displayTitle={data.title}
+             </ModalActionButtons>
+            
             </div>
           </div>
 
