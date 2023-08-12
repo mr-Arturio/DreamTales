@@ -230,10 +230,7 @@ const StoryForm = ({
 <Checkbox />
       <br />
       <br />
-      <br />
-      <br />
-      <br />
-      <br />
+ 
       {/* <input type="submit" value="Generate Story" /> */}
       {/* <!-- Component: Large primary basic button --> */}
       <button
@@ -243,6 +240,10 @@ const StoryForm = ({
       >
         <span>Generate the Story</span>
       </button>
+      <br />
+      <br />
+      <br />
+      <br />
       {/* <!-- End Large primary basic button --> */}
     </div>
   );

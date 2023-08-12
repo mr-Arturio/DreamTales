@@ -6,7 +6,7 @@ export default function Home() {
     <div>
       <Head>
         <title>DreamTales</title>
-        
+        <link rel="icon" href="/docs/design/logo/cloudBlueText.svg" />
       </Head>
 
      <HomePage />

@@ -105,7 +105,7 @@ const StoryPage = () => {
     <div>
       <Head>
         <title>Creating Story</title>
-        <link rel="icon" href="/docs/penguin.png" />
+        <link rel="icon" href="/docs/design/logo/cloudBlue.svg" />
       </Head>
 
       <main className={styles.main}>
