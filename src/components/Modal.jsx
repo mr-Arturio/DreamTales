@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react"
 import ReactDOM from "react-dom"
 
-export default function ModalActionButtons({ displayFavouriteStory, displayPhoto, displayTitle }) {
+export default function ModalActionButtons({ displayFavouriteStory, displayPhoto, displayTitle, itemId }) {
   const [isShowing, setIsShowing] = useState(false)
 
   const wrapperRef = useRef(null)
@@ -73,6 +73,28 @@ export default function ModalActionButtons({ displayFavouriteStory, displayPhoto
       }
     }
   }, [isShowing])
+
+  async function deleteStory(id) {
+    const data = {
+      id
+    }
+    try {
+      const response = await fetch('/api/delete-story', {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+      if (response.ok) {
+        setIsShowing(false)
+        window.location.reload()
+      }
+    } catch(error) {
+      res.status(500).json({ error: 'Error updating favorites' })
+    }
+  }
+
 
   return (
     <>
@@ -149,7 +171,7 @@ export default function ModalActionButtons({ displayFavouriteStory, displayPhoto
                 </p>
               </div>
               {/*        <!-- Modal actions --> */}
-              <div className="flex justify-start gap-2">
+              <div onClick={()=> deleteStory(itemId)} className="flex justify-start gap-2">
                 <button className="inline-flex h-10 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded px-5 text-sm font-medium tracking-wide text-emerald-500 transition duration-300 hover:bg-emerald-100 hover:text-emerald-600 focus:bg-emerald-200 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:text-emerald-300 disabled:shadow-none disabled:hover:bg-transparent">
                   <span>Delete Story</span>
                 </button>

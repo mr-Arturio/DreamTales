@@ -61,7 +61,6 @@ const Header = () => {
   useEffect(() => {
     checkLoginStatus()
     getFavouriteStory()
-    console.log('STATE---->', displayFavouriteStory)
   }, [])
 
 
@@ -147,7 +146,7 @@ const Header = () => {
                   </span>
                 </button>
                 
-                  <ModalActionButtonsFav displayFavouriteStory={item.story} displayPhoto ={item.photo} displayTitle={item.title} removeFav={removeFavorites()}></ModalActionButtonsFav>
+                  <ModalActionButtonsFav displayFavouriteStory={item.story} displayPhoto ={item.photo} displayTitle={item.title} removeFav={removeFavorites} itemId={item.id}></ModalActionButtonsFav>
               
               </div>
             </div>

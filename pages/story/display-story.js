@@ -148,7 +148,7 @@ const DisplayStoryPage = () => {
                     </svg>
                   </span>
                 </button>
-                <ModalActionButtons displayFavouriteStory={item.story} displayPhoto ={item.photo} displayTitle={item.title}></ModalActionButtons>
+                <ModalActionButtons displayFavouriteStory={item.story} displayPhoto ={item.photo} displayTitle={item.title} itemId={item.id}></ModalActionButtons>
               </div>
             </div>
 
@@ -203,7 +203,7 @@ const DisplayStoryPage = () => {
                   </svg>
                 </span>
               </button>
-              <ModalActionButtons> displayFavouriteStory={data.story} displayPhoto ={data.photo} displayTitle={data.title}
+              <ModalActionButtons> displayFavouriteStory={data.story} displayPhoto ={data.photo} displayTitle={data.title} itemId={data.id}
              </ModalActionButtons>
             
             </div>

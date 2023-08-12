@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from "react"
 import ReactDOM from "react-dom"
 
-export default function ModalActionButtonsFav({ displayFavouriteStory, displayPhoto, displayTitle, removeFav }) {
+export default function ModalActionButtonsFav({ displayFavouriteStory, displayPhoto, displayTitle, itemId }) {
   const [isShowing, setIsShowing] = useState(false)
+  const [isFavourite, setFavourite] = useState(true)
 
   const wrapperRef = useRef(null)
 
@@ -73,6 +74,51 @@ export default function ModalActionButtonsFav({ displayFavouriteStory, displayPh
       }
     }
   }, [isShowing])
+
+  async function removeFavoritesSetShowing(id) {
+    const data = {
+      id
+    }
+    try {
+      const response = await fetch('/api/remove-from-favourites', {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data)
+      });
+      if (response.ok) {
+        setFavourite(false)
+        setIsShowing(false)
+        window.location.reload()
+      }
+    } catch (error) {
+      res.status(500).json({ error: 'Error updating favorites' });
+    }
+  }
+
+  async function deleteStory(id) {
+    const data = {
+      id
+    }
+    try {
+      const response = await fetch('/api/delete-favourite-stories', {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+      if (response.ok) {
+        setFavourite(false)
+        setIsShowing(false)
+        window.location.reload()
+      }
+    } catch(error) {
+      res.status(500).json({ error: 'Error updating favorites' })
+    }
+  }
+
 
   return (
     <>
@@ -150,10 +196,10 @@ export default function ModalActionButtonsFav({ displayFavouriteStory, displayPh
               </div>
               {/*        <!-- Modal actions --> */}
               <div className="flex justify-start gap-2">
-                <button onClick={() => removeFav} className="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded bg-emerald-500 px-5 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-emerald-600 focus:bg-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none">
+                <button onClick={() => removeFavoritesSetShowing(itemId)} className="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded bg-emerald-500 px-5 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-emerald-600 focus:bg-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none">
                   <span>Remove From Favourites</span>
                 </button>
-                <button className="inline-flex h-10 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded px-5 text-sm font-medium tracking-wide text-emerald-500 transition duration-300 hover:bg-emerald-100 hover:text-emerald-600 focus:bg-emerald-200 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:text-emerald-300 disabled:shadow-none disabled:hover:bg-transparent">
+                <button onClick={()=>deleteStory(itemId)} className="inline-flex h-10 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded px-5 text-sm font-medium tracking-wide text-emerald-500 transition duration-300 hover:bg-emerald-100 hover:text-emerald-600 focus:bg-emerald-200 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:text-emerald-300 disabled:shadow-none disabled:hover:bg-transparent">
                   <span>Delete Story</span>
                 </button>
               </div>
