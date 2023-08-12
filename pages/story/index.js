@@ -109,7 +109,7 @@ const StoryPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <img src="/docs/penguin.png" className={styles.icon} />
+        <img src="/docs/design/logo/Ghost.png" className={styles.icon} />
         <h3>Short story</h3>
         {loading ? (
         <LoadingScreen />
