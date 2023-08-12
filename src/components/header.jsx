@@ -45,20 +45,11 @@ export const Header = ({ cookies }) => {
                   </li>
                   <li>
                     <Link
-                      href="/story/saved-stories"
-                      passHref
-                      className="inline-flex items-center justify-center h-10 gap-2 px-6 text-sm font-medium tracking-wide transition duration-300 rounded-full focus-visible:outline-none justify-self-center whitespace-nowrap bg-blue-100 text-emerald-500 hover:bg-emerald-100 hover:text-emerald-600 focus:bg-emerald-200 focus:text-emerald-700 disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-100 disabled:text-emerald-400 disabled:shadow-none"
-                    >
-                      Your Stories
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
                       href="/story/display-story"
                       passHref
                       className="inline-flex items-center justify-center h-10 gap-2 px-6 text-sm font-medium tracking-wide transition duration-300 rounded-full focus-visible:outline-none justify-self-center whitespace-nowrap bg-blue-100 text-emerald-500 hover:bg-emerald-100 hover:text-emerald-600 focus:bg-emerald-200 focus:text-emerald-700 disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-100 disabled:text-emerald-400 disabled:shadow-none"
                     >
-                      Display Story
+                      Your Stories
                     </Link>
                   </li>
                   <li>
