@@ -22,7 +22,7 @@ export const Header = ({ cookies }) => {
             }}
           />
           <nav>
-            <ul className="flex gap-5 pr-10">
+            <ul className="flex gap-4 pr-8">
               {cookies ? ( // If user is logged in
                 <>
                   <li>
