@@ -103,14 +103,17 @@ const StoryForm = ({
   ];
 
   return (
-    <div onSubmit={onSubmit}>
-      <h2>Main Character</h2>
+    <div
+      onSubmit={onSubmit}
+      className="flex flex-col lg:flex-row lg:flex-wrap lg:justify-between"
+    >
+     
 
-      <div className="relative my-6">
+      <div className="w-full lg:w-1/3 lg:px-4">
         <input
           id="childName"
           type="text"
-          name="name"
+          name="childName"
           placeholder="Enter Name"
           value={childName}
           onChange={(e) => setChildName(e.target.value)}
@@ -118,71 +121,62 @@ const StoryForm = ({
         />
         <label
           htmlFor="childName"
-          className="cursor-text peer-focus:cursor-default absolute left-2 -top-2 z-[1] px-2 text-xs text-slate-400 transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-emerald-500 peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 peer-disabled:before:bg-transparent"
+          className="cursor-text peer-focus:cursor-default left-2 -top-2 z-[1] px-2 text-xs text-slate-400 transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-emerald-500 peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 peer-disabled:before:bg-transparent"
         >
           Child's Name
         </label>
       </div>
-      <br />
-      <br />
-      <DropdownMenu
-        id="gender"
-        buttonLabel={"Child's Gender"}
-        navigationItems={pickGender}
-        setFunction={setGender}
-      />
-      <br />
-    
-      <br />
-      <br />
-      <br />
-      <br />
+      <div className="w-full lg:w-1/3 lg:px-4">
+        <DropdownMenu
+          id="gender"
+          buttonLabel={"Child's Gender"}
+          navigationItems={pickGender}
+          setFunction={setGender}
+        />
+      </div>
+      <div className="w-full lg:w-1/3 lg:px-4">
+        <RangeSlider
+          label="Age"
+          sliderValue={age}
+          min={1}
+          max={10}
+          step={1}
+          setSliderValue={setAge}
+        />
+      </div>
 
-      <RangeSlider
-        label="Age"
-        sliderValue={age}
-        min={1}
-        max={10}
-        step={1}
-        setSliderValue={setAge}
-      />
-      <br />
-
-      <br />
-      <DropdownMenu
-        id="storyStyle"
-        buttonLabel={"Pick the Story Style"}
-        navigationItems={pickStyle}
-        setFunction={setStoryStyle}
-      />
-      <br />
-      <br />
-      <DropdownMenu
-        id="storyTopic"
-        buttonLabel={"Pick Educational Topic"}
-        navigationItems={pickTopic}
-        setFunction={setStoryTopic}
-      />
-      <br />
-      <br />
-      <DropdownMenu
-        id="language"
-        buttonLabel={"Language"}
-        navigationItems={pickLanguage}
-        setFunction={setLanguage}
-      />
-      <br />
-      <br />
-      <br />
-
-      <button
-        className="inline-flex items-center justify-center h-10 gap-2 px-5 text-sm font-medium tracking-wide transition duration-300 rounded shadow-md focus-visible:outline-none justify-self-center whitespace-nowrap bg-emerald-50 text-emerald-500 shadow-emerald-100 hover:bg-emerald-100 hover:text-emerald-600 hover:shadow-md hover:shadow-emerald-100 focus:bg-emerald-200 focus:text-emerald-700 focus:shadow-md focus:shadow-emerald-100 disabled:cursor-not-allowed disabled:border-emerald-100 disabled:bg-emerald-100 disabled:shadow-none"
-        onClick={handleButtonClick}
-      >
-        <span>Add Secondary Hero</span>
-      </button>
-      <br />
-      <br />
+      <div className="w-full lg:w-1/3 lg:px-4">
+        <DropdownMenu
+          id="storyStyle"
+          buttonLabel={"Pick the Story Style"}
+          navigationItems={pickStyle}
+          setFunction={setStoryStyle}
+        />
+      </div>
+      <div className="w-full lg:w-1/3 lg:px-4">
+        <DropdownMenu
+          id="storyTopic"
+          buttonLabel={"Pick Educational Topic"}
+          navigationItems={pickTopic}
+          setFunction={setStoryTopic}
+        />
+      </div>
+      <div className="w-full lg:w-1/3 lg:px-4">
+        <DropdownMenu
+          id="language"
+          buttonLabel={"Language"}
+          navigationItems={pickLanguage}
+          setFunction={setLanguage}
+        />
+      </div>
+      <div className="w-full lg:w-1/3 lg:px-4">
+        <button
+          className="inline-flex items-center justify-center h-10 gap-2 px-5 text-sm font-medium tracking-wide transition duration-300 rounded shadow-md focus-visible:outline-none justify-self-center whitespace-nowrap bg-emerald-50 text-emerald-500 shadow-emerald-100 hover:bg-emerald-100 hover:text-emerald-600 hover:shadow-md hover:shadow-emerald-100 focus:bg-emerald-200 focus:text-emerald-700 focus:shadow-md focus:shadow-emerald-100 disabled:cursor-not-allowed disabled:border-emerald-100 disabled:bg-emerald-100 disabled:shadow-none"
+          onClick={handleButtonClick}
+        >
+          <span>Add Secondary Hero</span>
+        </button>
+      </div>
       {isDropdownOpen && (
         <div>
           <DropdownMenu
@@ -210,41 +204,29 @@ const StoryForm = ({
           </div>
         </div>
       )}
+      <div className="w-full lg:w-1/3 lg:px-4">
+        <RangeSlider
+          label="Time"
+          sliderValue={time}
+          min={1}
+          max={10}
+          step={1}
+          setSliderValue={setTime}
+        />
+      </div>
+      <div className="w-full lg:w-1/3 lg:px-4">
+        <Checkbox />
+      </div>
 
-      <br />
-      <br />
-      <br />
-
-      <br />
-      <br />
-
-      <RangeSlider
-        label="Time"
-        sliderValue={time}
-        min={1}
-        max={10}
-        step={1}
-        setSliderValue={setTime}
-      />
-      <br />
-<Checkbox />
-      <br />
-      <br />
- 
-      {/* <input type="submit" value="Generate Story" /> */}
-      {/* <!-- Component: Large primary basic button --> */}
-      <button
-        type="button"
-        onClick={onSubmit}
-        className="inline-flex items-center justify-center h-12 gap-2 px-6 text-sm font-medium tracking-wide text-white transition duration-300 rounded focus-visible:outline-none whitespace-nowrap bg-emerald-500 hover:bg-emerald-600 focus:bg-emerald-700 disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none"
-      >
-        <span>Generate the Story</span>
-      </button>
-      <br />
-      <br />
-      <br />
-      <br />
-      {/* <!-- End Large primary basic button --> */}
+      <div>
+        <button
+          type="button"
+          onClick={onSubmit}
+          className="inline-flex items-center justify-center h-12 gap-2 px-6 text-sm font-medium tracking-wide text-white transition duration-300 rounded focus-visible:outline-none whitespace-nowrap bg-emerald-500 hover:bg-emerald-600 focus:bg-emerald-700 disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none"
+        >
+          <span>Generate the Story</span>
+        </button>
+      </div>
     </div>
   );
 };

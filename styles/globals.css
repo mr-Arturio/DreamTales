@@ -1,17 +1,24 @@
-
 /* styles.css */
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 @font-face {
-  font-family: 'Bernoru';
-  src: url('../public/fonts/bernoru-blackultraexpanded.otf') format('opentype');
-  }
+  font-family: "Bernoru";
+  src: url("../public/fonts/bernoru-blackultraexpanded.otf") format("opentype");
+}
 @font-face {
-  font-family: 'Garet';
-  src: url('../public/fonts/Garet-Book.otf') format('opentype');
-  }
+  font-family: "Garet";
+  src: url("../public/fonts/Garet-Book.otf") format("opentype");
+}
 
+/* .main_story,
+.main_story input {
+  background-image: url("../public/docs/design/Backgrounds/symbol-scatter-haikei (6).svg");
+  font-size: 16px;
+  line-height: 24px;
+  color: #353740;
+  font-family: "ColfaxAI", Helvetica, sans-serif;
+} */
 
 .home_body {
   background-image: url("../public/docs/design/Backgrounds/darkblue.svg");
@@ -28,21 +35,21 @@
 .home_content {
   width: 40%;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   justify-content: center;
   align-items: flex-start;
- }
+}
 
- .home_body h1 {
-  font-family: 'Bernoru', sans-serif;
+.home_body h1 {
+  font-family: "Bernoru", sans-serif;
   font-size: 6rem;
   margin-bottom: 1rem;
-  color: #FFC544;
+  color: #ffc544;
   line-height: 1;
 }
 
 .home_body p {
-  font-family: 'Garet', sans-serif;
+  font-family: "Garet", sans-serif;
   font-weight: bold;
   margin-bottom: 2rem;
   font-size: 1.5rem;
@@ -53,12 +60,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #50D6A6;
-  color: #065F46;
+  background-color: #50d6a6;
+  color: #065f46;
   border: none;
   padding: 1rem 3.5rem;
   border-radius: 1.8rem;
-  font-family: 'Garet', sans-serif;
+  font-family: "Garet", sans-serif;
   cursor: pointer;
   font-size: 1.4rem;
   line-height: 1;
@@ -69,24 +76,22 @@
 }
 
 .home_body button:hover {
-  background-color: #A7F3D0;
-  color: #065F46;
+  background-color: #a7f3d0;
+  color: #065f46;
 }
 
 .home_body button:focus {
-  background-color: #D1F4E3;
-  color: #065F46;
+  background-color: #d1f4e3;
+  color: #065f46;
 }
 
 .home_body button:disabled {
   cursor: not-allowed;
-  border: 1px solid #6EE7B7;
-  background-color: #E6F9F0;
-  color: #86EFAC;
+  border: 1px solid #6ee7b7;
+  background-color: #e6f9f0;
+  color: #86efac;
   box-shadow: none;
 }
-
-
 
 footer {
   background: rgba(0, 180, 216, 0.33);
