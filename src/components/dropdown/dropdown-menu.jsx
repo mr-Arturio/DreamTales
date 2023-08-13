@@ -68,11 +68,10 @@ export default function DropdownMenu(props) {
 
   return (
     <>
-      {/* <!-- Component: Basic dropdown menu--> */}
       <div className="relative inline-flex " id="dropdown">
-        {/*  <!--  Start Dropdown trigger --> */}
+
         <button
-          className="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded bg-emerald-500 px-5 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-emerald-600 focus:bg-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none"
+          className="inline-flex h-10 items-center justify-center gap-2 mb-10 whitespace-nowrap rounded bg-emerald-500 px-5 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-emerald-600 focus:bg-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none"
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen ? " true" : "false"}
           ref={wrapperRef}
@@ -99,8 +98,7 @@ export default function DropdownMenu(props) {
             </svg>
           </span>
         </button>
-        {/*  <!--  End Dropdown trigger --> */}
-        {/*  <!-- Start Menu list --> */}
+
         <ul
           className={`${
             isOpen ? "flex" : "hidden"
@@ -131,9 +129,7 @@ export default function DropdownMenu(props) {
             );
           })}
         </ul>
-        {/*  <!-- End Menu list --> */}
       </div>
-      {/* <!-- End Basic dropdown menu--> */}
     </>
   );
 }

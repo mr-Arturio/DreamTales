@@ -11,20 +11,12 @@
   src: url("../public/fonts/Garet-Book.otf") format("opentype");
 }
 
-/* .main_story,
-.main_story input {
-  background-image: url("../public/docs/design/Backgrounds/symbol-scatter-haikei (6).svg");
-  font-size: 16px;
-  line-height: 24px;
-  color: #353740;
-  font-family: "ColfaxAI", Helvetica, sans-serif;
-} */
 
 .home_body {
   background-image: url("../public/docs/design/Backgrounds/darkblue.svg");
   background-size: cover;
   background-position: center;
-  min-height: 92vh;
+  min-height: 88vh;
   display: flex;
   justify-content: flex-start;
   align-items: stretch;

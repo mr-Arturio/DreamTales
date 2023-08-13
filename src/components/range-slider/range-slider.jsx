@@ -20,7 +20,7 @@ export default function RangeSlider({ label, sliderValue, setSliderValue, min, m
     className="slider"
     onChange={handleSliderChange}
   />
-      <div className="mt-1 text-center text-lg font-semibold">
+      <div className="mt-1 text-left text-lg font-semibold">
       {label}: {sliderValue}
       </div>
     </div>

@@ -119,10 +119,7 @@ const StoryPage = () => {
           width={200}
           height={85}
         />
-        <h3 className="text-3xl font-comic-sans">Lets Craft!</h3>
-        <div className="w-4/5 flex flex-col items-start justify-center">
-          <h2 className="text-2xl font-bold">Main Character</h2>
-        </div>
+        <h3 className="text-3xl font-comic-sans mb-10">Lets Craft!</h3>
         {loading ? (
           <LoadingScreen />
         ) : (
