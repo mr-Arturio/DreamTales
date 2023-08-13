@@ -2,11 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 
 export default function DropdownMenu(props) {
   console.log(props);
-  const { buttonLabel, navigationItems, } = props;
+  const { buttonLabel, navigationItems } = props;
   const [isOpen, setIsOpen] = useState(false);
   const [currentItem, setCurrentItem] = useState(null);
   const wrapperRef = useRef(null);
-
 
   const handleSelectItem = (value, setFunction) => {
     console.log("++++++++", value);
@@ -69,10 +68,12 @@ export default function DropdownMenu(props) {
   return (
     <>
       <div className="relative inline-flex " id="dropdown">
-
         <button
           className="inline-flex h-10 items-center justify-center gap-2 mb-10 mt-10 whitespace-nowrap rounded bg-green px-5 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-emerald-600 focus:bg-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={(e) => {
+            e.preventDefault(); // Prevent form submission
+            setIsOpen(!isOpen);
+          }}
           aria-expanded={isOpen ? " true" : "false"}
           ref={wrapperRef}
         >
@@ -108,7 +109,7 @@ export default function DropdownMenu(props) {
             return (
               <li key={index}>
                 <a
-                style={{cursor: "pointer"}}
+                  style={{ cursor: "pointer" }}
                   className={` ${
                     index === currentItem
                       ? "bg-emerald-50 text-emerald-500"
@@ -119,7 +120,9 @@ export default function DropdownMenu(props) {
                   <span className="flex flex-col gap-1 overflow-hidden whitespace-nowrap">
                     <span
                       className="truncate leading-5"
-                      onClick={() => handleSelectItem(item.linkName, props.setFunction)}
+                      onClick={() =>
+                        handleSelectItem(item.linkName, props.setFunction)
+                      }
                     >
                       {item.linkName}
                     </span>

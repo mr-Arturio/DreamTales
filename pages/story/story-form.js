@@ -105,7 +105,7 @@ const StoryForm = ({
 
   return (
     <>
-      <div
+      <form
         onSubmit={onSubmit}
         className="flex flex-col lg:flex-row lg:flex-wrap lg:justify-between"
       >
@@ -148,7 +148,10 @@ const StoryForm = ({
         <div className="w-full lg:w-1/4 relative flex justify-center">
   <button
     className="inline-flex items-center justify-center mb-10 mt-10 h-10 gap-2 px-5 text-sm font-medium tracking-wide transition duration-300 rounded shadow-md focus-visible:outline-none justify-self-center whitespace-nowrap bg-emerald-50 text-emerald-500 shadow-emerald-100 hover:bg-emerald-100 hover:text-emerald-600 hover:shadow-md hover:shadow-emerald-100 focus:bg-emerald-200 focus:text-emerald-700 focus:shadow-md focus:shadow-emerald-100 disabled:cursor-not-allowed disabled:border-emerald-100 disabled:bg-emerald-100 disabled:shadow-none"
-    onClick={handleButtonClick}
+    onClick={(e) => {
+      e.preventDefault(); // Prevent form submission
+      handleButtonClick();
+    }}
   >
     <span>Add Secondary Hero</span>
   </button>
@@ -226,10 +229,9 @@ const StoryForm = ({
         <div className="w-full lg:w-1/4 flex items-center justify-center">
           <Checkbox />
         </div>
-      </div>
+      </form>
       <div>
         <button
-          type="button"
           onClick={onSubmit}
           className="inline-flex items-center justify-center mb-10 mt-10 h-12 gap-2 px-6 text-sm font-medium tracking-wide text-white transition duration-300 rounded focus-visible:outline-none whitespace-nowrap bg-emerald-500 hover:bg-emerald-600 focus:bg-emerald-700 disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none"
         >
