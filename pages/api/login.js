@@ -6,10 +6,10 @@ import { serialize } from 'cookie';
 export default async function handler(req, res) {
   if (req.method === 'POST') {
 
-    const { email, password } = req.body;
+    const { name ,email, password } = req.body;
 
     try {
-      const query = 'SELECT id, email, password FROM users WHERE email = $1';
+      const query = 'SELECT id, name, email, password FROM users WHERE email = $1';
       const result = await db.query(query, [email]);
       if (result.rowCount === 0) {
         alert('User not found.');

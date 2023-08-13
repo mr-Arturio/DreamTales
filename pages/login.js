@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-
+import { verifyToken } from './api/auth';
 //import db from '/db/databse';
 
 
@@ -26,6 +26,7 @@ export default function login({ setCookie }) {
         const result = await response.json()
         localStorage.setItem('UserCookie', result.data)
         setCookie(result.data)
+        
         alert('User logged in successfully!');
         router.push('/');
         return
