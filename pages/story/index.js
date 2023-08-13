@@ -101,7 +101,7 @@ const StoryPage = () => {
 
   return (
     <div
-      className="bg-cover bg-center bg-no-repeat h-screen flex flex-col justify-start items-center"
+      className="bg-cover bg-center bg-no-repeat min-h-screen flex flex-col justify-start items-center"
       style={{
         backgroundImage:
           'url("/docs/design/Backgrounds/symbol-scatter-haikei (7).svg")',
@@ -119,7 +119,7 @@ const StoryPage = () => {
           width={200}
           height={85}
         />
-        <h3 className="text-3xl font-comic-sans mb-10">Lets Craft!</h3>
+        <h3 className="text-3xl font-comic-sans mb-10 text-orange">Lets Craft!</h3>
         {loading ? (
           <LoadingScreen />
         ) : (

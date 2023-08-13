@@ -95,3 +95,13 @@ footer {
   width: 100%;
   height: 5vh;
 }
+
+.visible {
+  transform: translateY(0);
+  transition: transform 0.5s ease-in-out;
+}
+
+.hidden {
+  transform: translateY(100%);
+  transition: transform 0.5s ease-in-out;
+}
