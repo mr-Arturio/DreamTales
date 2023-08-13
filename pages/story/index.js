@@ -1,9 +1,10 @@
 import Head from "next/head";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import StoryForm from "./story-form";
 import LoadingScreen from "@/src/components/loading-screen";
-import styles from "../index.module.css";
+import "tailwindcss/tailwind.css";
 
 const StoryPage = () => {
   const [childName, setChildName] = useState("");
@@ -21,19 +22,17 @@ const StoryPage = () => {
 
   useEffect(() => {
     async function checkLoginStatus(req, res) {
-      
       try {
         const response = await fetch("/api/check-login-status", {
-          method:"GET",
+          method: "GET",
           headers: {
             "Content-Type": "application/json",
           },
         });
-        
+
         const data = await response.json();
-      
+
         if (!data.isLoggedIn) {
-         
           // User is not logged in, redirect to the login page
           router.push("/login"); // Replace with your login page URL
         }
@@ -44,7 +43,6 @@ const StoryPage = () => {
 
     checkLoginStatus();
   }, []);
-
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -102,17 +100,28 @@ const StoryPage = () => {
   }
 
   return (
-    <div>
+    <div
+      className="bg-cover bg-center bg-no-repeat min-h-screen flex flex-col justify-start items-center"
+      style={{
+        backgroundImage:
+          'url("/docs/design/Backgrounds/symbol-scatter-haikei (7).svg")',
+      }}
+    >
       <Head>
         <title>Creating Story</title>
         <link rel="icon" href="/docs/design/logo/cloudBlue.svg" />
       </Head>
 
-      <main className={styles.main}>
-        <img src="/docs/design/logo/Ghost.png" className={styles.icon} />
-        <h3>Short story</h3>
+      <main className="flex flex-col items-center">
+        <Image
+          src="/docs/design/logo/ghost2.svg"
+          alt="cute ghost image"
+          width={200}
+          height={85}
+        />
+        <h3 className="text-3xl font-comic-sans mb-10 text-orange">Lets Craft!</h3>
         {loading ? (
-        <LoadingScreen />
+          <LoadingScreen />
         ) : (
           <StoryForm
             onSubmit={onSubmit}

@@ -8,7 +8,7 @@ export default function Checkbox() {
       {/*<!-- Component: Primary basic checkbox --> */}
       <div className="relative flex flex-wrap items-center">
         <input
-          className="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-500 checked:hover:border-emerald-600 checked:hover:bg-emerald-600 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
+          className="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-500 checked:hover:border-emerald-600 checked:hover:bg-emerald-600 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-green focus-visible:outline-none disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
           type="checkbox"
           value={checked}
           checked={checked}
@@ -16,7 +16,7 @@ export default function Checkbox() {
           id="id-c01"
         />
         <label
-          className="pl-2 cursor-pointer text-slate-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400"
+          className="pl-2 cursor-pointer text-blue2 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400"
           htmlFor="id-c01"
         >
           Add image to the Story
