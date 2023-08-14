@@ -101,7 +101,7 @@ const DisplayStoryPage = () => {
         data.map((item) => (
           <div key={item.id}>
             {/*<!-- Component: Horizontal card--> */}
-            <div className="flex flex-col overflow-hidden bg-white rounded shadow-md text-slate-500 shadow-slate-200 sm:flex-row">
+            <div className="flex flex-col overflow-hidden bg-white rounded shadow-md text-slate-500 shadow-slate-200 w-auto h-auto m-12">
               {/*  <!-- Image --> */}
               {/*  <!-- Body--> */}
               <div className="flex-1 p-6 sm:mx-6 sm:px-0">
@@ -122,7 +122,8 @@ const DisplayStoryPage = () => {
                 </figure>
                 <p>
                   {truncateText(item.story, 150)}</p>
-                <button className={`whitespace-nowrap rounded px-5 text-sm font-medium tracking-wide ${isFavourite ? 'bg-emerald-500 text-white' : 'text-emerald-500'
+                  <div className="flex justify-between">
+                <button className={`whitespace-nowrap rounded inline-flex items-center px-10 h-10 gap-2 text-sm font-medium tracking-wide ${isFavourite ? 'bg-emerald-500 text-white' : 'text-emerald-500'
                   } transition duration-300 hover:bg-emerald-100 hover:text-emerald-600 focus:bg-emerald-200 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:text-emerald-300 disabled:shadow-none disabled:hover:bg-transparent`}
                   onClick={() => toggleFavorite(item.id)}>
                   <span className="relative only:-mx-6">
@@ -148,7 +149,8 @@ const DisplayStoryPage = () => {
                     </svg>
                   </span>
                 </button>
-                <ModalActionButtons displayFavouriteStory={item.story} displayPhoto ={item.photo} displayTitle={item.title} itemId={item.id}></ModalActionButtons>
+                <ModalActionButtons className="inline-flex items-center h-10 gap-2 text-sm font-medium tracking-wide" displayFavouriteStory={item.story} displayPhoto ={item.photo} displayTitle={item.title} itemId={item.id}></ModalActionButtons>
+             </div>
               </div>
             </div>
 
@@ -156,7 +158,7 @@ const DisplayStoryPage = () => {
           </div>
         ))) : (<>
           {/*<!-- Component: Horizontal card--> */}
-          <div className="flex flex-col overflow-hidden bg-white rounded shadow-md text-slate-500 shadow-slate-200 sm:flex-row">
+          <div className="flex flex-col overflow-hidden bg-white rounded shadow-md text-slate-500 shadow-slate-200 w-auto h-auto m-12">
             {/*  <!-- Image --> */}
             {/*  <!-- Body--> */}
             <div className="flex-1 p-6 sm:mx-6 sm:px-0">
@@ -168,7 +170,7 @@ const DisplayStoryPage = () => {
                   <p className="text-sm text-slate-400"> {data.created_at}</p>
                 </div>
               </header>
-              <figure className="">
+              <figure>
                 <img
                   src={data.photo}
                   alt="card image"
@@ -177,7 +179,8 @@ const DisplayStoryPage = () => {
               </figure>
               <p>
                 {truncateText(data.story, 150)}</p>
-              <button className={`whitespace-nowrap rounded px-5 text-sm font-medium tracking-wide ${isFavourite ? 'bg-emerald-500 text-white' : 'text-emerald-500'
+                <div className = "flex justify-between">
+              <button className={`whitespace-nowrap rounded inline-flex items-center px-10 h-10 gap-2 text-sm font-medium tracking-wide ${isFavourite ? 'bg-emerald-500 text-white' : 'text-emerald-500'
                 } transition duration-300 hover:bg-emerald-100 hover:text-emerald-600 focus:bg-emerald-200 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:text-emerald-300 disabled:shadow-none disabled:hover:bg-transparent`}
                 onClick={() => toggleFavorite(id)}>
                 <span className="relative only:-mx-6">
@@ -203,9 +206,10 @@ const DisplayStoryPage = () => {
                   </svg>
                 </span>
               </button>
-              <ModalActionButtons> displayFavouriteStory={data.story} displayPhoto ={data.photo} displayTitle={data.title} itemId={data.id}
+              <ModalActionButtons className="inline-flex items-center h-10 gap-2 text-sm font-medium tracking-wide"> displayFavouriteStory={data.story} displayPhoto ={data.photo} displayTitle={data.title} itemId={data.id}
              </ModalActionButtons>
             
+              </div>
             </div>
           </div>
 
