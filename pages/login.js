@@ -41,7 +41,7 @@ export default function login({ setCookie }) {
   };
 
   return (
-    <>
+    <div className='flex items-center justify-center mt-12' >
       {/*<!-- Component: Card with form --> */}
       <form onSubmit={login} className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200">
         {/*  <!-- Body--> */}
@@ -116,29 +116,7 @@ export default function login({ setCookie }) {
         </div>
       </form>
       {/*<!-- End Card with form --> */}
-    </>
-    // <form onSubmit={login}>
-    //   <div>
-    //     <label htmlFor="email">Email:</label>
-    //     <input
-    //       type="email"
-    //       id="email"
-    //       value={email}
-    //       onChange={(e) => setEmail(e.target.value)}
-    //       required
-    //     />
-    //   </div>
-    //   <div>
-    //     <label htmlFor="password">Password:</label>
-    //     <input
-    //       type="password"
-    //       id="password"
-    //       value={password}
-    //       onChange={(e) => setPassword(e.target.value)}
-    //       required
-    //     />
-    //   </div>
-    //   <button type="submit">Login</button>
-    // </form>
+    </div>
+    
   );
 }
