@@ -97,7 +97,7 @@ const Header = () => {
 
 
   return (
-    <div key={1} className="grid grid-cols-3 gap-4 grid grid-cols-3 gap-4 bg-cover bg-center bg-no-repeat min-h-screen flex flex-col justify-start items-center"
+    <div key={1} className="grid grid-cols-3 gap-4 grid grid-cols-3 gap-4 bg-cover bg-center bg-no-repeat min-h-screen  justify-start items-center"
     style={{
       backgroundImage:
         'url("/docs/design/Backgrounds/Dots.svg")'}} >

@@ -96,7 +96,7 @@ const DisplayStoryPage = () => {
 
 
   return (
-    <div className="grid grid-cols-3 gap-4 bg-cover bg-center bg-no-repeat min-h-screen flex flex-col justify-start items-center"
+    <div className="grid grid-cols-3 gap-4 bg-cover bg-center bg-no-repeat min-h-screen  justify-start items-center"
     style={{
       backgroundImage:
         'url("/docs/design/Backgrounds/Collage.svg")',

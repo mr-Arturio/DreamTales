@@ -189,7 +189,7 @@ export default function ModalActionButtons({ displayFavouriteStory, displayPhoto
                   <img
                     src={displayPhoto}
                     alt="card image"
-                    className="aspect-video w-full"
+                    className="aspect-video  w-auto mx-12"
                   />
                 </figure>
                 <p>
