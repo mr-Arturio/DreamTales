@@ -39,7 +39,7 @@ export default function Register() {
 
 
   return (
-    <>
+    <div className=" flex items-center justify-center mt-12">
       {/*<!-- Component: Card with form --> */}
       <form onSubmit={handleSubmit} className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200">
         {/*  <!-- Body--> */}
@@ -134,41 +134,6 @@ export default function Register() {
         </div>
       </form>
       {/*<!-- End Card with form --> */}
-    </>
+    </div>
   )
 }
-
-    // <form onSubmit={handleSubmit}>
-    //   <div>
-    //     <label htmlFor="name">Name:</label>
-    //     <input
-    //       type="text"
-    //       id="name"
-    //       value={name}
-    //       onChange={(e) => setName(e.target.value)}
-    //       required
-    //     />
-    //   </div>
-    //   <div>
-    //     <label htmlFor="email">Email:</label>
-    //     <input
-    //       type="email"
-    //       id="email"
-    //       value={email}
-    //       onChange={(e) => setEmail(e.target.value)}
-    //       required
-    //     />
-    //   </div>
-    //   <div>
-    //     <label htmlFor="password">Password:</label>
-    //     <input
-    //       type="password"
-    //       id="password"
-    //       value={password}
-    //       onChange={(e) => setPassword(e.target.value)}
-    //       required
-    //     />
-    //   </div>
-    //   <button type="submit">Register</button>
-    // </form>
-  // );
