@@ -99,7 +99,7 @@ const DisplayStoryPage = () => {
     <div className="grid grid-cols-3 gap-4 bg-cover bg-center bg-no-repeat min-h-screen  justify-start items-center"
     style={{
       backgroundImage:
-        'url("/docs/design/Backgrounds/Collage.svg")',
+        'url("/docs/design/Backgrounds/collage4.svg")',
     }}>
       {isLoaded ? (
         data.map((item) => (
