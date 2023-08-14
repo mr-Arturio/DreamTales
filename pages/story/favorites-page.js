@@ -103,7 +103,7 @@ const Header = () => {
           <>
 
             {/*<!-- Component: Horizontal card--> */}
-            <div key={item.id} className="flex flex-col overflow-hidden bg-white rounded shadow-md text-slate-500 shadow-slate-200 sm:flex-row">
+            <div key={item.id} className="flex flex-col overflow-hidden bg-white rounded shadow-md text-slate-500 shadow-slate-200 w-auto h-auto m-12">
               {/*  <!-- Image --> */}
               {/*  <!-- Body--> */}
               <div className="flex-1 p-6 sm:mx-6 sm:px-0">
@@ -161,7 +161,7 @@ const Header = () => {
       ) : (
         <>
           {/*<!-- Component: Basic blog card --> */}
-          <div className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200">
+          <div className="flex flex-col overflow-hidden bg-white rounded shadow-md text-slate-500 shadow-slate-200 w-auto h-auto m-12">
             {/*  <!-- Image --> */}
             <figure>
               <img

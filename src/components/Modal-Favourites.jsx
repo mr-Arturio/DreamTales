@@ -133,7 +133,7 @@ export default function ModalActionButtonsFav({ displayFavouriteStory, displayPh
 
 
           <div
-            className="fixed top-0 left-0 z-20 flex h-screen w-screen items-center justify-center bg-slate-300/20 backdrop-blur-sm"
+            className="fixed top-0 bg-opacity-70 bg-blue-900 left-0 z-20 flex h-screen w-screen items-center justify-center backdrop-blur-lg"
             aria-labelledby="header-1a content-1a"
             aria-modal="true"
             tabindex="-1"
