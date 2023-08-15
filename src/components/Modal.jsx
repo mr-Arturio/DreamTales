@@ -79,7 +79,7 @@ export default function ModalActionButtons({ displayFavouriteStory, displayPhoto
       id
     }
     try {
-      const response = await fetch('/api/delete-favourite-stories', {
+      const response = await fetch('/api/delete-story', {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json"
@@ -87,15 +87,15 @@ export default function ModalActionButtons({ displayFavouriteStory, displayPhoto
         body: JSON.stringify(data)
       });
       if (response.ok) {
-        setFavourite(false)
+        
         setIsShowing(false)
         window.location.reload()
       }
     } catch(error) {
-      res.status(500).json({ error: 'Error updating favorites' })
+     console.error("Error", error)
     }
   }
-
+  
   async function toggleFavorite(id) {
 
     try {
