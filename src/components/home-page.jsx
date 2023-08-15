@@ -5,10 +5,9 @@ export const HomePage = () => (
     <div className="home_content">
       <h1>Dream Tales</h1>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-        est laborum.
+      Are you tired of reading the same old bedtime stories night after night? Do you struggle to come up with new, creative tales for your little one? Do you want your child to be the star of their own adventure? Look no further - we've got you covered! <br>
+      </br>
+      Welcome to the DreamTales, the ultimate personalized kids' story app. We understand that every child is unique and deserves stories as special as they are. With DreamTales, you'll embark on a journey of imagination, discovery, and learning, all tailored to your child's interests and preferences.
       </p>
       <Link href="/story/" passHref>
         <button>Create story</button>
