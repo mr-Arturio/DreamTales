@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     try {
       // Fetch the last saved story for the user with 'userId' extracted from the token
       const lastSavedStoryQuery =
-        "SELECT story, title, photo FROM stories WHERE user_id = $1 ORDER BY created_at DESC LIMIT 1";
+        "SELECT id, story, title, photo FROM stories WHERE user_id = $1 ORDER BY created_at DESC LIMIT 1";
 
       // Verify the JWT token and extract the user ID from the decoded token
       const decodedToken = verifyToken(token);
