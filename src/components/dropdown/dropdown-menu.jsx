@@ -69,7 +69,7 @@ export default function DropdownMenu(props) {
     <>
       <div className="relative inline-flex " id="dropdown">
         <button
-          className="inline-flex h-10 items-center justify-center gap-2 mb-10 mt-10 whitespace-nowrap rounded bg-green px-5 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-emerald-600 focus:bg-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none"
+          className="inline-flex w-56 h-14 items-center justify-center gap-2 mb-10 mt-10 whitespace-nowrap rounded bg-green px-5 text-m font-medium tracking-wide text-white transition duration-300 hover:bg-emerald-600 focus:bg-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none"
           onClick={(e) => {
             e.preventDefault(); // Prevent form submission
             setIsOpen(!isOpen);
