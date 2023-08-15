@@ -16,7 +16,7 @@
   background-image: url("../public/docs/design/Backgrounds/darkblue.svg");
   background-size: cover;
   background-position: center;
-  min-height: 88vh;
+  min-height: 90vh;
   display: flex;
   justify-content: flex-start;
   align-items: stretch;

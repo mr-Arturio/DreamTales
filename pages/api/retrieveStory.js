@@ -16,7 +16,7 @@ export default async function connectResponse(req, res) {
 
       const result = await db.query('SELECT * FROM stories WHERE user_id = $1;', [userId])
       const story = result.rows;
-      console.log('RESULT ROWS---->', result.rows)
+      // console.log('RESULT ROWS---->', result.rows)
       res.status(200).json(story)
 
     } catch (error) {
