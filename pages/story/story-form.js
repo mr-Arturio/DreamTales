@@ -69,6 +69,9 @@ const StoryForm = ({
       linkName: "Adventure Stories",
     },
     {
+      linkName: "Christmas Stories",
+    },
+    {
       linkName: "Humorus Stories",
     },
     {
