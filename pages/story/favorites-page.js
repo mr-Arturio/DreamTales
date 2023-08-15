@@ -119,7 +119,7 @@ const Header = () => {
                   </div>
                 </header>
                 <figure className="">
-                  <img src={item.photo} alt="card image" className="m-auto" />
+                  <img src={item.photo} alt="card image" className="m-auto mb-5" />
                 </figure>
                 <p>{truncateText(item.story, 150)}</p>
                 <div className="flex justify-between">

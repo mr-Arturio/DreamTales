@@ -121,7 +121,7 @@ const DisplayStoryPage = () => {
                   <img
                     src={item.photo}
                     alt="card image"
-                    className="m-auto"
+                    className="m-auto mb-5"
                   />
                 </figure>
                 <p>
@@ -178,7 +178,7 @@ const DisplayStoryPage = () => {
                 <img
                   src={data.photo}
                   alt="card image"
-                  className="m-auto"
+                  className="m-auto mb-5"
                 />
               </figure>
               <p>
