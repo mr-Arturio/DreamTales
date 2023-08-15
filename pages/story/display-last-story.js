@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
+import Image from "next/image";
+import useTextAnimation from "@/src/components/textAnimation/useTextAnimation";
 
 const DisplayStoryPage = () => {
   const [story, setStory] = useState({});
-  const [loading, setLoading] = useState(true); // Define the loading state variable and set it to true initially
-  const [generatedImage, setGeneratedImage] = useState(""); // Define the imageUrl state variable and set it to an empty string
+  const [loading, setLoading] = useState(true);
+  const [generatedImage, setGeneratedImage] = useState("");
+  const [title, setTitle] = useState("");
   const [isFavourite, setFavourite] = useState(false)
 
-  // Function to fetch the last saved story for the user with 'userId' = '1'
+
   async function fetchLastSavedStory() {
     try {
       const response = await fetch("/api/get-last-saved-story", {
@@ -16,19 +19,24 @@ const DisplayStoryPage = () => {
         },
       });
       const data = await response.json();
-      console.log("========", data);
+      setTitle(data.title);
       setStory(data.story);
-      setGeneratedImage(data.photo); // Set the generatedImage state variable with the fetched image URL
+      setGeneratedImage(data.photo);
     } catch (error) {
     } finally {
-      setLoading(false); // Set loading to false after fetching the story (whether successful or not)
+      setLoading(false);
     }
   }
 
-  // Call the function to fetch the story when the component mounts
   useEffect(() => {
     fetchLastSavedStory();
   }, []);
+
+
+  //text animation settings
+  const charactersToShow = 5; // number of characters to show
+  const animationDelay = 50; // adjust the timing for the animation
+  const animatedText = useTextAnimation(story.story, charactersToShow, animationDelay);
 
   async function toggleFavorite(id) {
 
@@ -58,21 +66,29 @@ const DisplayStoryPage = () => {
 
   }
 
+
   return (
-<div>
-      <h1>Your Story</h1>
+    <div className="flex flex-col items-center p-6 bg-cover bg-center bg-no-repeat min-h-screen"     style={{
+      backgroundImage:
+        'url("/docs/design/Backgrounds/last.svg")'}}>
+      <h1 className="text-4xl font-bold font-comic-sans mt-10 mb-5">{title.title}</h1>
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div className="flex flex-col items-center">
-          <div className="w-49 h-49 mb-4 overflow-hidden rounded-full">
-            <img
-              src={generatedImage}
-              alt="Generated Cat"
-              className="object-cover w-full h-full"
-            />
+        <div className="flex flex-row justify-evenly lg:flex-row items-center lg:items-center space-y-4 lg:space-y-0">
+          <div className="w-full lg:w-4/5 p-4 border rounded-md shadow-lg  bg-cover bg-center bg-no-repeat bg-slate-200" style={{ fontFamily: "Garet, sans-serif", fontSize: "1.4rem", marginTop: "2rem" }}>
+            <div className="float-right mr-4 mb-4 lg:mb-0 lg:mr-0">
+              <Image
+                src={generatedImage}
+                alt="Story Image"
+                width={600}
+                height={150}
+                className="overflow-hidden ml-7 mb-3"
+              />
+            </div>
+            <p>{animatedText}</p>
           </div>
-          
+         
           <textarea
             className="w-4/5 h-96 p-4 border rounded-md shadow-lg resize-none"
             rows={50}
