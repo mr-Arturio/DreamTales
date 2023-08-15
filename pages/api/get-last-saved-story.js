@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     try {
       // Fetch the last saved story for the user with 'userId' extracted from the token
       const lastSavedStoryQuery =
-      "SELECT story, photo FROM stories WHERE user_id = $1 ORDER BY created_at DESC LIMIT 1";
+      "SELECT id, story, photo FROM stories WHERE user_id = $1 ORDER BY created_at DESC LIMIT 1";
 
       // Verify the JWT token and extract the user ID from the decoded token
       const decodedToken = verifyToken(token);
@@ -21,7 +21,7 @@ export default async function handler(req, res) {
 
       if (result.rowCount > 0) {
         console.log("+++++++++++", result.rows);
-        return res.status(200).json({ story: result.rows[0], photo: result.rows[0].photo });
+        return res.status(200).json({ id: result.rows[0], story: result.rows[0], photo: result.rows[0].photo });
       }
 
       return res.status(404).json({ error: "No story available." });
