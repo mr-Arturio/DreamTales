@@ -97,7 +97,7 @@ const Header = () => {
 
 
   return (
-    <div key={1} className="grid grid-cols-3 gap-4 bg-cover bg-center bg-no-repeat min-h-screen  justify-start items-center"
+    <div key={1} className="grid grid-cols-4 gap-4 bg-cover bg-center bg-no-repeat min-h-screen  justify-start items-center"
     style={{
       backgroundImage:
         'url("/docs/design/Backgrounds/dot3.svg")'}} >
@@ -119,7 +119,7 @@ const Header = () => {
                   </div>
                 </header>
                 <figure className="">
-                  <img src={item.photo} alt="card image" className="m-auto" />
+                  <img src={item.photo} alt="card image" className="m-auto mb-5" />
                 </figure>
                 <p>{truncateText(item.story, 150)}</p>
                 <div className="flex justify-between">
