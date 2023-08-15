@@ -10,9 +10,9 @@ export default async function deleteStory(req, res) {
       const token = cookies.Cookie;
       const decodedToken = verifyToken(token);
       const userId = decodedToken?.user?.id;
-      
+      const storyId = req.body.id;
     
-    const result = await db.query('DELETE FROM stories WHERE favorites = true AND user_id = $1;', [userId])
+    const result = await db.query('DELETE FROM stories WHERE favorites = true AND id = $1;', [storyId])
     const trueStory = result.rows
     res.status(200).json(trueStory)
 
