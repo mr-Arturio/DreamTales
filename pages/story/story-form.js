@@ -107,7 +107,7 @@ const StoryForm = ({
     <>
       <form
         onSubmit={onSubmit}
-        className="flex flex-col lg:flex-row lg:flex-wrap lg:justify-between"
+        className="flex flex-col lg:flex-row lg:flex-wrap lg:justify-between ml-72 mr-72"
       >
         <div className="w-full lg:w-1/4 flex justify-center relative ">
         <input
@@ -206,9 +206,9 @@ const StoryForm = ({
 
         <div className="w-full lg:w-1/4 flex justify-center mt-10">
           <RangeSlider
-            label="Time"
+            label="Minutes"
             sliderValue={time}
-            min={1}
+            min={2}
             max={10}
             step={1}
             setSliderValue={setTime}
@@ -230,10 +230,11 @@ const StoryForm = ({
           <Checkbox />
         </div>
       </form>
+
       <div>
         <button
           onClick={onSubmit}
-          className="inline-flex items-center justify-center mb-10 mt-10 h-12 gap-2 px-6 text-sm font-medium tracking-wide text-white transition duration-300 rounded focus-visible:outline-none whitespace-nowrap bg-emerald-500 hover:bg-emerald-600 focus:bg-emerald-700 disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none"
+          className="inline-flex items-center justify-center mb-10 mt-14 h-14 gap-2 px-8 text-lg font-medium tracking-wide text-emerald-600 transition duration-300 rounded focus-visible:outline-none whitespace-nowrap bg-orange hover:bg-blue2  disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none"
         >
           <span>Generate the Story</span>
         </button>
