@@ -29,29 +29,7 @@ const LoadingScreen = () => {
         {quizQuestion && (
           <div>
             <p className="text-lg mb-4">{quizQuestion.question}</p>
-            <form onSubmit={handleQuizSubmit} className="space-y-2">
-              {quizQuestion.options.map((option) => (
-                <label key={option.value} className="flex items-center space-x-2">
-                  <input
-                    type="radio"
-                    name="answer"
-                    value={option.value}
-                    checked={selectedOption === option.value}
-                    onChange={() => setSelectedOption(option.value)}
-                    required
-                    className="form-radio"
-                  />
-                  <span>{option.label}</span>
-                </label>
-              ))}
-              <button
-                type="submit"
-                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
-              >
-                Submit
-              </button>
-            </form>
-            {showResult && (
+            {showResult ? (
               <div className="mt-4">
                 {selectedOption === quizQuestion.correctAnswer ? (
                   <p className="text-green-500">Correct!</p>
@@ -67,6 +45,29 @@ const LoadingScreen = () => {
                   Next Question
                 </button>
               </div>
+            ) : (
+              <form onSubmit={handleQuizSubmit} className="space-y-2">
+                {quizQuestion.options.map((option) => (
+                  <label key={option.value} className="flex items-center space-x-2">
+                    <input
+                      type="radio"
+                      name="answer"
+                      value={option.value}
+                      checked={selectedOption === option.value}
+                      onChange={() => setSelectedOption(option.value)}
+                      required
+                      className="form-radio"
+                    />
+                    <span>{option.label}</span>
+                  </label>
+                ))}
+                <button
+                  type="submit"
+                  className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+                >
+                  Submit
+                </button>
+              </form>
             )}
           </div>
         )}
