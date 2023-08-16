@@ -19,7 +19,7 @@ export async function generateStory(params) {
   } = params;
 
   // Construct the story generation prompt
-  const prompt = `Generate a ${time} minute Kids story for the ${age} year old ${gender} kid named ${capitalizedName}. The story should take place in a ${storyStyle} style, centered around ${storyTopic}. The main character, ${capitalizedName}, along with ${secondaryHeroName}, should embark on an exciting journey. The narrative should be full of vivid descriptions and kid-friendly language, written in ${language}.\n\nTitle the story with a period at the end.`;
+  const prompt = `Generate a ${time}-minute read Kids story suitable for the ${age}-year old ${gender} kid named ${capitalizedName}. The story should take place in a ${storyStyle} style, centered around ${storyTopic}. The main character, ${capitalizedName}, along with ${secondaryHeroName}, should embark on an exciting journey. The narrative should be full of vivid descriptions and kid-friendly language, written in ${language}.\n\nTitle the story with a period at the end.`;
 
   try {
     const completion = await openai.createCompletion({
