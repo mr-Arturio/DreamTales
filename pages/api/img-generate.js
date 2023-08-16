@@ -12,8 +12,8 @@ export async function generateImage({
   capitalizedName,
   age,
   gender,
-  secondaryHero,
-  secondaryHeroName,
+
+
   storyStyle,
   storyTopic,
 }) {

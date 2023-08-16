@@ -1,8 +1,5 @@
-//import  db  from 'db/databse.js'; 
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
-
-
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 // Function to compare passwords
 const comparePasswords = async (password, hashedPassword) => {
@@ -11,7 +8,7 @@ const comparePasswords = async (password, hashedPassword) => {
 
 // Function to generate a JSON Web Token
 const generateToken = (email) => {
-  return jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: '16h' }); // Replace 'your_secret_key' with a secret key for JWT
+  return jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: "16h" }); // Replace 'your_secret_key' with a secret key for JWT
 };
 
 // Function to verify and decode the JWT token
@@ -20,8 +17,7 @@ const verifyToken = (token) => {
 };
 
 function getCookie(name) {
-
- return localStorage.getItem(name)
+  return localStorage.getItem(name);
 }
 
 export { comparePasswords, generateToken, verifyToken, getCookie };

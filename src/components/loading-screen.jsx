@@ -25,17 +25,20 @@ const LoadingScreen = () => {
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-opacity-70 bg-blue-900 text-white">
       <div className="bg-white rounded-lg p-6 shadow-md text-black">
-        <h2 className="text-xl font-semibold mb-4">While you wait, let's have some fun!</h2>
+        <h2 className="text-xl font-semibold mb-4">
+          While you wait, let's have some fun!
+        </h2>
         {quizQuestion && (
           <div>
             <p className="text-lg mb-4">{quizQuestion.question}</p>
             {showResult ? (
               <div className="mt-4">
                 {selectedOption === quizQuestion.correctAnswer ? (
-                  <p className="text-green-500">Correct!</p>
+                  <p className="text-emerald-500">Correct!</p>
                 ) : (
                   <p className="text-red-500">
-                    Wrong! The correct answer was {quizQuestion.options[quizQuestion.correctAnswer].label}
+                    Wrong! The correct answer was{" "}
+                    {quizQuestion.options[quizQuestion.correctAnswer].label}
                   </p>
                 )}
                 <button
@@ -48,7 +51,10 @@ const LoadingScreen = () => {
             ) : (
               <form onSubmit={handleQuizSubmit} className="space-y-2">
                 {quizQuestion.options.map((option) => (
-                  <label key={option.value} className="flex items-center space-x-2">
+                  <label
+                    key={option.value}
+                    className="flex items-center space-x-2"
+                  >
                     <input
                       type="radio"
                       name="answer"

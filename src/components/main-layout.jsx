@@ -1,14 +1,14 @@
-import React from 'react';
-import { Footer } from './footer';
-import { Header } from './header';
+import React from "react";
+import { Footer } from "./footer";
+import { Header } from "./header";
 
 const MainLayout = ({ children, loading, cookies }) => {
   return (
     <>
-      <Header cookies = {cookies} />
+      <Header cookies={cookies} />
       <main>
-        {loading && <LoadingScreen />} {/* Conditionally render LoadingScreen */}
-        {children}
+        {/* Conditionally render LoadingScreen */}
+        {loading && <LoadingScreen />} {children}
       </main>
       <Footer />
     </>

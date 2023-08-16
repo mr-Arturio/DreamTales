@@ -34,7 +34,7 @@ const StoryPage = () => {
 
         if (!data.isLoggedIn) {
           // User is not logged in, redirect to the login page
-          router.push("/login"); // Replace with your login page URL
+          router.push("/login");
         }
       } catch (error) {
         console.error("Error checking login status:", error);
@@ -91,7 +91,6 @@ const StoryPage = () => {
         query: { story: JSON.stringify(data.result) },
       });
     } catch (error) {
-      // Display user-friendly error message
       console.error(error);
       alert("An error occurred during your request. Please try again later.");
     } finally {
@@ -119,7 +118,9 @@ const StoryPage = () => {
           width={200}
           height={85}
         />
-        <h3 className="text-3xl font-comic-sans mb-10 text-orange">Lets Craft!</h3>
+        <h3 className="text-3xl font-comic-sans mb-10 text-orange">
+          Lets Craft!
+        </h3>
         {loading ? (
           <LoadingScreen />
         ) : (

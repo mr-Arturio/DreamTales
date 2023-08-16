@@ -1,47 +1,43 @@
-import { useState } from 'react';
-import { useRouter } from 'next/router';
+import { useState } from "react";
+import { useRouter } from "next/router";
 
 export default function Register() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
-  const router = useRouter()
-
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch('/api/register', {
-        method: 'POST',
+      const response = await fetch("/api/register", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ name, email, password }),
       });
 
       if (response.ok) {
-        alert('User registered successfully!');
-        // Add code to redirect or show a success message to the user
-        return router.push('/login')
+        alert("User registered successfully!");
+        // code to redirect
+        return router.push("/login");
       } else {
-        alert('Registration failed.');
-        // Add code to show an error message to the user
+        alert("Registration failed.");
       }
-
     } catch (err) {
-      alert('Error during registration:', err);
-      // Add code to show an error message to the user
+      alert("Error during registration:", err);
     }
   };
-
-
-
 
   return (
     <div className=" flex items-center justify-center mt-12">
       {/*<!-- Component: Card with form --> */}
-      <form onSubmit={handleSubmit} className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200">
+      <form
+        onSubmit={handleSubmit}
+        className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200"
+      >
         {/*  <!-- Body--> */}
         <div className="p-6">
           <header className="mb-4 text-center h-0">
@@ -128,12 +124,15 @@ export default function Register() {
         </div>
         {/*  <!-- Action base sized basic button --> */}
         <div className="flex justify-end p-6 ">
-          <button type='submit' className="inline-flex h-10 w-full items-center justify-center gap-2 whitespace-nowrap rounded bg-emerald-500 px-5 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-emerald-600 focus:bg-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none">
+          <button
+            type="submit"
+            className="inline-flex h-10 w-full items-center justify-center gap-2 whitespace-nowrap rounded bg-emerald-500 px-5 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-emerald-600 focus:bg-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none"
+          >
             <span>Register</span>
           </button>
         </div>
       </form>
       {/*<!-- End Card with form --> */}
     </div>
-  )
+  );
 }

@@ -24,7 +24,7 @@ const SavedStories = () => {
         if (!data.isLoggedIn) {
          
           // User is not logged in, redirect to the login page
-          router.push("/login"); // Replace with your login page URL
+          router.push("/login");
         }
       } catch (error) {
         console.error("Error checking login status:", error);

@@ -1,49 +1,45 @@
-import { useState } from 'react';
-import { useRouter } from 'next/router';
-import { verifyToken } from './api/auth';
-//import db from '/db/databse';
-
+import { useState } from "react";
+import { useRouter } from "next/router";
 
 export default function login({ setCookie }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const router = useRouter();
-
 
   const login = async (e) => {
     e.preventDefault();
 
     try {
-
-      const response = await fetch('/api/login', {
-        method: 'POST',
+      const response = await fetch("/api/login", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, password }),
       });
       if (response.ok) {
-        const result = await response.json()
-        localStorage.setItem('UserCookie', result.data)
-        setCookie(result.data)
-        
-        alert('User logged in successfully!');
-        router.push('/');
-        return
+        const result = await response.json();
+        localStorage.setItem("UserCookie", result.data);
+        setCookie(result.data);
+
+        alert("User logged in successfully!");
+        router.push("/");
+        return;
       } else {
-        alert('login failed.');
-        // Add code to show an error message to the user
+        alert("login failed.");
       }
     } catch (err) {
-      alert('Error during login:', err);
-      // Add code to show an error message to the user
+      alert("Error during login:", err);
     }
   };
 
   return (
-    <div className='flex items-center justify-center mt-12' >
+    <div className="flex items-center justify-center mt-12">
       {/*<!-- Component: Card with form --> */}
-      <form onSubmit={login} className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200">
+      <form
+        onSubmit={login}
+        className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200"
+      >
         {/*  <!-- Body--> */}
         <div className="p-6">
           <header className="mb-4 text-center h-0">
@@ -110,13 +106,15 @@ export default function login({ setCookie }) {
         </div>
         {/*  <!-- Action base sized basic button --> */}
         <div className="flex justify-end p-6 ">
-          <button type='submit' className="inline-flex h-10 w-full items-center justify-center gap-2 whitespace-nowrap rounded bg-emerald-500 px-5 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-emerald-600 focus:bg-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none">
+          <button
+            type="submit"
+            className="inline-flex h-10 w-full items-center justify-center gap-2 whitespace-nowrap rounded bg-emerald-500 px-5 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-emerald-600 focus:bg-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none"
+          >
             <span>Log in</span>
           </button>
         </div>
       </form>
       {/*<!-- End Card with form --> */}
     </div>
-    
   );
 }

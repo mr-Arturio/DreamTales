@@ -9,8 +9,7 @@ export default function Home() {
         <link rel="icon" href="/docs/design/logo/cloudBlueText.svg" />
       </Head>
 
-     <HomePage />
-      
+      <HomePage />
     </div>
   );
 }
