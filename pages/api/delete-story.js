@@ -2,7 +2,7 @@ import db from "@/db/database";
 import { verifyToken } from "./auth";
 import { parse } from "cookie";
 
-export default async function deleteStory(req, res) {
+export default async function DeleteStory(req, res) {
   if (req.method === "DELETE") {
     try {
       const cookies = parse(req.headers.cookie || "");
