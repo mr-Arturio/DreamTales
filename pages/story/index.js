@@ -113,14 +113,11 @@ const StoryPage = () => {
 
       <main className="flex flex-col items-center">
         <Image
-          src="/docs/design/logo/ghost2.svg"
+          src="/docs/design/LetsCraft3.svg"
           alt="cute ghost image"
           width={200}
           height={85}
         />
-        <h3 className="text-3xl font-comic-sans mb-10 text-orange">
-          Lets Craft!
-        </h3>
         {loading ? (
           <LoadingScreen />
         ) : (
