@@ -2,7 +2,7 @@ import db from "/db/database";
 import { verifyToken } from "../api/auth";
 import { parse } from "cookie";
 
-export default async function connectResponse(req, res) {
+export default async function ConnectResponse(req, res) {
   if (req.method === "GET") {
     try {
       const cookies = parse(req.headers.cookie || "");

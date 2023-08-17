@@ -1,6 +1,6 @@
 import { serialize } from "cookie";
 
-export default async function logout(req, res) {
+export default async function Logout(req, res) {
   if (req.method === "POST") {
     try {
       const emptyCookie = serialize("Cookie", "", {

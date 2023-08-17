@@ -12,8 +12,6 @@ export async function generateImage({
   capitalizedName,
   age,
   gender,
-
-
   storyStyle,
   storyTopic,
 }) {
