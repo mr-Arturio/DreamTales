@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import Head from "next/head";
-
 import ModalActionButtonsFav from "@/src/components/Modal-Favourites";
 
 const Header = () => {
@@ -119,10 +119,12 @@ const Header = () => {
                     </div>
                   </header>
                   <figure className="">
-                    <img
+                    <Image
                       src={item.photo}
                       alt="card image"
                       className="m-auto mb-5"
+                      width={300}
+                      height={200}
                     />
                   </figure>
                   <p>{truncateText(item.story, 150)}</p>
@@ -182,10 +184,11 @@ const Header = () => {
             <div className="flex flex-col overflow-hidden bg-white rounded shadow-md text-slate-500 shadow-slate-200 w-auto h-auto m-12">
               {/*  <!-- Image --> */}
               <figure>
-                <img
+                <Image
                   src={displayFavouriteStory.photo}
                   alt="card image"
-                  className="aspect-video w-full"
+                  width={300}
+                  height={200}
                 />
               </figure>
               {/*  <!-- Body--> */}

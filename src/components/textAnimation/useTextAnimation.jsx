@@ -12,7 +12,7 @@ const useTextAnimation = (text, charactersToShow, delay) => {
         setCurrentIndex((prevIndex) => prevIndex + charactersToShow);
       }, delay);
     }
-  }, [currentIndex, text]);
+  }, [currentIndex, text, charactersToShow, delay]);
 
   return animatedText;
 };
