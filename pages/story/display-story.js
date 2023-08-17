@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import ModalActionButtons from "@/src/components/Modal";
@@ -53,7 +54,7 @@ const DisplayStoryPage = () => {
     checkLoginStatus();
     getData();
     console.log("SET DATA ----->", data);
-  }, [router]);
+  }, [router, data]);
 
   const truncateText = (text, maxLength) => {
     if (text && text.length > maxLength) {
@@ -112,10 +113,12 @@ const DisplayStoryPage = () => {
                   </div>
                 </header>
                 <figure className="">
-                  <img
+                  <Image
                     src={item.photo}
                     alt="Story image"
                     className="m-auto mb-5"
+                    width={300}
+                    height={200}
                   />
                 </figure>
                 <p>{truncateText(item.story, 150)}</p>
@@ -174,10 +177,12 @@ const DisplayStoryPage = () => {
                 </div>
               </header>
               <figure>
-                <img
+                <Image
                   src={data.photo}
                   alt="card image"
                   className="m-auto mb-5"
+                  width={300}
+                  height={200}
                 />
               </figure>
               <p>{truncateText(data.story, 150)}</p>
