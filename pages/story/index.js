@@ -21,7 +21,7 @@ const StoryPage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    async function checkLoginStatus(req, res) {
+    async function checkLoginStatus() {
       try {
         const response = await fetch("/api/check-login-status", {
           method: "GET",

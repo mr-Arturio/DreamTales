@@ -1,6 +1,7 @@
 import React from "react";
 import { Footer } from "./footer";
 import { Header } from "./header";
+import LoadingScreen from "./loading-screen";
 
 const MainLayout = ({ children, loading, cookies }) => {
   return (

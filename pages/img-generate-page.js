@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
+
 
 const AboutUsPage = () => {
   const [imageUrl, setImageUrl] = useState("");
@@ -53,7 +55,7 @@ const AboutUsPage = () => {
     }
 
     checkLoginStatus();
-  }, []);
+  }, [router]);
 
   return (
     <div>
@@ -66,7 +68,7 @@ const AboutUsPage = () => {
       {imageUrl && (
         <div>
           <h3>Generated Image:</h3>
-          <img src={imageUrl} alt="Generated" />
+          <Image src={imageUrl} alt="Generated" />
         </div>
       )}
     </div>
