@@ -4,7 +4,7 @@ import { generateImage } from "./img-generate";
 import { generateStory } from "./story-generate";
 import db from "../../db/database";
 
-export default async function storyHandler(req, res) {
+export default async function StoryHandler(req, res) {
   // Parse the 'UserCookie' from the request headers
   const cookies = parse(req.headers.cookie || "");
   const token = cookies.Cookie;

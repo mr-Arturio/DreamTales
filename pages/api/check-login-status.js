@@ -1,7 +1,8 @@
 import { parse } from "cookie";
 import { verifyToken } from "./auth";
+import db from "@/db/database";
 
-export default async function checkingLoginStatus(req, res) {
+export default async function CheckingLoginStatus(req, res) {
   if (req.method === "GET") {
     try {
       const cookies = parse(req.headers.cookie || "");
@@ -13,7 +14,6 @@ export default async function checkingLoginStatus(req, res) {
         return res.status(403).json({ error: "User not logged in" });
       }
       res.status(200).json({ isLoggedIn: true });
-      client.release();
     } catch (error) {
       console.error("Error checking login status:", error);
       res.status(500).json({ error: "Error checking login status" });
