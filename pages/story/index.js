@@ -21,7 +21,7 @@ const StoryPage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    async function checkLoginStatus(req, res) {
+    async function checkLoginStatus() {
       try {
         const response = await fetch("/api/check-login-status", {
           method: "GET",
@@ -113,7 +113,7 @@ const StoryPage = () => {
 
       <main className="flex flex-col items-center">
         <Image
-          src="/docs/design/LetsCraft3.svg"
+          src="/docs/design/LetsCraft4.svg"
           alt="cute ghost image"
           width={200}
           height={85}
