@@ -110,10 +110,10 @@ const StoryForm = ({
   ];
 
   return (
-    <>
+    <div className="bg-blue2  border border-blue2 bg-opacity-40 p-4 ml-40 mr-40 mb-10 rounded-lg shadow-md">
       <form
         onSubmit={onSubmit}
-        className="flex flex-col lg:flex-row lg:flex-wrap lg:justify-between ml-72 mr-72"
+        className="flex flex-col lg:flex-row lg:flex-wrap lg:justify-between ml-52 mr-52"
       >
         <div className="w-full lg:w-1/4 flex justify-center relative ">
           <input
@@ -237,15 +237,15 @@ const StoryForm = ({
         </div>
       </form>
 
-      <div>
+      <div className="mt-6 text-center">
         <button
           onClick={onSubmit}
-          className="inline-flex items-center justify-center mb-10 mt-14 h-14 gap-2 px-8 text-lg font-medium tracking-wide text-emerald-600 transition duration-300 rounded focus-visible:outline-none whitespace-nowrap bg-orange hover:bg-blue2  disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none"
+          className="inline-flex items-center justify-center mb-10 mt-10 h-14 gap-2 px-8 text-lg font-medium tracking-wide text-emerald-600 transition duration-300 rounded focus-visible:outline-none whitespace-nowrap bg-orange hover:bg-blue2  disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none"
         >
           <span>Generate the Story</span>
         </button>
       </div>
-    </>
+      </div>
   );
 };
 
