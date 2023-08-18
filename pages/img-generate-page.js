@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 
 
-const AboutUsPage = () => {
+const ImageGenerate = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -75,4 +75,4 @@ const AboutUsPage = () => {
   );
 };
 
-export default AboutUsPage;
+export default ImageGenerate;
