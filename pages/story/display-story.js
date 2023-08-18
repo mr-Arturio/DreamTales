@@ -54,7 +54,7 @@ const DisplayStoryPage = () => {
     checkLoginStatus();
     getData();
     console.log("SET DATA ----->", data);
-  }, [router, data]);
+  }, [router]);
 
   const truncateText = (text, maxLength) => {
     if (text && text.length > maxLength) {
