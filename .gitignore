@@ -39,8 +39,3 @@ next-env.d.ts
 
 # generated images
 /public/images/generated_image_*.png
-
-# GCS_KEY_FILE
-/keys
-
-/home/labber/Final/dream_tales/keys
