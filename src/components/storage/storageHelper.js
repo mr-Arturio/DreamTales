@@ -2,7 +2,7 @@ import { Storage } from '@google-cloud/storage';
 import path from 'path';
 
 const storage = new Storage({
-  keyFilename: process.env.GCS_KEY_FILE,
+  credentials: JSON.parse(process.env.GCS_KEY_FILE), 
 });
 
 const bucketName = 'dream-tales-images';
