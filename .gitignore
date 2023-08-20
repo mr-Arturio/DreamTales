@@ -42,3 +42,5 @@ next-env.d.ts
 
 # GCS_KEY_FILE
 /keys
+
+/home/labber/Final/dream_tales/keys
