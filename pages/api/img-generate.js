@@ -1,7 +1,6 @@
+import fs from "fs";
 import path from "path";
-import { Storage } from '@google-cloud/storage';
 import { Configuration, OpenAIApi } from "openai";
-import { uploadImage } from "@/src/components/storage/storageHelper";
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -9,6 +8,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 export async function generateImage({
+
   capitalizedName,
   age,
   gender,
@@ -48,11 +48,12 @@ export async function generateImage({
     // Convert the ArrayBuffer to a Buffer
     const imageBuffer = Buffer.from(imageArrayBuffer);
 
-// Upload the image to Google Cloud Storage
-const imageFileName = `generated_image_${Date.now()}.png`;
-const imageUploadUrl = await uploadImage(imageBuffer, imageFileName);
+    // Save the image data to a file
+    const imageFileName = `generated_image_${Date.now()}.png`;
+    const imagePath = path.join(process.cwd(), "public/images", imageFileName);
+    fs.writeFileSync(imagePath, imageBuffer);
 
-return imageUploadUrl;
+    return `/images/${imageFileName}`;
 
   } catch (error) {
     if (error.response) {
