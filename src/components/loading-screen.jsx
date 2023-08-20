@@ -26,7 +26,7 @@ const LoadingScreen = () => {
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-opacity-70 bg-blue-900 text-white">
       <div className="bg-white rounded-lg p-6 shadow-md text-black">
         <h2 className="text-xl font-semibold mb-4">
-          While you wait, let's have some fun!
+          While you wait, let&apos;s have some fun!
         </h2>
         {quizQuestion && (
           <div>
