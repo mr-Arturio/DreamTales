@@ -1,8 +1,11 @@
-# DreamTales
+# DreamTales 
+Deployed - [https://dream-tales-90c0129deeec.herokuapp.com/](https://dream-tales-90c0129deeec.herokuapp.com/)
+___
+This repository consists of a full-stack application that uses [NEXT.js](https://nextjs.org/) for front and back end, [PostgreSQL](https://www.postgresql.org/) for database. It is usung [OpenAI](https://platform.openai.com/overview) technologi and API's. Deployed on [Heroku](heroku.com), also using [Google Cloud Storage](https://cloud.google.com/?hl=en) for storing and displaying generated images. All styled using [Tailwind](https://tailwindcss.com/) and Vanila CSS.
+For a localhost repository version - visit ```localhostVesrion``` branch and follow installing instructions there.
 ___
 
-
-Introducing DreamTales - Where Imagination Comes to Life!
+### Introducing DreamTales - Where Imagination Comes to Life!
 
 Are you tired of reading the same old bedtime stories night after night? Do you struggle to come up with new, creative tales for your little one? Do you want your child to be the star of their own adventure? Look no further - we've got you covered!
 
@@ -10,24 +13,35 @@ Welcome to DreamTales, the ultimate personalized kids' story app. We understand 
 
 How does it work? It's as easy as 1-2-3:
 
+- Create an account: to have access to all your previously generated stories and images.
+
 - Create Your Hero: Enter your child's name, age, and even select a style for the story. Whether it's a magical adventure, a hilarious escapade, or a heartwarming tale, you're in control.
 
 - Choose Your Adventure: Pick an educational topic that aligns with your child's developmental needs. From teaching friendship to promoting dental hygiene or potty training, our stories are not only entertaining but also educational.
 
-- Add Special Characters: Make the story even more exciting by adding characters like siblings, friends, and even yourself! Your child will love seeing their loved ones as part of their bedtime journey.
+- Add Special Characters: Make the story even more exciting by adding characters like siblings, friends, and parents! Your child will love seeing their loved ones as part of their bedtime journey.
 
 But what's a story without visuals? We've got that covered too! Our app goes above and beyond ```by generating a one-of-a-kind illustration for every story```. No more generic images - each picture is crafted to match your child's story, making their DreamTale experience truly unforgettable.
-
-But that's not all - we're always dreaming bigger:
 
 Explore Endless Possibilities: With DreamTales, there's no limit to the stories you can enjoy. Every adventure is fresh, exciting, and designed to captivate young minds.
 
 Boost Imagination and Learning: Our stories aren't just about entertainment; they're about nurturing creativity, improving reading skills, and imparting valuable life lessons about kindness, friendship, and more.
 
-
 As we embark on this magical storytelling journey, we're not just creating an app - we're creating memories. Join us in redefining bedtime stories, one DreamTale at a time. Let's make every night an enchanting experience filled with wonder, laughter, and learning. Dream big with DreamTales!
 
-Logo
+### Demo
+<video src="public/docs/2023-08-20%2019-05-45.mp4" controls title="app demo"></video>
+
+### Home Page
+![Home Page](./public/docs/HomeScreen.png)
+
+### Create Story Page
+![Create Story Page](./public/docs/CreateStory.png)
+
+### You Stories
+![Your Stories Page](./public/docs/yourStories.png)
+
+### Logo
 ![DreamTales logo](./public/docs/design/logo/cloudBlueText.svg)
 
 
@@ -58,13 +72,10 @@ The following development dependencies are used for building and styling the app
 
 
 ---
-future improvments:
+Future development:
 - Interactive Adventures:  guide your child through interactive stories where their choices shape the outcome. 
 - audio storytelling option will read the stories aloud, so you can relax while your child explores.
-- picture styles
+- Add picture styles option.
+___
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Created by [Artur](https://github.com/mr-Arturio) & [Rotimi](https://github.com/osuntol)
