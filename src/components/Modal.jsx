@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import ReactDOM from "react-dom";
+import Image from "next/image";
 
 export default function ModalActionButtons({
   displayFavouriteStory,
@@ -185,10 +186,12 @@ export default function ModalActionButtons({
                 {/*        <!-- Modal body --> */}
                 <div id="content-1a" className="flex-1 overflow-auto">
                   <figure>
-                    <img
+                    <Image
                       src={displayPhoto}
                       alt="card image"
                       className="aspect-video  w-auto mb-5 mx-12"
+                      width={400}
+                      height={300}
                     />
                   </figure>
                   <p>{displayFavouriteStory}</p>

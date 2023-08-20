@@ -39,3 +39,6 @@ next-env.d.ts
 
 # generated images
 /public/images/generated_image_*.png
+
+# GCS_KEY_FILE
+/keys/
