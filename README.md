@@ -1,6 +1,8 @@
 # DreamTales
 ___
 
+### This is working localhost version, with local database and image storage
+
 
 Introducing DreamTales - Where Imagination Comes to Life!
 
