@@ -30,7 +30,7 @@ Boost Imagination and Learning: Our stories aren't just about entertainment; the
 As we embark on this magical storytelling journey, we're not just creating an app - we're creating memories. Join us in redefining bedtime stories, one DreamTale at a time. Let's make every night an enchanting experience filled with wonder, laughter, and learning. Dream big with DreamTales!
 
 ### Demo
-<video src="public/docs/2023-08-20%2019-05-45.mp4" controls title="app demo"></video>
+![Application Demo](./public/docs/dreamTales.gif)
 
 ### Home Page
 ![Home Page](./public/docs/HomeScreen.png)
