@@ -1,7 +1,7 @@
 # DreamTales 
-Deployed - [https://dream-tales-90c0129deeec.herokuapp.com/](https://dream-tales-90c0129deeec.herokuapp.com/)
-For an easy and quick trial, use the following credentials:
-Email: test@g.com
+Deployed - [https://dream-tales-90c0129deeec.herokuapp.com/](https://dream-tales-90c0129deeec.herokuapp.com/) <br/>
+For an easy and quick trial, use the following credentials: <br/>
+Email: test@g.com<br/>
 Password: 1234
 ___
 This repository consists of a full-stack application that uses [NEXT.js](https://nextjs.org/) for front and back end, [PostgreSQL](https://www.postgresql.org/) for database. It is usung [OpenAI](https://platform.openai.com/overview) technologi and API's. Deployed on [Heroku](heroku.com), also using [Google Cloud Storage](https://cloud.google.com/?hl=en) for storing and displaying generated images. All styled using [Tailwind](https://tailwindcss.com/) and Vanila CSS.
