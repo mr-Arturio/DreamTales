@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 export const Header = ({ cookies }) => {
   return (
-    <header className="w-full h-25 bg-gradient-to-r from-blue-800 to-teal-700">
+    <header className="w-full h-auto bg-gradient-to-r from-blue-800 to-teal-700">
       <div className="w-full max-w-8xl flex-col ">
         <div className="flex justify-between items-center">
           <Image

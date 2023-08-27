@@ -105,3 +105,34 @@ footer {
   transform: translateY(100%);
   transition: transform 0.5s ease-in-out;
 }
+
+/* Mobile styles */
+@media (max-width: 640px) {
+  .home_body {
+    background-size: auto 100%;
+    background-position: center;
+    padding: 1.5rem;
+    min-height: 100vh;
+  }
+
+  .home_content {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  .home_body h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .home_body p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .home_body button {
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+  }
+}
