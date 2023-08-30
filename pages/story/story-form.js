@@ -2,6 +2,13 @@ import React, { useState } from "react";
 import DropdownMenu from "@/src/components/dropdown/dropdown-menu";
 import RangeSlider from "@/src/components/range-slider/range-slider";
 import Checkbox from "@/src/components/checkbox/checkbox";
+import {
+  pickGender,
+  pickSecondaryHero,
+  pickStyle,
+  pickTopic,
+  pickLanguage,
+} from "@/src/components/UserChoices/UserChoices";
 import InputElement from "@/src/components/input-element/input";
 
 const StoryForm = ({
@@ -31,83 +38,6 @@ const StoryForm = ({
   const handleButtonClick = () => {
     setIsDropdownOpen(!isDropdownOpen); // Toggle the dropdown state
   };
-
-  let pickGender = [
-    {
-      linkName: "Girl",
-    },
-    {
-      linkName: "Boy",
-    },
-    {
-      linkName: "Other",
-    },
-  ];
-
-  let pickSecondaryHero = [
-    {
-      linkName: "Parent",
-    },
-    {
-      linkName: "Friend",
-    },
-    {
-      linkName: "Sibling",
-    },
-    {
-      linkName: "Pet",
-    },
-    {
-      linkName: "Toy",
-    },
-  ];
-  let pickStyle = [
-    {
-      linkName: "Fairy Tales",
-    },
-    {
-      linkName: "Adventure Stories",
-    },
-    {
-      linkName: "Christmas Stories",
-    },
-    {
-      linkName: "Prince and Princess",
-    },
-    {
-      linkName: "Humorus Stories",
-    },
-    {
-      linkName: "Super Hero Stories",
-    },
-  ];
-
-  let pickTopic = [
-    {
-      linkName: "Friendship and Kindness",
-    },
-    {
-      linkName: "Family Values",
-    },
-    {
-      linkName: "Safety and Stranger Awarness",
-    },
-    {
-      linkName: "Sharing and Cooperation",
-    },
-  ];
-
-  let pickLanguage = [
-    {
-      linkName: "English",
-    },
-    {
-      linkName: "French",
-    },
-    {
-      linkName: "Spanish",
-    },
-  ];
 
   return (
     <div className="bg-blue2  border border-blue2 bg-opacity-40 p-4 ml-40 mr-40 mb-10 rounded-lg shadow-md">
@@ -245,7 +175,7 @@ const StoryForm = ({
           <span>Generate the Story</span>
         </button>
       </div>
-      </div>
+    </div>
   );
 };
 
