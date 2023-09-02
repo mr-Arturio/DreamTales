@@ -60,7 +60,7 @@ export const Header = ({ cookies }) => {
             <ul
               role="menubar"
               aria-label="Select page"
-              className={`absolute  gap-4 pr-8 top-0 right-0 z-[-1] h-[28.5rem] w-full  justify-center items-end overflow-hidden  overflow-y-auto overscroll-contain px-8 pb-12 pt-24 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:justify-end lg:pr-0 lg:pb-5 lg:top-0  lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-1  lg:pt-5 lg:opacity-100 ${
+              className={`flex flex-col gap-4 pr-8 top-0 left-0 z-[-1] h-[28.5rem] w-full  justify-end items-end overflow-hidden  overflow-y-auto overscroll-contain px-8 pb-12 pt-24 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:justify-end lg:flex-row lg:pr-0 lg:pb-5 lg:top-0  lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-1  lg:pt-5 lg:opacity-100 ${
                 isToggleOpen
                   ? "visible opacity-100 backdrop-blur-sm"
                   : "invisible opacity-0"
