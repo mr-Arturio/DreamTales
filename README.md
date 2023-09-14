@@ -73,6 +73,8 @@ The following development dependencies are used for building and styling the app
 - `tailwindcss` (^3.3.3): Utility-first CSS framework
 
 
+## Resposnsive design added + UA languge
+
 
 ---
 Future development:
