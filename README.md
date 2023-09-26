@@ -75,6 +75,9 @@ The following development dependencies are used for building and styling the app
 
 ## Resposnsive design added + UA languge
 
+### What was used:
+* [Canva](https://www.canva.com/) - for web design, logo, backgrounds
+
 
 ---
 Future development:
