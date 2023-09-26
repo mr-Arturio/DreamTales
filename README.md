@@ -77,6 +77,9 @@ The following development dependencies are used for building and styling the app
 
 ### What was used:
 * [Canva](https://www.canva.com/) - for web design, logo, backgrounds
+* [Coolors](https://coolors.co/) - to generate the color schemas
+* [Wind UI](https://wind-ui.com/) - Tailwind CSS library. Just copy and paste them on your Tailwind CSS project.
+* [Haikei](https://app.haikei.app/) - Generate unique SVG design assets. For background generation
 
 
 ---
