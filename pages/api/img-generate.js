@@ -32,10 +32,12 @@ export async function generateImage({
   
 
   try {
-    const completion = await openai.createImage({
+    const completion = await openai.images.generate({
+      model: "dall-e-3",
       prompt: prompt,
       n: 1,
-      size: "512x512",
+      size: "1024x1024",
+      quality: "standart",
     });
 
     const imageUrl = completion.data.data[0].url;
