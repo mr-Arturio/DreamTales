@@ -85,6 +85,7 @@ The following development dependencies are used for building and styling the app
 
 ---
 ### Added: 
+- updated img generate model to Dall-E 3
 - Responsive design added + UA language
 
 ### Future development:
