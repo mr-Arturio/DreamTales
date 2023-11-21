@@ -2,6 +2,11 @@
 ___
 
 ### This is working localhost version, with local database and image storage
+to make it work:
+- uncoment local db setyings in .env file
+- start your db: startpostgres
+- enter ```psql finals```
+- run from terminal ```npm run dev```
 
 
 Introducing DreamTales - Where Imagination Comes to Life!
