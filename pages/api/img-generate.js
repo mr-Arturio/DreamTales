@@ -33,9 +33,10 @@ export async function generateImage({
 
   try {
     const completion = await openai.createImage({
+      model: "dall-e-3",
       prompt: prompt,
       n: 1,
-      size: "512x512",
+      size: "1024x1024",
     });
 
     const imageUrl = completion.data.data[0].url;
