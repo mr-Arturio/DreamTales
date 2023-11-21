@@ -1,6 +1,7 @@
-import fs from "fs";
 import path from "path";
+import { Storage } from "@google-cloud/storage";
 import { Configuration, OpenAIApi } from "openai";
+import { uploadImage } from "@/src/components/storage/storageHelper";
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -8,7 +9,6 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 export async function generateImage({
-
   capitalizedName,
   age,
   gender,
@@ -29,7 +29,6 @@ export async function generateImage({
   Feel free to use bright colors, imaginative details, and expressive characters. The image dimensions should be 512x512 pixels to ensure high quality.
   
   Please make sure the image resonates with the heartwarming nature of the story. The end result should be a beautiful and captivating illustration that children will adore.`;
-  
 
   try {
     const completion = await openai.createImage({
@@ -49,13 +48,11 @@ export async function generateImage({
     // Convert the ArrayBuffer to a Buffer
     const imageBuffer = Buffer.from(imageArrayBuffer);
 
-    // Save the image data to a file
+    // Upload the image to Google Cloud Storage
     const imageFileName = `generated_image_${Date.now()}.png`;
-    const imagePath = path.join(process.cwd(), "public/images", imageFileName);
-    fs.writeFileSync(imagePath, imageBuffer);
+    const imageUploadUrl = await uploadImage(imageBuffer, imageFileName);
 
-    return `/images/${imageFileName}`;
-
+    return imageUploadUrl;
   } catch (error) {
     if (error.response) {
       console.error(error.response.status, error.response.data);
