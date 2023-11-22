@@ -143,7 +143,7 @@ export default function ModalActionButtons({
             >
               {/*    <!-- Modal --> */}
               <div
-                className="flex max-h-[90vh] w-11/12 max-w-2xl flex-col gap-6 overflow-hidden rounded bg-white p-6 text-slate-500 shadow-xl shadow-slate-700/10"
+                className="flex max-h-[90vh] w-11/12 max-w-3xl flex-col gap-6 overflow-hidden rounded bg-white p-6 text-slate-500 shadow-xl shadow-slate-700/10"
                 ref={wrapperRef}
                 id="modal"
                 role="document"
@@ -185,11 +185,11 @@ export default function ModalActionButtons({
                 </header>
                 {/*        <!-- Modal body --> */}
                 <div id="content-1a" className="flex-1 overflow-auto">
-                  <figure>
+                  <figure className="max-w-full">
                     <Image
                       src={displayPhoto}
                       alt="card image"
-                      className="aspect-video  w-auto mb-5 mx-12"
+                      className="object-cover w-auto h-auto mx-12"
                       width={400}
                       height={300}
                     />
