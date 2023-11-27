@@ -73,7 +73,7 @@ The following development dependencies are used for building and styling the app
 - `tailwindcss` (^3.3.3): Utility-first CSS framework
 
 
-## OpebAI models
+## [OpenAI](https://platform.openai.com/overview) models
 - `text-davinci-003` model for generating text;
 - `dall-e-3` model for image generation;
 
