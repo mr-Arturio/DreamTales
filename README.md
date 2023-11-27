@@ -4,8 +4,8 @@ For an easy and quick trial, use the following credentials: <br/>
 Email: test@g.com<br/>
 Password: 1234
 ___
-This repository consists of a full-stack application that uses [NEXT.js](https://nextjs.org/) for front and back end, [PostgreSQL](https://www.postgresql.org/) for database. It is usung [OpenAI](https://platform.openai.com/overview) technologi and API's. Deployed on [Heroku](heroku.com), also using [Google Cloud Storage](https://cloud.google.com/?hl=en) for storing and displaying generated images. All styled using [Tailwind](https://tailwindcss.com/) and Vanila CSS.
-For a localhost repository version - visit ```localhostVesrion``` branch and follow installing instructions there.
+This repository consists of a full-stack application that utilizes [NEXT.js](https://nextjs.org/) for both front-end and back-end,  [PostgreSQL](https://www.postgresql.org/) for the database. It integrates [OpenAI](https://platform.openai.com/overview) technologies and APIs and is deployed on [Heroku](heroku.com). Additionally, it employs [Google Cloud Storage](https://cloud.google.com/?hl=en) for storing and displaying generated images. All are styled using [Tailwind](https://tailwindcss.com/) and Vanilla CSS.
+For a localhost repository version - visit ```localhostVesrion``` branch and follow the installing instructions there.
 ___
 
 ### Introducing DreamTales - Where Imagination Comes to Life!
@@ -18,7 +18,7 @@ How does it work? It's as easy as 1-2-3:
 
 - Create an account: to have access to all your previously generated stories and images.
 
-- Create Your Hero: Enter your child's name, age, and even select a style for the story. Whether it's a magical adventure, a hilarious escapade, or a heartwarming tale, you're in control.
+- Create Your Hero: Enter your child's name, and age, and even select a style for the story. Whether it's a magical adventure, a hilarious escapade, or a heartwarming tale, you're in control.
 
 - Choose Your Adventure: Pick an educational topic that aligns with your child's developmental needs. From teaching friendship to promoting dental hygiene or potty training, our stories are not only entertaining but also educational.
 
@@ -73,7 +73,9 @@ The following development dependencies are used for building and styling the app
 - `tailwindcss` (^3.3.3): Utility-first CSS framework
 
 
-## 
+## OpebAI models
+- `text-davinci-003` model for generating text;
+- `dall-e-3` model for image generation;
 
 ### What was used:
 * [Canva](https://www.canva.com/) - for web design, logo, backgrounds
