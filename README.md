@@ -4,7 +4,7 @@ For an easy and quick trial, use the following credentials: <br/>
 Email: test@g.com<br/>
 Password: 1234
 ___
-This repository consists of a full-stack application that utilizes [NEXT.js](https://nextjs.org/) for both front-end and back-end,  [PostgreSQL](https://www.postgresql.org/) for the database. It integrates [OpenAI](https://platform.openai.com/overview) technologies and APIs and is deployed on [Heroku](heroku.com). Additionally, it employs [Google Cloud Storage](https://cloud.google.com/?hl=en) for storing and displaying generated images. All are styled using [Tailwind](https://tailwindcss.com/) and Vanilla CSS.<br/>
+This repository consists of a full-stack application that utilizes [NEXT.js](https://nextjs.org/) for both front-end and back-end,  [PostgreSQL](https://www.postgresql.org/) for the database. It integrates [OpenAI](https://platform.openai.com/overview) technologies and APIs and is deployed on [Heroku](https://www.heroku.com/). Additionally, it employs [Google Cloud Storage](https://cloud.google.com/?hl=en) for storing and displaying generated images. All are styled using [Tailwind](https://tailwindcss.com/) and Vanilla CSS.<br/>
 For a localhost repository version - visit ```localhostVesrion``` branch and follow the installing instructions there.
 ___
 ### Introducing DreamTales - Where Imagination Comes to Life!
