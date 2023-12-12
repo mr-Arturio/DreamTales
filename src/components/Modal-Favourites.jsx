@@ -190,7 +190,7 @@ export default function ModalActionButtonsFav({
                     <Image
                       src={displayPhoto}
                       alt="card image"
-                      className="aspect-video w-auto mb-5 mx-12"
+                      className="object-cover w-auto h-auto mx-12"
                       width={400}
                       height={300}
                     />
