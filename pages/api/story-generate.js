@@ -23,7 +23,7 @@ export async function generateStory(params) {
 
   try {
     const completion = await openai.createCompletion({
-      model: "text-davinci-003",
+      model: "gpt-3.5-turbo-instruct",
       prompt: prompt,
       max_tokens: 1200,
       n: 1,
